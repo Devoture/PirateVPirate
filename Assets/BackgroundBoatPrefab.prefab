@@ -322,7 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 430372}
   m_Layer: 0
-  m_Name: Boat_1800early_BrigSloop_LOD_0
+  m_Name: BackgroundBoatPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
