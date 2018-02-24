@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 143926267393274550}
   - component: {fileID: 114222479533134980}
   m_Layer: 0
-  m_Name: pirates-shipyard-01
+  m_Name: Pirate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
