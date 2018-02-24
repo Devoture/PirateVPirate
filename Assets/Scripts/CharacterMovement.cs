@@ -12,16 +12,17 @@ public class CharacterMovement : MonoBehaviour {
 	private bool m_isJumping;
 	private bool m_isGrounded = false;
 	private CharacterController m_controller;
+	private Animator m_animController;
 
 	// Use this for initialization
 	void Awake () {
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
+		m_animController = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 		m_moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
 		if(Input.GetButtonDown("Jump") && m_isGrounded) {
@@ -30,6 +31,10 @@ public class CharacterMovement : MonoBehaviour {
 		}
 
 		m_moveDirection *= m_speed * m_speedMultiplier;
+
+		m_animController.SetFloat("Forward", m_moveDirection.z);
+		m_animController.SetFloat("Right", m_moveDirection.x);
+
 		m_moveDirection = transform.TransformDirection(m_moveDirection);
 		
 
