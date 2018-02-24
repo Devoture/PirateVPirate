@@ -12,12 +12,10 @@ public class CharacterMovement : MonoBehaviour {
 	private bool m_isJumping;
 	private bool m_isGrounded = false;
 	private CharacterController m_controller;
-	private Animator m_animationController;
 
 	// Use this for initialization
 	void Awake () {
 		m_controller = GetComponent<CharacterController>();
-		m_animationController = GetComponent<Animator>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 	}
 	
@@ -37,14 +35,6 @@ public class CharacterMovement : MonoBehaviour {
 
 		m_moveDirection.y -= m_gravity * Time.deltaTime;
 		m_isGrounded = ((m_controller.Move(m_moveDirection * Time.deltaTime)) & CollisionFlags.Below) != 0;
-
-		m_animationController.SetFloat("Forward", m_moveDirection.z);
-		m_animationController.SetFloat("Right", m_moveDirection.x);
-	}
-
-	public void ResetJump() {
-		m_animationController.SetBool("Jump", false);
-		m_isJumping = false;
 	}
 
 }
