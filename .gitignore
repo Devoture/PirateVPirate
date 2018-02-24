@@ -32,3 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Individual sandbox file/folder ignore
+**/[Ss]and[Bb]ox*
+
