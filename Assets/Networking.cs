@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class NetworkManager_Custom : NetworkManager {
+public class  Networking : NetworkManager {
 
 	public void StartupHost() {
 		SetPort();
@@ -12,12 +12,12 @@ public class NetworkManager_Custom : NetworkManager {
 	}
 	public void JoinGame() {
 		SetIPAdress();
-		Setport();
+		SetPort();
 		NetworkManager.singleton.StartClient();
 	}
 	void SetIPAdress() {
-		string ipAdress = GameObject.Find("InputFieldAdress").transform.Find("text").GetComponnet<text>().text;
-		NetworkManager.singleton.networkAdress = ipAdress;
+		string ipAdress = GameObject.Find("InputFieldAdress").transform.Find("text").GetComponent<Text>().text;
+		NetworkManager.singleton.networkAddress = ipAdress;
 	}
 	void SetPort() {
 		NetworkManager.singleton.networkPort = 7777;
