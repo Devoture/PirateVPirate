@@ -444,12 +444,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1352186123}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.058166087, y: 0.8, z: -3.63}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1575253709}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1786912104}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1352186128
 MonoBehaviour:
@@ -462,14 +462,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3916fa1b90776f34b838a76ac843f440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axes: 0
-  sensitivityX: 5
-  sensitivityY: 5
-  minimumX: -180
-  maximumX: 180
-  minimumY: -30
-  maximumY: 30
-  frameCounter: 20
+  m_target: {fileID: 1786912104}
+  m_distance: 12
+  m_xSpeed: 200
+  m_ySpeed: 200
+  m_zoomSpeed: 500
+  m_minDistance: 2.5
+  m_maxDistance: 20
+  m_maxXDeg: 60
+  m_autoRotationSpeed: 10
 --- !u!1 &1382822040
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +531,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1575253708
 GameObject:
@@ -707,6 +708,7 @@ GameObject:
   - component: {fileID: 1786912103}
   - component: {fileID: 1786912102}
   - component: {fileID: 1786912101}
+  - component: {fileID: 1786912100}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -714,6 +716,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1786912100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1786912099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e3125796bf5f44aa919244ff94ad77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_speed: 5
+  m_speedMultiplier: 1
+  m_gravity: 20
+  m_jumpSpeed: 8
 --- !u!23 &1786912101
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -728,7 +745,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 249925b7b842a0b4a9086c4c7150aa97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -777,7 +794,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.058166087, y: 0.8, z: -3.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1352186127}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
