@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour {
 	private CharacterController m_controller;
 	private Animator m_animController;
 	private SwordCollider m_swordCollider;
+	private bool m_isAttacking;
 
 	// Use this for initialization
 	void Start() {
@@ -44,14 +45,16 @@ public class CharacterMovement : MonoBehaviour {
 		m_isGrounded = ((m_controller.Move(m_moveDirection * Time.deltaTime)) & CollisionFlags.Below) != 0;
 
 
-		if(Input.GetMouseButtonDown(0)) {
+		if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
 			m_animController.SetBool("isAttacking", true);
+			m_isAttacking = true;
 			Debug.Log(m_animController.GetBool("isAttacking"));
 		}
 	}
 
 	public void ResetAttack() {
 		m_swordCollider.ResetAttack();
+		m_isAttacking = false;
 	}
 }
 
