@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour {
 	public float m_gravity = 20.0f;
 	public float m_jumpSpeed = 8.0f;
 	public MeshCollider m_swordCollider;
+	public int m_numOfBlockedAttacks = 0;
 
 	private Vector3 m_moveDirection = Vector3.zero;
 	private bool m_isJumping;
@@ -58,12 +59,13 @@ public class CharacterMovement : MonoBehaviour {
 			}
 		}
 
-		if(Input.GetMouseButtonDown(1)) {
+		if(Input.GetMouseButtonDown(1) && m_numOfBlockedAttacks != 3) {
 			m_disableMovement = true;
 			m_animController.SetBool("isBlocking", true);
 			m_healthScript.m_cantTakeDamage = true;
 		}
-		if(Input.GetMouseButtonUp(1)) {
+
+		if(Input.GetMouseButtonUp(1) || m_numOfBlockedAttacks >= 3) {
 			m_disableMovement = false;
 			m_animController.SetBool("isBlocking", false);
 			m_healthScript.m_cantTakeDamage = false;
