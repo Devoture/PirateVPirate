@@ -773,7 +773,6 @@ MonoBehaviour:
   m_Script: {fileID: -1050975500, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
 --- !u!1001 &1566957884
 Prefab:
   m_ObjectHideFlags: 0
@@ -884,8 +883,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4911321378014660, guid: b10326a9bd423e445806b5b52208c29e,
     type: 2}
   m_PrefabInternal: {fileID: 1648451288}
-=======
->>>>>>> gameplay
 --- !u!4 &1663359628 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4488613223112354, guid: dec6f3dedb521af4cbd7c0cf795f28f3,

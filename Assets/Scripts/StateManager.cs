@@ -12,19 +12,31 @@ public GameObject[] m_gameStates;
 	void Start () {
 		int numStates = m_gameStates.Length;
 
-		for(int i = 0;i < numStates; i++){
+		for(int i = 0; i < numStates; i++){
 			m_gameStates[i].SetActive(false);
 		}
 
 		m_activeState = m_gameStates[0];
 		m_activeState.SetActive(true);
 	}
+
 	public void Exit(){
-		 #if UNITY_EDITOR
-         UnityEditor.EditorApplication.isPlaying = false;
-     #else
-         Application.Quit();
-     #endif
+		#if UNITY_EDITOR
+         	UnityEditor.EditorApplication.isPlaying = false;
+     	#else
+         	Application.Quit();
+    	#endif
 	}
 
+	public void Menu(){
+		m_activeState.SetActive(false);
+		m_activeState = m_gameStates[0];
+		m_activeState.SetActive(true);
+	}
+
+	public void PlayGame(){
+		m_activeState.SetActive(false);
+		m_activeState = m_gameStates[1];
+		m_activeState.SetActive(true);
+	}
 }
