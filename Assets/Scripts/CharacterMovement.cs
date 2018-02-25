@@ -96,7 +96,6 @@ public class CharacterMovement : MonoBehaviour {
 		m_swordCollider.enabled = false;
 		m_swordColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
-
 	}
 }
 
