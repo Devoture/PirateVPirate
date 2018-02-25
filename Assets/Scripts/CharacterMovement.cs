@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour {
 	public float m_gravity = 20.0f;
 	public float m_jumpSpeed = 8.0f;
 	public MeshCollider m_swordCollider;
+	public int m_numOfBlockedAttacks = 0;
 
 	private Vector3 m_moveDirection = Vector3.zero;
 	private bool m_isJumping;
@@ -17,6 +18,7 @@ public class CharacterMovement : MonoBehaviour {
 	private SwordCollider m_swordColliderScript;
 	private bool m_isAttacking;
 	private Health m_healthScript;
+	private bool m_disableMovement;
 
 	// Use this for initialization
 	void Start() {
@@ -29,30 +31,44 @@ public class CharacterMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		m_moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+		if(!m_disableMovement) {
+			m_moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-		if(Input.GetButtonDown("Jump") && m_isGrounded) {
-			m_moveDirection.y = m_jumpSpeed;
-			m_isJumping = true;
+			if(Input.GetButtonDown("Jump") && m_isGrounded) {
+				m_moveDirection.y = m_jumpSpeed;
+				m_isJumping = true;
+			}
+
+			m_moveDirection *= m_speed * m_speedMultiplier;
+
+			m_animController.SetFloat("Forward", m_moveDirection.z);
+			m_animController.SetFloat("Right", m_moveDirection.x);
+
+			m_moveDirection = transform.TransformDirection(m_moveDirection);
+			
+
+			m_moveDirection.y -= m_gravity * Time.deltaTime;
+			m_isGrounded = ((m_controller.Move(m_moveDirection * Time.deltaTime)) & CollisionFlags.Below) != 0;
+
+
+			if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
+				m_swordCollider.enabled = true;			
+				m_animController.SetBool("isAttacking", true);
+				m_isAttacking = true;
+				Debug.Log(m_animController.GetBool("isAttacking"));
+			}
 		}
 
-		m_moveDirection *= m_speed * m_speedMultiplier;
+		if(Input.GetMouseButtonDown(1) && m_numOfBlockedAttacks <= 3) {
+			m_disableMovement = true;
+			m_animController.SetBool("isBlocking", true);
+			m_healthScript.m_cantTakeDamage = true;
+		}
 
-		m_animController.SetFloat("Forward", m_moveDirection.z);
-		m_animController.SetFloat("Right", m_moveDirection.x);
-
-		m_moveDirection = transform.TransformDirection(m_moveDirection);
-		
-
-		m_moveDirection.y -= m_gravity * Time.deltaTime;
-		m_isGrounded = ((m_controller.Move(m_moveDirection * Time.deltaTime)) & CollisionFlags.Below) != 0;
-
-
-		if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
-			m_swordCollider.enabled = true;			
-			m_animController.SetBool("isAttacking", true);
-			m_isAttacking = true;
-			Debug.Log(m_animController.GetBool("isAttacking"));
+		if(Input.GetMouseButtonUp(1) || m_numOfBlockedAttacks >= 3) {
+			m_disableMovement = false;
+			m_animController.SetBool("isBlocking", false);
+			m_healthScript.m_cantTakeDamage = false;
 		}
 
 		if(Input.GetKeyDown(KeyCode.R)) {
@@ -69,7 +85,6 @@ public class CharacterMovement : MonoBehaviour {
 			m_animController.SetBool("isAttacking", false);
 			Debug.Log(m_animController.GetBool("isAttacking"));
 		}
-		
 		m_swordCollider.enabled = false;
 		m_swordColliderScript.ResetAttack();
 		m_isAttacking = false;

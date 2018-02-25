@@ -9,6 +9,7 @@ public class Health : NetworkBehaviour {
 
 	[SyncVar(hook = "UpdateHUD")]
 	public int m_currHealth = m_maxHealth;
+	public bool m_cantTakeDamage = false;
 
 	public void TakeDamage(int damage) {
 		if(isServer) {
@@ -17,7 +18,6 @@ public class Health : NetworkBehaviour {
 				m_currHealth = 0;
 				Died();
 			}
-			//UpdateHUD(m_currHealth);
 		}
 	}
 
@@ -30,7 +30,7 @@ public class Health : NetworkBehaviour {
 		Destroy(this.gameObject);
 	}
 
-	void UpdateHUD(int health) {
-		m_healthHUD.fillAmount = (float)health / (float)m_maxHealth;
+	void UpdateHUD(int m_currHealth) {
+		m_healthHUD.fillAmount = (float)m_currHealth / (float)m_maxHealth;
 	}
 }
