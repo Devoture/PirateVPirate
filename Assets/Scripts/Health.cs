@@ -22,14 +22,12 @@ public class Health : NetworkBehaviour {
 	}
 
 	[Command]
-	void CmdDamagePlayer(int damage)
-	{
+	void CmdDamagePlayer(int damage) {
 		RpcDamagePlayer(damage);
 	}
 	
 	[ClientRpc]
-	void RpcDamagePlayer(int damage)
-	{
+	void RpcDamagePlayer(int damage) {
 		m_currHealth -= damage;
 		if(m_currHealth <= 0) {
 			m_currHealth = 0;
