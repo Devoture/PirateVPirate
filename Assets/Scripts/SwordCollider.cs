@@ -18,6 +18,7 @@ public class SwordCollider : NetworkBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if(other.tag == "Enemy") {
+			Debug.Log("CANT TAKE IN SWORD: " + other.GetComponent<CharacterMovement>().m_cantTakeDamage);
 			if(other.GetComponent<CharacterMovement>().m_cantTakeDamage) {
 				other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
 				Debug.Log("Blocking..." + other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks);
