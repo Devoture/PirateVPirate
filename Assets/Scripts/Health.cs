@@ -20,6 +20,7 @@ public class Health : MonoBehaviour {
 		m_currHealth -= damage;
 		if(m_currHealth <= 0) {
 			m_currHealth = 0.0f;
+			Died();
 		}
 		UpdateHealthHUD();
 	}
