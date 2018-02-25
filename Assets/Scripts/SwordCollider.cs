@@ -4,28 +4,32 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class SwordCollider : NetworkBehaviour {
-
 	private float m_damage = 10.0f;
 	private Animator m_animController;
 	private bool m_hasDealtDamage = false;
 
+
+	// Use this for initialization
 	void Start () {
 		m_animController = transform.root.GetComponent<Animator>();
 	}
 	
+	// Update is called once per frame
+	void Update () {
+
+	}
 	void OnTriggerEnter(Collider other) {
 		if(other.tag == "Enemy" && !m_hasDealtDamage) {
 			if(other.GetComponent<Health>() != null) {
-				CmdDealDamage(other.gameObject);
+				CmdTakeDamage(other.gameObject);
 			}
 		}
 	}
 
 	[Command]
-	void CmdDealDamage(GameObject other) {
+	void CmdTakeDamage(GameObject other) {
 		m_hasDealtDamage = true;
 		other.GetComponent<Health>().TakeDamage((int)m_damage);
-		Debug.Log(other.GetComponent<Health>().GetHealth());
 	}
 
 	public void ResetAttack() {

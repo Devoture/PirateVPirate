@@ -9,15 +9,30 @@ public class Health : NetworkBehaviour {
 
 	[SyncVar(hook = "UpdateHUD")]
 	public int m_currHealth = m_maxHealth;
+	public bool m_cantTakeDamage = false;
 
 	public void TakeDamage(int damage) {
-		if(isServer) {
-			m_currHealth -= damage;
-			if(m_currHealth <= 0) {
-				m_currHealth = 0;
-				Died();
-			}
-			//UpdateHUD(m_currHealth);
+		if(!Network.isServer) {
+			CmdDamagePlayer(damage);
+			Debug.Log("CMD: " + m_currHealth);
+		}
+		else {
+			RpcDamagePlayer(damage);
+			Debug.Log("LOCAL: " + m_currHealth);
+		}
+	}
+
+	[Command]
+	void CmdDamagePlayer(int damage) {
+		RpcDamagePlayer(damage);
+	}
+	
+	[ClientRpc]
+	void RpcDamagePlayer(int damage) {
+		m_currHealth -= damage;
+		if(m_currHealth <= 0) {
+			m_currHealth = 0;
+			Died();
 		}
 	}
 
@@ -30,7 +45,7 @@ public class Health : NetworkBehaviour {
 		Destroy(this.gameObject);
 	}
 
-	void UpdateHUD(int health) {
-		m_healthHUD.fillAmount = (float)health / (float)m_maxHealth;
+	void UpdateHUD(int m_currHealth) {
+		m_healthHUD.fillAmount = (float)m_currHealth / (float)m_maxHealth;
 	}
 }
