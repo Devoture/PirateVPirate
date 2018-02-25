@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour {
 	}		
 
 	void LateUpdate() {
-		// if you havent already rotated behind the player and you have a target then rotate behind target
+		//if you havent already rotated behind the player and you have a target then rotate behind target
 		if(!m_rotateBehind && m_target != null) {
 			RotateBehindTarget();
 		}
@@ -66,7 +66,7 @@ public class CameraController : MonoBehaviour {
 			
 
 			//rotates the player to camera's rotation
-			m_target.transform.Rotate(0, horizontal, 0);
+			m_target.transform.root.Rotate(0, horizontal, 0);
 		}
 	}
 
