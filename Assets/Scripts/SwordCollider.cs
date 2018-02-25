@@ -24,6 +24,7 @@ public class SwordCollider : MonoBehaviour {
 			if(other.GetComponent<Health>() != null) {
 				m_hasDealtDamage = true;
 				other.GetComponent<Health>().TakeDamage((int)m_damage);
+				Debug.Log(other.GetComponent<Health>().GetHealth());
 			}
 		}
 	}
