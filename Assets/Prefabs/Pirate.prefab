@@ -2281,7 +2281,13 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed by
+    Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+    'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
+    'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
+    'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:LeftHandThumb3'\n\tTransform
+    'mixamorig:RightArm'\n\tand more ...\n\tFrom animation clip 'mixamo.com'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!108 &108379502692675038
@@ -2345,6 +2351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d11192e97a36c42881200f84d66821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_hasDealtDamage: 0
 --- !u!114 &114053338091879702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2464,6 +2471,9 @@ MonoBehaviour:
   m_gravity: 20
   m_jumpSpeed: 8
   m_swordCollider: {fileID: 64086618626495636}
+  m_numOfBlockedAttacks: 0
+  m_cantTakeDamage: 0
+  m_animController: {fileID: 95726428757890608}
 --- !u!114 &114216412155359972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2654,7 +2664,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_healthHUD: {fileID: 114519472687393070}
   m_currHealth: 100
-  m_cantTakeDamage: 0
 --- !u!114 &114888745122349580
 MonoBehaviour:
   m_ObjectHideFlags: 1
