@@ -94,7 +94,7 @@ public class CharacterMovement : MonoBehaviour {
 			Debug.Log(m_animController.GetBool("isAttacking"));
 		}
 		m_swordCollider.enabled = false;
-		//m_swordColliderScript.m_hasDealtDamage = false;
+		m_swordColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
 
 	}
