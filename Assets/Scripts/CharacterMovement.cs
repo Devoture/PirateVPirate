@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CharacterMovement : MonoBehaviour {
+public class CharacterMovement : NetworkBehaviour {
 	public float m_speed = 5.0f;
 	public float m_speedMultiplier = 1.0f;
 	public float m_gravity = 20.0f;
@@ -13,12 +14,17 @@ public class CharacterMovement : MonoBehaviour {
 	private bool m_isGrounded = false;
 	private CharacterController m_controller;
 	private Animator m_animController;
+	private SwordCollider m_swordCollider;
+	private bool m_isAttacking;
+	private Health m_healthScript;
 
 	// Use this for initialization
-	void Awake () {
+	void Start() {
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 		m_animController = GetComponent<Animator>();
+		m_swordCollider = GetComponentInChildren<SwordCollider>();
+		m_healthScript = GetComponent<Health>();
 	}
 	
 	// Update is called once per frame
@@ -42,9 +48,25 @@ public class CharacterMovement : MonoBehaviour {
 		m_isGrounded = ((m_controller.Move(m_moveDirection * Time.deltaTime)) & CollisionFlags.Below) != 0;
 
 
-		if(Input.GetMouseButtonDown(0)) {
+		if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
 			m_animController.SetBool("isAttacking", true);
+			m_isAttacking = true;
+			Debug.Log(m_animController.GetBool("isAttacking"));
 		}
+
+		if(Input.GetKeyDown(KeyCode.R)) {
+			CmdTakeDamage();
+		}
+	}
+
+	[Command]
+	void CmdTakeDamage() {
+		m_healthScript.TakeDamage(10);
+	}
+
+	public void ResetAttack() {
+		m_swordCollider.ResetAttack();
+		m_isAttacking = false;
 	}
 }
 

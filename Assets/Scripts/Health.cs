@@ -1,40 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class Health : MonoBehaviour {
+public class Health : NetworkBehaviour {
+    public const int m_maxHealth = 100;
+	public Image m_healthHUD;
 
-	public float m_maxHealth = 100.0f;
-	
-	private float m_currHealth;
+	[SyncVar(hook = "UpdateHUD")]
+	private int m_currHealth = m_maxHealth;
 
-	void Awake() {
-		m_currHealth = m_maxHealth;
-		UpdateHealthHUD();
-	}
-
-	void TakeDamage(float damage) {
-		m_currHealth -= damage;
-		if(m_currHealth <= 0) {
-			m_currHealth = 0.0f;
+	public void TakeDamage(int damage) {
+		if(isServer) {
+			m_currHealth -= damage;
+			if(m_currHealth <= 0) {
+				m_currHealth = 0;
+				Died();
+			}
+			//UpdateHUD(m_currHealth);
 		}
-		UpdateHealthHUD();
-	}
-
-	void Heal(float healAmt) {
-		m_currHealth += healAmt;
-		if(m_currHealth >= 100) {
-			m_currHealth = 100.0f;
-		}
-		UpdateHealthHUD();
 	}
 
 	void Died() {
 		// dying stuff here
-		Debug.Log("You Died");
+		Destroy(this.gameObject);
 	}
 
-	void UpdateHealthHUD() {
-		// dylan put your shit here fam
+	void UpdateHUD(int health) {
+		m_healthHUD.fillAmount = (float)health / (float)m_maxHealth;
 	}
 }
