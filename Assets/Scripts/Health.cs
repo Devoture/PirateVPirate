@@ -12,7 +12,7 @@ public class Health : NetworkBehaviour {
 	public bool m_cantTakeDamage = false;
 
 	public void TakeDamage(int damage) {
-		if(!Network.isServer) {
+		if(!isServer) {
 			CmdDamagePlayer(damage);
 			Debug.Log("CMD: " + m_currHealth);
 		}
