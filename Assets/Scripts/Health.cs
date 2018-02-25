@@ -22,6 +22,14 @@ public class Health : NetworkBehaviour {
 				}
 			}
 		}
+	if(isClient){
+			m_currHealth -= damage;
+			if(m_currHealth <= 0){
+				if(m_Destroy){
+					Destroy(gameObject);
+				}
+			}
+		}
 	}
 
 	public int GetHealth() {
