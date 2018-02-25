@@ -40,7 +40,11 @@ public class CharacterMovement : MonoBehaviour {
 
 		m_moveDirection.y -= m_gravity * Time.deltaTime;
 		m_isGrounded = ((m_controller.Move(m_moveDirection * Time.deltaTime)) & CollisionFlags.Below) != 0;
-	}
 
+
+		if(Input.GetMouseButtonDown(0)) {
+			m_animController.SetBool("isAttacking", true);
+		}
+	}
 }
 
