@@ -80,8 +80,8 @@ public class CharacterMovement : MonoBehaviour {
 		}
 	}
 
-	public bool CantBeDamaged() {
-		return m_cantTakeDamage;
+	void BlockedAttack() {
+		m_animController.SetBool("blockedAttack", false);
 	}
 
 	void TakeDamage() {

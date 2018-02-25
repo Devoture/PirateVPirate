@@ -44,8 +44,4 @@ public class SwordCollider : NetworkBehaviour {
 		m_animController.SetBool("isBlocking", false);
 		m_hasDealtDamage = false;
 	}
-
-	public void BlockedAttack() {
-		m_animController.SetBool("blockedAttack", false);
-	}
 }
