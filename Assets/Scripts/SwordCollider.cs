@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class SwordCollider : MonoBehaviour {
+public class SwordCollider : NetworkBehaviour {
 	private float m_damage = 10.0f;
 	private Animator m_animController;
 	private bool m_hasDealtDamage = false;
@@ -22,7 +23,6 @@ public class SwordCollider : MonoBehaviour {
 			if(other.GetComponent<Health>() != null) {
 				m_hasDealtDamage = true;
 				other.GetComponent<Health>().TakeDamage((int)m_damage);
-				Debug.Log(other.GetComponent<Health>().GetHealth());
 			}
 		}
 	}

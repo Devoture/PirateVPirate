@@ -12,15 +12,28 @@ public class Health : NetworkBehaviour {
 
 	public void TakeDamage(int damage) {
 		if(!isServer) {
-			return;
+			CmdTakeDamage(damage);
+		} else {
+			m_currHealth -= damage;
+			if(m_currHealth <= 0) {
+				m_currHealth = 0;
+				Died();
+			//UpdateHUD(m_currHealth);
+			}
+			//UpdateHUD(m_currHealth);
+			Debug.Log("Not Command" + m_currHealth);
 		}
+	}
+
+	[Command]
+	void CmdTakeDamage(int damage) {
 		m_currHealth -= damage;
 		if(m_currHealth <= 0) {
 			m_currHealth = 0;
 			Died();
+			Debug.Log("Command" + m_currHealth);
 		//UpdateHUD(m_currHealth);
 		}
-		UpdateHUD(m_currHealth);
 	}
 
 	public int GetHealth() {
