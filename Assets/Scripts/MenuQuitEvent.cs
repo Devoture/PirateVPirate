@@ -6,6 +6,10 @@ public class MenuQuitEvent : MonoBehaviour {
 
 	public StateManager m_stateMgr;
 	public void OnMouseDown(){
-		m_stateMgr.Exit();
+		#if UNITY_EDITOR
+         	UnityEditor.EditorApplication.isPlaying = false;
+     	#else
+         	Application.Quit();
+    	#endif
 	}
 }

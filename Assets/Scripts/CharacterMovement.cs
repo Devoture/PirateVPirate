@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class CharacterMovement : NetworkBehaviour {
+public class CharacterMovement : MonoBehaviour {
 	public float m_speed = 5.0f;
 	public float m_speedMultiplier = 1.0f;
 	public float m_gravity = 20.0f;
@@ -71,12 +70,11 @@ public class CharacterMovement : NetworkBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.R)) {
-			CmdTakeDamage();
+			TakeDamage();
 		}
 	}
 
-	[Command]
-	void CmdTakeDamage() {
+	void TakeDamage() {
 		m_healthScript.TakeDamage(10);
 	}
 
