@@ -23,7 +23,8 @@ public class SwordCollider : NetworkBehaviour {
 				m_charScript.m_numOfBlockedAttacks++;
 				Debug.Log("Number OF Blocked Attacks: " + m_charScript.m_numOfBlockedAttacks);
 				m_animController.SetBool("blockedAttack", true);
-			} else if(other.GetComponent<Health>() != null) {
+			} 
+			if(other.GetComponent<Health>() != null && !m_healthScript.m_cantTakeDamage) {
 				m_charScript.m_numOfBlockedAttacks = 0;
 				Debug.Log("Reset Blocked Number");
 				m_hasDealtDamage = true;
