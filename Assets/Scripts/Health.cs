@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Health : MonoBehaviour {
 
 	public float m_maxHealth = 100.0f;
 	
 	private float m_currHealth;
 
+	public Image m_HudFill;
+
+	private float newUIUHealth;
 	void Awake() {
 		m_currHealth = m_maxHealth;
 		UpdateHealthHUD();
@@ -33,8 +36,13 @@ public class Health : MonoBehaviour {
 		// dying stuff here
 		Debug.Log("You Died");
 	}
-
+	void Update(){
+		if (Input.GetKeyDown(KeyCode.A)){
+			TakeDamage(10);
+		}
+	}
 	void UpdateHealthHUD() {
-		// dylan put your shit here fam
+		newUIUHealth = m_currHealth / m_maxHealth;
+		m_HudFill.fillAmount = newUIUHealth;
 	}
 }
