@@ -9,6 +9,7 @@ public class Health : NetworkBehaviour {
 
 	[SyncVar(hook = "UpdateHUD")]
 	public int m_currHealth = m_maxHealth;
+	public bool m_cantTakeDamage = false;
 
 	public void TakeDamage(int damage) {
 		if(!Network.isServer) {
