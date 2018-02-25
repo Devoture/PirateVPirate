@@ -66,15 +66,6 @@ public class CharacterMovement : MonoBehaviour {
 			m_cantTakeDamage = true;
 			Debug.Log("Cant tank damage should be true: " + m_cantTakeDamage);
 		}
-		
-		if(m_numOfBlockedAttacks >= 3) {
-			Debug.Log("inside the cancel out shit");
-			m_disableMovement = false;
-			m_animController.SetBool("isBlocking", false);
-			m_cantTakeDamage = false;
-			Debug.Log("Cant tank damage should be false: " + m_cantTakeDamage);
-			Debug.Log("Stopped Blocking...");
-		}
 
 		if(Input.GetMouseButtonUp(1)) {
 			m_disableMovement = false;
