@@ -8,16 +8,10 @@ public class SwordCollider : NetworkBehaviour {
 	private Animator m_animController;
 	private bool m_hasDealtDamage = false;
 
-
-	// Use this for initialization
 	void Start () {
 		m_animController = transform.root.GetComponent<Animator>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
 	void OnTriggerEnter(Collider other) {
 		if(other.tag == "Enemy" && !m_hasDealtDamage) {
 			if(other.GetComponent<Health>() != null) {
