@@ -20,6 +20,7 @@ public class SwordCollider : NetworkBehaviour {
 		if(other.tag == "Enemy") {
 			if(other.GetComponent<CharacterMovement>().m_cantTakeDamage) {
 				other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
+				Debug.Log("Blocking..." + other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks);
 				Debug.Log("Number OF Blocked Attacks: " + other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks);
 				m_animController.SetBool("blockedAttack", true);
 			} 

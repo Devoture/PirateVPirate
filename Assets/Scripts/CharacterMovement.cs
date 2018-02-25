@@ -64,7 +64,6 @@ public class CharacterMovement : MonoBehaviour {
 			m_disableMovement = true;
 			m_animController.SetBool("isBlocking", true);
 			m_cantTakeDamage = true;
-			Debug.Log("Blocking..." + m_numOfBlockedAttacks);
 			Debug.Log("Cant tank damage should be true: " + m_cantTakeDamage);
 		}
 
