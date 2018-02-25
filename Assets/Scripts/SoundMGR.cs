@@ -32,11 +32,18 @@ public class SoundMGR : MonoBehaviour {
 		}
 		DontDestroyOnLoad(this.gameObject);
 	}
+
+	// void Update(){
+	// 	if(Camera.main.GetComponent<CameraController>().m_target != null){
+	// 		m_PlayerSource = Camera.main.GetComponent<CameraController>().m_target.GetComponent<AudioSource>();
+	// 	}
+	// }
 	
 	public void SwordSwipe()
 	{
 		
 	}
+	
 	public void SwordBlock(){
 		m_PlayerSource.PlayOneShot(m_blockHit);
 	}
