@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CharacterMovement : MonoBehaviour {
+public class CharacterMovement : NetworkBehaviour {
 	public float m_speed = 5.0f;
 	public float m_speedMultiplier = 1.0f;
 	public float m_gravity = 20.0f;
