@@ -64,7 +64,7 @@ public class CharacterMovement : MonoBehaviour {
 			m_disableMovement = true;
 			m_animController.SetBool("isBlocking", true);
 			m_cantTakeDamage = true;
-			Debug.Log("Blocking...");
+			Debug.Log("Blocking..." + m_numOfBlockedAttacks);
 			Debug.Log("Cant tank damage should be true: " + m_cantTakeDamage);
 		}
 
@@ -91,7 +91,7 @@ public class CharacterMovement : MonoBehaviour {
 			Debug.Log(m_animController.GetBool("isAttacking"));
 		}
 		m_swordCollider.enabled = false;
-		m_swordColliderScript.m_hasDealtDamage = false;
+		//m_swordColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
 
 	}
