@@ -2364,6 +2364,7 @@ MonoBehaviour:
   m_speedMultiplier: 1
   m_gravity: 20
   m_jumpSpeed: 8
+  m_swordCollider: {fileID: 64086618626495636}
 --- !u!114 &114216412155359972
 MonoBehaviour:
   m_ObjectHideFlags: 1
