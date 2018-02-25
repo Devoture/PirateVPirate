@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CharacterMovement : MonoBehaviour {
+public class CharacterMovement : NetworkBehaviour {
 	public float m_speed = 5.0f;
 	public float m_speedMultiplier = 1.0f;
 	public float m_gravity = 20.0f;
@@ -15,6 +16,7 @@ public class CharacterMovement : MonoBehaviour {
 	private Animator m_animController;
 	private SwordCollider m_swordCollider;
 	private bool m_isAttacking;
+	private Health m_healthScript;
 
 	// Use this for initialization
 	void Start() {
@@ -22,6 +24,7 @@ public class CharacterMovement : MonoBehaviour {
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 		m_animController = GetComponent<Animator>();
 		m_swordCollider = GetComponentInChildren<SwordCollider>();
+		m_healthScript = GetComponent<Health>();
 	}
 	
 	// Update is called once per frame
@@ -50,6 +53,15 @@ public class CharacterMovement : MonoBehaviour {
 			m_isAttacking = true;
 			Debug.Log(m_animController.GetBool("isAttacking"));
 		}
+
+		if(Input.GetKeyDown(KeyCode.R)) {
+			CmdTakeDamage();
+		}
+	}
+
+	[Command]
+	void CmdTakeDamage() {
+		m_healthScript.TakeDamage(10);
 	}
 
 	public void ResetAttack() {

@@ -23,7 +23,7 @@ public class SwordCollider : MonoBehaviour {
 		if(other.tag == "Enemy" && !m_hasDealtDamage) {
 			if(other.GetComponent<Health>() != null) {
 				m_hasDealtDamage = true;
-				other.GetComponent<Health>().TakeDamage(m_damage);
+				other.GetComponent<Health>().TakeDamage((int)m_damage);
 			}
 		}
 	}
