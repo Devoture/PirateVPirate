@@ -12,27 +12,12 @@ public class Health : NetworkBehaviour {
 	public bool m_cantTakeDamage = false;
 
 	public void TakeDamage(int damage) {
-		if(!isServer) {
-			CmdDamagePlayer(damage);
-			Debug.Log("CMD: " + m_currHealth);
-		}
-		else {
-			RpcDamagePlayer(damage);
-			Debug.Log("LOCAL: " + m_currHealth);
-		}
-	}
-
-	[Command]
-	void CmdDamagePlayer(int damage) {
-		RpcDamagePlayer(damage);
-	}
-	
-	[ClientRpc]
-	void RpcDamagePlayer(int damage) {
-		m_currHealth -= damage;
-		if(m_currHealth <= 0) {
-			m_currHealth = 0;
-			Died();
+		if(isServer) {
+			m_currHealth -= damage;
+			if(m_currHealth <= 0) {
+				m_currHealth = 0;
+				Died();
+			}
 		}
 	}
 
