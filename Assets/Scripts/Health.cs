@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class Health : NetworkBehaviour {
+	
     public const int m_maxHealth = 100;
 	public Image m_healthHUD;
 
@@ -18,6 +19,10 @@ public class Health : NetworkBehaviour {
 			}
 			//UpdateHUD(m_currHealth);
 		}
+	}
+
+	public int GetHealth() {
+		return m_currHealth;
 	}
 
 	void Died() {

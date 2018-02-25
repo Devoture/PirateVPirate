@@ -8,13 +8,14 @@ public class CharacterMovement : NetworkBehaviour {
 	public float m_speedMultiplier = 1.0f;
 	public float m_gravity = 20.0f;
 	public float m_jumpSpeed = 8.0f;
+	public MeshCollider m_swordCollider;
 
 	private Vector3 m_moveDirection = Vector3.zero;
 	private bool m_isJumping;
 	private bool m_isGrounded = false;
 	private CharacterController m_controller;
 	private Animator m_animController;
-	private SwordCollider m_swordCollider;
+	private SwordCollider m_swordColliderScript;
 	private bool m_isAttacking;
 	private Health m_healthScript;
 
@@ -23,7 +24,7 @@ public class CharacterMovement : NetworkBehaviour {
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 		m_animController = GetComponent<Animator>();
-		m_swordCollider = GetComponentInChildren<SwordCollider>();
+		m_swordColliderScript = GetComponentInChildren<SwordCollider>();
 		m_healthScript = GetComponent<Health>();
 	}
 	
@@ -49,6 +50,7 @@ public class CharacterMovement : NetworkBehaviour {
 
 
 		if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
+			m_swordCollider.enabled = true;			
 			m_animController.SetBool("isAttacking", true);
 			m_isAttacking = true;
 			Debug.Log(m_animController.GetBool("isAttacking"));
@@ -65,7 +67,12 @@ public class CharacterMovement : NetworkBehaviour {
 	}
 
 	public void ResetAttack() {
-		m_swordCollider.ResetAttack();
+		if(m_animController != null) {
+			m_animController.SetBool("isAttacking", false);
+		}
+		Debug.Log(m_animController.GetBool("isAttacking"));
+		m_swordCollider.enabled = false;
+		m_swordColliderScript.ResetAttack();
 		m_isAttacking = false;
 	}
 }
