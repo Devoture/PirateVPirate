@@ -193,7 +193,8 @@ ModelImporter:
       - time: 1
         functionName: ResetAttack
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 1104326508843702, guid: 26f35325eccc21148a9f6f021585398a,
+          type: 2}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

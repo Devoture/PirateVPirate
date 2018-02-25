@@ -47,8 +47,8 @@ public class Health : NetworkBehaviour {
 		}
 	}
 
-	void UpdateHealthHUD() {
-		newUIUHealth = m_currHealth / MAX_HEALTH;
+	void UpdateHealthHUD(float currHealth) {
+		newUIUHealth = currHealth / MAX_HEALTH;
 		m_HudFill.fillAmount = newUIUHealth;
 	}
 }

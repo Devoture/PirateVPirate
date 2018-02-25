@@ -1142,6 +1142,8 @@ GameObject:
   - component: {fileID: 33885532829005814}
   - component: {fileID: 23043292413487004}
   - component: {fileID: 111407098383605074}
+  - component: {fileID: 114015940436885704}
+  - component: {fileID: 64086618626495636}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -2219,6 +2221,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1897565111722186}
   m_Mesh: {fileID: 4300000, guid: a79a4b1e85d48274ba1c146f69249f19, type: 3}
+--- !u!64 &64086618626495636
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1897565111722186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: a79a4b1e85d48274ba1c146f69249f19, type: 3}
 --- !u!95 &95726428757890608
 Animator:
   serializedVersion: 3
@@ -2250,6 +2266,17 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114015940436885704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1897565111722186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d11192e97a36c42881200f84d66821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114053338091879702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2524,7 +2551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ab0b32abcfe064eb0ed0f83c3bfea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 100
   m_HudFill: {fileID: 114519472687393070}
 --- !u!114 &114889481374476112
 MonoBehaviour:
