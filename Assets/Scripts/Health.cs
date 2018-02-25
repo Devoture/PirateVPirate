@@ -11,27 +11,27 @@ public class Health : NetworkBehaviour {
 	public int m_currHealth = m_maxHealth;
 
 	public void TakeDamage(int damage) {
-		if(!isServer) {
-			CmdTakeDamage(damage);
-		} else {
-			m_currHealth -= damage;
-			if(m_currHealth <= 0) {
-				m_currHealth = 0;
-				Died();
-			//UpdateHUD(m_currHealth);
-			}
-			//UpdateHUD(m_currHealth);
-			Debug.Log("Not Command" + m_currHealth);
+		if(!Network.isServer) {
+			CmdDamagePlayer(damage);
+		}
+		else {
+			RpcDamagePlayer(damage);
 		}
 	}
 
 	[Command]
-	void CmdTakeDamage(int damage) {
+	void CmdDamagePlayer(int damage)
+	{
+		RpcDamagePlayer(damage);
+	}
+	
+	[ClientRpc]
+	void RpcDamagePlayer(int damage)
+	{
 		m_currHealth -= damage;
 		if(m_currHealth <= 0) {
 			m_currHealth = 0;
 			Died();
-		//UpdateHUD(m_currHealth);
 		}
 		Debug.Log("Command" + m_currHealth);
 	}
