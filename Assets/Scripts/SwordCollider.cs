@@ -21,15 +21,10 @@ public class SwordCollider : NetworkBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if(other.tag == "Enemy" && !m_hasDealtDamage) {
 			if(other.GetComponent<Health>() != null) {
-				CmdTakeDamage(other.gameObject);
+				m_hasDealtDamage = true;
+				other.GetComponent<Health>().TakeDamage((int)m_damage);
 			}
 		}
-	}
-
-	[Command]
-	void CmdTakeDamage(GameObject other) {
-		m_hasDealtDamage = true;
-		other.GetComponent<Health>().TakeDamage((int)m_damage);
 	}
 
 	public void ResetAttack() {

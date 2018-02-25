@@ -1145,7 +1145,7 @@ GameObject:
   - component: {fileID: 111407098383605074}
   - component: {fileID: 114015940436885704}
   - component: {fileID: 64086618626495636}
-  - component: {fileID: 114992437496727732}
+  - component: {fileID: 114063990268598822}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -2251,13 +2251,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed by
-    Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-    'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
-    'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:RightArm'\n\tTransform
-    'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftHandMiddle3'\n\tTransform 'mixamorig:LeftShoulder'\n\tand
-    more ...\n\tFrom animation clip 'mixamo.com'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!111 &111407098383605074
@@ -2318,6 +2312,38 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Player 1
+--- !u!114 &114063990268598822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1897565111722186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 38
+    i1: 243
+    i2: 83
+    i3: 37
+    i4: 236
+    i5: 204
+    i6: 33
+    i7: 20
+    i8: 138
+    i9: 159
+    i10: 111
+    i11: 2
+    i12: 21
+    i13: 133
+    i14: 57
+    i15: 138
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114107665278772206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2562,6 +2588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_healthHUD: {fileID: 114519472687393070}
   m_currHealth: 100
+  m_cantTakeDamage: 0
 --- !u!114 &114888745122349580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2662,38 +2689,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114992437496727732
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1897565111722186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 38
-    i1: 243
-    i2: 83
-    i3: 37
-    i4: 236
-    i5: 204
-    i6: 33
-    i7: 20
-    i8: 138
-    i9: 159
-    i10: 111
-    i11: 2
-    i12: 21
-    i13: 133
-    i14: 57
-    i15: 138
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!137 &137827525745840652
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
