@@ -77,7 +77,7 @@ public class CharacterMovement : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.R)) {
-			//TakeDamage();
+			TakeDamage();
 		}
 	}
 
@@ -85,9 +85,9 @@ public class CharacterMovement : MonoBehaviour {
 		m_animController.SetBool("blockedAttack", false);
 	}
 
-	// void TakeDamage() {
-	// 	m_healthScript.RpcTakeDamage(10);
-	// }
+	void TakeDamage() {
+		m_healthScript.RpcTakeDamage(10);
+	}
 
 	public void ResetAttack() {
 		if(m_animController != null) {
