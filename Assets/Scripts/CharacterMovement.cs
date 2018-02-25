@@ -9,16 +9,18 @@ public class CharacterMovement : MonoBehaviour {
 	public float m_jumpSpeed = 8.0f;
 	public MeshCollider m_swordCollider;
 	public int m_numOfBlockedAttacks = 0;
-
+	public bool m_cantTakeDamage = false;
+	public GameObject m_camtarget;
 	private Vector3 m_moveDirection = Vector3.zero;
 	private bool m_isJumping;
 	private bool m_isGrounded = false;
 	private CharacterController m_controller;
-	private Animator m_animController;
+	public Animator m_animController;
 	private SwordCollider m_swordColliderScript;
 	private bool m_isAttacking;
 	private Health m_healthScript;
 	private bool m_disableMovement;
+	public SoundMGR m_soundManager;
 
 	// Use this for initialization
 	void Start() {
@@ -62,20 +64,25 @@ public class CharacterMovement : MonoBehaviour {
 		if(Input.GetMouseButtonDown(1) && m_numOfBlockedAttacks <= 3) {
 			m_disableMovement = true;
 			m_animController.SetBool("isBlocking", true);
-			m_healthScript.m_cantTakeDamage = true;
-			Debug.Log("Blocking...");
+			m_cantTakeDamage = true;
+			Debug.Log("Cant tank damage should be true: " + m_cantTakeDamage);
 		}
 
-		if(Input.GetMouseButtonUp(1) || m_numOfBlockedAttacks >= 3) {
+		if(Input.GetMouseButtonUp(1)) {
 			m_disableMovement = false;
 			m_animController.SetBool("isBlocking", false);
-			m_healthScript.m_cantTakeDamage = false;
+			m_cantTakeDamage = false;
+			Debug.Log("Cant tank damage should be false: " + m_cantTakeDamage);
 			Debug.Log("Stopped Blocking...");
 		}
 
 		if(Input.GetKeyDown(KeyCode.R)) {
 			TakeDamage();
 		}
+	}
+
+	void BlockedAttack() {
+		m_animController.SetBool("blockedAttack", false);
 	}
 
 	void TakeDamage() {
@@ -88,7 +95,7 @@ public class CharacterMovement : MonoBehaviour {
 			Debug.Log(m_animController.GetBool("isAttacking"));
 		}
 		m_swordCollider.enabled = false;
-		m_swordColliderScript.ResetAttack();
+		m_swordColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
 	}
 }
