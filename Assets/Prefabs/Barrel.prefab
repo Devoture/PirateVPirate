@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4894113415269450}
   - component: {fileID: 95596555942309160}
   - component: {fileID: 205155993546415834}
+  - component: {fileID: 114616762843711870}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -276,6 +277,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114616762843711870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1837357198452090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9dcf75707beb047bbd757a1a1e6361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  amplitude: 0.5
+  midpoint: -0.3
+  tempVal: 0
 --- !u!205 &205155993546415834
 LODGroup:
   m_ObjectHideFlags: 1
