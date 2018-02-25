@@ -80,6 +80,10 @@ public class CharacterMovement : MonoBehaviour {
 		}
 	}
 
+	public bool CantBeDamaged() {
+		return m_cantTakeDamage;
+	}
+
 	void TakeDamage() {
 		m_healthScript.TakeDamage(10);
 	}
