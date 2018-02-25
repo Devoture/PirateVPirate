@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33628583237013720}
   - component: {fileID: 23980080850806846}
   - component: {fileID: 95759063422447432}
+  - component: {fileID: 114372959313954972}
   m_Layer: 0
   m_Name: BackgroundSmall2
   m_TagString: Untagged
@@ -35,13 +36,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1978186576322356}
-  m_LocalRotation: {x: -0.000000032557498, y: 0.506103, z: 0.000000019104865, w: 0.8624731}
-  m_LocalPosition: {x: -55.71988, y: -1.6400874, z: 60.90353}
+  m_LocalRotation: {x: -0.000000036761076, y: 0.22728087, z: 0.000000008579605, w: 0.97382927}
+  m_LocalPosition: {x: -20.719881, y: -1.91, z: 8.113972}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 60.809002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 26.274002, z: 0}
 --- !u!23 &23980080850806846
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -101,3 +102,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114372959313954972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1978186576322356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9dcf75707beb047bbd757a1a1e6361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  amplitude: 0.3
+  midpoint: -0.3
+  tempVal: 0
