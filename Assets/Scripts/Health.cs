@@ -11,26 +11,21 @@ public class Health : NetworkBehaviour {
 	
 	public int m_currHealth = m_maxHealth;
 	public bool m_cantTakeDamage = false;
+	public bool m_Destroy;
 
 	public void TakeDamage(int damage) {
-		if(!isServer) {
-			return;
-			}
+		if(isServer){
 			m_currHealth -= damage;
-			if(m_currHealth <= 0) {
-				m_currHealth = 0;
-				Died();
+			if(m_currHealth <= 0){
+				if(m_Destroy){
+					Destroy(gameObject);
+				}
 			}
-
+		}
 	}
 
 	public int GetHealth() {
 		return m_currHealth;
-	}
-
-	void Died() {
-		// dying stuff here
-		Destroy(this.gameObject);
 	}
 
 	void UpdateHUD(int m_currHealth) {
