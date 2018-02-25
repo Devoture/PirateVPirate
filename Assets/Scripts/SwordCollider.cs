@@ -5,9 +5,10 @@ using UnityEngine.Networking;
 
 public class SwordCollider : NetworkBehaviour {
 
+	public bool m_hasDealtDamage;
+
 	private float m_damage = 10.0f;
 	private Animator m_animController;
-	private bool m_hasDealtDamage = false;
 	private Health m_healthScript;
 	private CharacterMovement m_charScript;
 
@@ -31,10 +32,6 @@ public class SwordCollider : NetworkBehaviour {
 				other.GetComponent<Health>().TakeDamage((int)m_damage);
 			}
 		}
-	}
-
-	public void ResetAttack() {
-		m_hasDealtDamage = false;
 	}
 
 	public void ResetBlock() {
