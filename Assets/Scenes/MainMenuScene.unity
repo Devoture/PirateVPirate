@@ -1376,9 +1376,14 @@ MonoBehaviour:
   m_oceanSfx: {fileID: 8300000, guid: d4bf77f50c49db4458166d12feea9762, type: 3}
   m_seasgullSfx: {fileID: 8300000, guid: adc1644653c6a964c846f75e9aa172cb, type: 3}
   m_menuClickSfk: {fileID: 8300000, guid: db9db2a3f079d2940b7f039b0cd35bb4, type: 3}
+  m_hit1: {fileID: 8300000, guid: 738faf051c356c74ebd51e88f645b510, type: 3}
+  m_hit2: {fileID: 8300000, guid: 884fcff4b26cd4044b067753645e360f, type: 3}
+  m_hit3: {fileID: 8300000, guid: 6f6b5be4dd64d8e4da86c389510034ab, type: 3}
+  m_blockHit: {fileID: 8300000, guid: 82d24085873535b41b7b3712c415828f, type: 3}
   m_battleMusic: {fileID: 8300000, guid: 64f5b0242b7e7514f83d3d914e60f711, type: 3}
   m_menuMusic: {fileID: 8300000, guid: c8e35d21f008c73458ba87f57f79d7a0, type: 3}
   m_backgroundeffects: {fileID: 715528554}
+  m_PlayerSource: {fileID: 0}
 --- !u!1 &1651311378 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 155898, guid: e05b3e8a9e80e034c86657cc7993378e, type: 2}
