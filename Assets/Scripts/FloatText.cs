@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class FloatingScript : MonoBehaviour {
+using UnityEngine.UI;
+public class NewBehaviourScript : MonoBehaviour {
 private float speed = 1.0f;
 private float amplitude = 0.5f;
 private float midpoint = -0.3f;
 private float tempVal;
-private Vector3 tempPos;
+private float tempy;
+ public
 
 void Start () 
      {
@@ -16,7 +17,7 @@ void Start ()
  
      void Update () 
      {        
-         tempPos.y = tempVal + amplitude * Mathf.Sin(speed * Time.time) + midpoint;
-         transform.position = tempPos;
+         tempy = tempVal + amplitude * Mathf.Sin(speed * Time.time) + midpoint;
+         // = tempPos;
      }
 }
