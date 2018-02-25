@@ -66,6 +66,7 @@ public class CharacterMovement : MonoBehaviour {
 			m_cantTakeDamage = true;
 			Debug.Log("Cant tank damage should be true: " + m_cantTakeDamage);
 		}
+		
 		if(m_numOfBlockedAttacks >= 3) {
 			Debug.Log("inside the cancel out shit");
 			m_disableMovement = false;

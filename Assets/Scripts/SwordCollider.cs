@@ -23,9 +23,9 @@ public class SwordCollider : NetworkBehaviour {
 				other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
 				Debug.Log("Blocking..." + other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks);
 				Debug.Log("Number OF Blocked Attacks: " + other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks);
-				m_animController.SetBool("blockedAttack", true);
+				other.GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
 			} 
-			if(other.GetComponent<Health>() != null && other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks > 3) {
+			if(other.GetComponent<Health>() != null && other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks >= 3) {
 				other.GetComponent<CharacterMovement>().m_animController.SetBool("isBlocking", false);
 				other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				Debug.Log("Reset Blocked Number");
