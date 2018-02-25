@@ -79,7 +79,7 @@ public class CharacterMovement : MonoBehaviour {
 	}
 
 	void TakeDamage() {
-		m_healthScript.TakeDamage(10);
+		m_healthScript.RpcTakeDamage(10);
 	}
 
 	public void ResetAttack() {

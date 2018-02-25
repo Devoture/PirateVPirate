@@ -16,7 +16,8 @@ public class Health : NetworkBehaviour {
 	public bool m_Destroy;
 	public RectTransform healthpool;
 
-	public void TakeDamage(int damage) {
+	[ClientRpc]
+	public void RpcTakeDamage(int damage) {
 		if(!isServer){
 			return;
 			}

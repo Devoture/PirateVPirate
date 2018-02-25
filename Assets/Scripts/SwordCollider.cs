@@ -28,7 +28,7 @@ public class SwordCollider : NetworkBehaviour {
 				m_charScript.m_numOfBlockedAttacks = 0;
 				Debug.Log("Reset Blocked Number");
 				m_hasDealtDamage = true;
-				other.GetComponent<Health>().TakeDamage((int)m_damage);
+				other.GetComponent<Health>().RpcTakeDamage((int)m_damage);
 			}
 		}
 	}
