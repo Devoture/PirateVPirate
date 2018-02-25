@@ -8,17 +8,20 @@ public class Health : NetworkBehaviour {
 	public Image m_healthHUD;
 
 	[SyncVar(hook = "UpdateHUD")]
+	
 	public int m_currHealth = m_maxHealth;
 	public bool m_cantTakeDamage = false;
 
 	public void TakeDamage(int damage) {
-		if(isServer) {
+		if(!isServer) {
+			return;
+			}
 			m_currHealth -= damage;
 			if(m_currHealth <= 0) {
 				m_currHealth = 0;
 				Died();
 			}
-		}
+
 	}
 
 	public int GetHealth() {
