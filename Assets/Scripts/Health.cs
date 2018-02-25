@@ -8,7 +8,7 @@ public class Health : NetworkBehaviour {
 	public Image m_healthHUD;
 
 	[SyncVar(hook = "UpdateHUD")]
-	private int m_currHealth = m_maxHealth;
+	public int m_currHealth = m_maxHealth;
 
 	public void TakeDamage(int damage) {
 		if(isServer) {
