@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour {
 	public float m_jumpSpeed = 8.0f;
 	public MeshCollider m_swordCollider;
 	public int m_numOfBlockedAttacks = 0;
+	public bool m_cantTakeDamage = false;
 
 	private Vector3 m_moveDirection = Vector3.zero;
 	private bool m_isJumping;
@@ -62,16 +63,16 @@ public class CharacterMovement : MonoBehaviour {
 		if(Input.GetMouseButtonDown(1) && m_numOfBlockedAttacks <= 3) {
 			m_disableMovement = true;
 			m_animController.SetBool("isBlocking", true);
-			m_healthScript.m_cantTakeDamage = true;
+			m_cantTakeDamage = true;
 			Debug.Log("Blocking...");
-			Debug.Log("Cant tank damage should be true: " + m_healthScript.m_cantTakeDamage);
+			Debug.Log("Cant tank damage should be true: " + m_cantTakeDamage);
 		}
 
 		if(Input.GetMouseButtonUp(1) || m_numOfBlockedAttacks >= 3) {
 			m_disableMovement = false;
 			m_animController.SetBool("isBlocking", false);
-			m_healthScript.m_cantTakeDamage = false;
-			Debug.Log("Cant tank damage should be false: " + m_healthScript.m_cantTakeDamage);
+			m_cantTakeDamage = false;
+			Debug.Log("Cant tank damage should be false: " + m_cantTakeDamage);
 			Debug.Log("Stopped Blocking...");
 		}
 
