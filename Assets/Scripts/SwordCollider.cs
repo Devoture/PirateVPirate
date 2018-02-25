@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class SwordCollider : NetworkBehaviour {
+public class SwordCollider : MonoBehaviour {
 
 	public bool m_hasDealtDamage;
 
@@ -17,22 +16,23 @@ public class SwordCollider : NetworkBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
+		var hit = other.gameObject;
+		var hitPlayer = hit.GetComponent<Health>();
 		if(other.tag == "Enemy" && !m_hasDealtDamage) {
-			Debug.Log("CANT TAKE IN SWORD: " + other.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking"));
 			if(other.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
 				other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
 				Debug.Log("Blocking..." + other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks);
 				Debug.Log("Number OF Blocked Attacks: " + other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks);
 				other.GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
 			} 
-			if(other.GetComponent<Health>() != null) {
+			if(hitPlayer != null) {
 				if(other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks > 3) {
 					other.GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
 					other.GetComponent<CharacterMovement>().m_animController.SetBool("isBlocking", false);
 					other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				}
 				if(!other.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
-					other.GetComponent<Health>().TakeDamage((int)m_damage);
+					hitPlayer.TakeDamage(10);
 					other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				}
 			}
