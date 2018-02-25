@@ -38,7 +38,7 @@ public class  Networking : NetworkManager {
 		GameObject.Find("ButtonJoinGame").GetComponent<Button>().onClick.AddListener(JoinGame);
 	}
 	void SetUpOtherSceneButton() {
-		GameObject.Find("ButtonDisconnect").GetComponent<Button>().onClick.RemoveAllListeners();
-		GameObject.Find("ButtonDisconnect").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
+//		GameObject.Find("ButtonDisconnect").GetComponent<Button>().onClick.RemoveAllListeners();
+//		GameObject.Find("ButtonDisconnect").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
 	}
 }

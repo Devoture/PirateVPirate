@@ -145,15 +145,15 @@ MonoBehaviour:
   m_ServerBindToIP: 0
   m_ServerBindAddress: 
   m_NetworkAddress: localhost
-  m_DontDestroyOnLoad: 0
+  m_DontDestroyOnLoad: 1
   m_RunInBackground: 1
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 1452514536824234, guid: 26f35325eccc21148a9f6f021585398a,
+  m_PlayerPrefab: {fileID: 1302695287113464, guid: 26f35325eccc21148a9f6f021585398a,
     type: 2}
   m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 0
+  m_PlayerSpawnMethod: 1
   m_OfflineScene: Menu
   m_OnlineScene: GameplayMain
   m_SpawnPrefabs: []
