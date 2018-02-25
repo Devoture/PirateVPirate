@@ -10,7 +10,7 @@ public class CharacterMovement : MonoBehaviour {
 	public MeshCollider m_swordCollider;
 	public int m_numOfBlockedAttacks = 0;
 	public bool m_cantTakeDamage = false;
-
+	public GameObject m_camtarget;
 	private Vector3 m_moveDirection = Vector3.zero;
 	private bool m_isJumping;
 	private bool m_isGrounded = false;
@@ -20,6 +20,7 @@ public class CharacterMovement : MonoBehaviour {
 	private bool m_isAttacking;
 	private Health m_healthScript;
 	private bool m_disableMovement;
+	public SoundMGR m_soundManager;
 
 	// Use this for initialization
 	void Start() {
