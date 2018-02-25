@@ -31,9 +31,9 @@ public class Health : NetworkBehaviour {
 		if(m_currHealth <= 0) {
 			m_currHealth = 0;
 			Died();
-			Debug.Log("Command" + m_currHealth);
 		//UpdateHUD(m_currHealth);
 		}
+		Debug.Log("Command" + m_currHealth);
 	}
 
 	public int GetHealth() {
