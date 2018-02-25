@@ -1,35 +1,32 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using System.Collections;
 
 public class Health : NetworkBehaviour {
-	
-    public const int m_maxHealth = 100;
-	public Image m_healthHUD;
 
-	[SyncVar(hook = "UpdateHUD")]
-	public int m_currHealth = m_maxHealth;
+    public const int maxHealth = 100;
 
-	public void TakeDamage(int damage) {
-		if(isServer) {
-			m_currHealth -= damage;
-			if(m_currHealth <= 0) {
-				m_currHealth = 0;
-				Died();
-			}
-		}
-	}
+    [SyncVar(hook = "OnChangeHealth")]
+    public int currentHealth = maxHealth;
 
-	public int GetHealth() {
-		return m_currHealth;
-	}
+    public RectTransform healthBar;
 
-	void Died() {
-		// dying stuff here
-		Destroy(this.gameObject);
-	}
+    public void TakeDamage(int amount)
+    {
+        if (!isServer)
+            return;
+        
+        currentHealth -= amount;
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Debug.Log("Dead!");
+        }
+    }
 
-	void UpdateHUD(int m_currHealth) {
-		m_healthHUD.fillAmount = (float)m_currHealth / (float)m_maxHealth;
-	}
+    void OnChangeHealth (int health)
+    {
+        healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
+    }
 }
