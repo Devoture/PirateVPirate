@@ -20,6 +20,10 @@ public class Health : NetworkBehaviour {
 		}
 	}
 
+	public int GetHealth() {
+		return m_currHealth;
+	}
+
 	void Died() {
 		// dying stuff here
 		Destroy(this.gameObject);

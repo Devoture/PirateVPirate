@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FloatingScript : MonoBehaviour {
-private float speed = 1.0f;
-private float amplitude = 0.5f;
-private float midpoint = -0.3f;
-private float tempVal;
+public float speed = 1.0f;
+public float amplitude = 0.5f;
+public float midpoint = -0.3f;
+public float tempVal;
 private Vector3 tempPos;
 
 void Start () 
@@ -15,7 +15,9 @@ void Start ()
      }
  
      void Update () 
-     {        
+     {   
+         tempPos.z = transform.position.z;
+         tempPos.x = transform.position.x;     
          tempPos.y = tempVal + amplitude * Mathf.Sin(speed * Time.time) + midpoint;
          transform.position = tempPos;
      }
