@@ -36,6 +36,10 @@ public class JoinGame : MonoBehaviour {
 		foreach(MatchInfoSnapshot match in matchList) {
 			GameObject _roomListItemGO = Instantiate(roomListitemPrefab);
 			_roomListItemGO.transform.SetParent(roomListParent);
+			roomList.Add (_roomListItemGO);
+		}
+		if(roomList.Count == 0) {
+			status.text = "No Rooms at the Moment";
 		}
 	}
 	void ClearRoomList() {
