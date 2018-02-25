@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class SoundMGR : MonoBehaviour {
 	public AudioClip m_oceanSfx;
+	public AudioClip m_seasgullSfx;
+
+	public AudioClip m_menuClickSfk;
+
+	public AudioClip m_battleMusic;
+
+	public AudioClip m_menuMusic;
+	public AudioSource m_backgroundeffects;
 	public static SoundMGR Instance { get { return m_instance; } }
 	private static SoundMGR m_instance = null;
 	// Use this for initialization
@@ -17,6 +25,18 @@ public class SoundMGR : MonoBehaviour {
 		DontDestroyOnLoad(this.gameObject);
 	}
 	
-	// Update is called once per frame
-	
+	public void SwordSwipe()
+	{
+		
+	}
+	public void SwordBlock(){
+
+	}
+	public void PlayerHit(){
+
+	}
+	public void MenuPress(){
+		m_backgroundeffects.PlayOneShot(m_menuClickSfk);
+		
+	}	
 }
