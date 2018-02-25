@@ -59,7 +59,7 @@ public class CharacterMovement : MonoBehaviour {
 			}
 		}
 
-		if(Input.GetMouseButtonDown(1) && m_numOfBlockedAttacks != 3) {
+		if(Input.GetMouseButtonDown(1) && m_numOfBlockedAttacks <= 3) {
 			m_disableMovement = true;
 			m_animController.SetBool("isBlocking", true);
 			m_healthScript.m_cantTakeDamage = true;
