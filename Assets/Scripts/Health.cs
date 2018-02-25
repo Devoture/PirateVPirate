@@ -13,9 +13,11 @@ public class Health : NetworkBehaviour {
 	public void TakeDamage(int damage) {
 		if(!Network.isServer) {
 			CmdDamagePlayer(damage);
+			Debug.Log("CMD: " + m_currHealth);
 		}
 		else {
 			RpcDamagePlayer(damage);
+			Debug.Log("LOCAL: " + m_currHealth);
 		}
 	}
 
@@ -33,7 +35,6 @@ public class Health : NetworkBehaviour {
 			m_currHealth = 0;
 			Died();
 		}
-		Debug.Log("Command" + m_currHealth);
 	}
 
 	public int GetHealth() {
