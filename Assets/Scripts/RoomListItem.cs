@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking.Match;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class RoomListItem : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
+	public delegate void JoinRoomDelegate(MatchInfoSnapshot _match);
+	private JoinRoomDelegate joinRoomCallback;
+	[SerializeField]
+	private Text roomNameText;
+	private MatchInfoSnapshot match;
+	public void Setup (MatchInfoSnapshot _match, JoinRoomDelegate _joinRoomCallback) {
+		match = _match;
+		joinRoomCallback = _joinRoomCallback;
+		roomNameText.text = match.name +"(" + match.currentSize + "/" + match.maxSize + ")";
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public void JoinRoom() {
+		joinRoomCallback.Invoke(match);
+
 	}
 }

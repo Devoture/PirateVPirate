@@ -36,6 +36,10 @@ public class JoinGame : MonoBehaviour {
 		foreach(MatchInfoSnapshot match in matchList) {
 			GameObject _roomListItemGO = Instantiate(roomListitemPrefab);
 			_roomListItemGO.transform.SetParent(roomListParent);
+			RoomListItem _roomListItem = _roomListItemGO.GetComponent<RoomListItem>();
+			if(_roomListItem != null) {
+				_roomListItem.Setup(match, JoinRoom);
+			}
 			roomList.Add (_roomListItemGO);
 		}
 		if(roomList.Count == 0) {
@@ -48,5 +52,9 @@ public class JoinGame : MonoBehaviour {
 		}
 		roomList.Clear();
 	}
-
+	public void JoinRoom (MatchInfoSnapshot _match) {
+		networkManager.matchMaker.JoinMatch(_match.networkId, "", "", "", 0, 0, networkManager.OnMatchJoined);
+		ClearRoomList();
+		status.text = "Joining....";
+	}
 }
