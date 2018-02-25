@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7302194, g: 0.7889753, b: 0.8498578, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -932,7 +932,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 660785713}
   m_LocalRotation: {x: 0, y: 0.06104851, z: 0, w: 0.99813485}
-  m_LocalPosition: {x: 2.08, y: 4.98, z: -11.49}
+  m_LocalPosition: {x: 2.08, y: 4.84, z: -11.49}
   m_LocalScale: {x: 0.9999999, y: 1, z: 0.9999999}
   m_Children: []
   m_Father: {fileID: 1663359628}
@@ -1670,6 +1670,39 @@ Prefab:
     - target: {fileID: 4488613223112354, guid: dec6f3dedb521af4cbd7c0cf795f28f3, type: 2}
       propertyPath: m_LocalScale.z
       value: 2.043762
+      objectReference: {fileID: 0}
+    - target: {fileID: 65477069828667748, guid: dec6f3dedb521af4cbd7c0cf795f28f3,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 5.8970923
+      objectReference: {fileID: 0}
+    - target: {fileID: 65477069828667748, guid: dec6f3dedb521af4cbd7c0cf795f28f3,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2.2526615
+      objectReference: {fileID: 0}
+    - target: {fileID: 65477069828667748, guid: dec6f3dedb521af4cbd7c0cf795f28f3,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 7.7004433
+      objectReference: {fileID: 0}
+    - target: {fileID: 65477069828667748, guid: dec6f3dedb521af4cbd7c0cf795f28f3,
+        type: 2}
+      propertyPath: m_Center.x
+      value: -0.23490109
+      objectReference: {fileID: 0}
+    - target: {fileID: 65477069828667748, guid: dec6f3dedb521af4cbd7c0cf795f28f3,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 3.1420653
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122985599531500, guid: dec6f3dedb521af4cbd7c0cf795f28f3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380167188906200, guid: dec6f3dedb521af4cbd7c0cf795f28f3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dec6f3dedb521af4cbd7c0cf795f28f3, type: 2}
