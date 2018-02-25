@@ -64,12 +64,14 @@ public class CharacterMovement : MonoBehaviour {
 			m_animController.SetBool("isBlocking", true);
 			m_healthScript.m_cantTakeDamage = true;
 			Debug.Log("Blocking...");
+			Debug.Log("Cant tank damage should be true: " + m_healthScript.m_cantTakeDamage);
 		}
 
 		if(Input.GetMouseButtonUp(1) || m_numOfBlockedAttacks >= 3) {
 			m_disableMovement = false;
 			m_animController.SetBool("isBlocking", false);
 			m_healthScript.m_cantTakeDamage = false;
+			Debug.Log("Cant tank damage should be false: " + m_healthScript.m_cantTakeDamage);
 			Debug.Log("Stopped Blocking...");
 		}
 
