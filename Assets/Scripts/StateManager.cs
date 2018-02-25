@@ -16,7 +16,7 @@ public GameObject[] m_gameStates;
 			m_gameStates[i].SetActive(false);
 		}
 
-		m_activeState = m_gameStates[0];
+		m_activeState = m_gameStates[1];
 		m_activeState.SetActive(true);
 	}
 
