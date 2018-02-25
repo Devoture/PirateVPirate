@@ -11,14 +11,16 @@ public class Health : NetworkBehaviour {
 	public int m_currHealth = m_maxHealth;
 
 	public void TakeDamage(int damage) {
-		if(isServer) {
-			m_currHealth -= damage;
-			if(m_currHealth <= 0) {
-				m_currHealth = 0;
-				Died();
-			}
-			//UpdateHUD(m_currHealth);
+		if(!isServer) {
+			return;
 		}
+		m_currHealth -= damage;
+		if(m_currHealth <= 0) {
+			m_currHealth = 0;
+			Died();
+		//UpdateHUD(m_currHealth);
+		}
+		UpdateHUD(m_currHealth);
 	}
 
 	public int GetHealth() {
