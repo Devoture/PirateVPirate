@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwordCollider : MonoBehaviour {
 	private float m_damage = 10.0f;
 	private Animator m_animController;
-	private Collider m_swordCollider;
+	private MeshCollider m_swordCollider;
 	private bool m_hasDealtDamage = false;
 
 
@@ -20,8 +20,11 @@ public class SwordCollider : MonoBehaviour {
 
 	}
 	void OnTriggerEnter(Collider other) {
+		Debug.Log("hit something");
 		if(other.tag == "Enemy" && !m_hasDealtDamage) {
+			Debug.Log("hit enemy");
 			if(other.GetComponent<Health>() != null) {
+				Debug.Log("has health");
 				m_hasDealtDamage = true;
 				other.GetComponent<Health>().TakeDamage((int)m_damage);
 				Debug.Log(other.GetComponent<Health>().GetHealth());
