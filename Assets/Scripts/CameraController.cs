@@ -62,7 +62,8 @@ public class CameraController : MonoBehaviour {
 			Quaternion rotation = Quaternion.Euler(m_yDeg, m_xDeg, 0);
 			Vector3 position =  m_target.position;
 			transform.rotation = rotation;
-			transform.position = position;
+			transform.position = new Vector3(position.x, transform.position.y, position.z + .2f);
+			
 
 			//rotates the player to camera's rotation
 			m_target.transform.Rotate(0, horizontal, 0);

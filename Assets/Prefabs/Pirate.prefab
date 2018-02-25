@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 95568319448144664}
   - component: {fileID: 143815706145502822}
   - component: {fileID: 114604697783636214}
+  - component: {fileID: 114880058366355804}
   m_Layer: 0
   m_Name: Pirate
   m_TagString: Untagged
@@ -2172,6 +2173,38 @@ MonoBehaviour:
   m_speedMultiplier: 1
   m_gravity: 20
   m_jumpSpeed: 8
+--- !u!114 &114880058366355804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452514536824234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 38
+    i1: 243
+    i2: 83
+    i3: 37
+    i4: 236
+    i5: 204
+    i6: 33
+    i7: 20
+    i8: 138
+    i9: 159
+    i10: 111
+    i11: 2
+    i12: 21
+    i13: 133
+    i14: 57
+    i15: 138
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!124 &124065226154444056
 Behaviour:
   m_ObjectHideFlags: 1

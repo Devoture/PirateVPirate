@@ -22,4 +22,23 @@ public class  Networking : NetworkManager {
 	void SetPort() {
 		NetworkManager.singleton.networkPort = 7777;
 	}
+	void OnLevelWasLoaded(int level) {
+		if(level == 0) {
+			SetUpMenuSceneButtons();
+		} else {
+			SetUpOtherSceneButton();
+		}
+
+	}
+	void SetUpMenuSceneButtons() {
+		GameObject.Find("ButtonStartHost").GetComponent<Button>().onClick.RemoveAllListeners();
+		GameObject.Find("ButtonStartHost").GetComponent<Button>().onClick.AddListener(StartupHost);
+
+		GameObject.Find("ButtonJoinGame").GetComponent<Button>().onClick.RemoveAllListeners();
+		GameObject.Find("ButtonJoinGame").GetComponent<Button>().onClick.AddListener(JoinGame);
+	}
+	void SetUpOtherSceneButton() {
+		GameObject.Find("ButtonDisconnect").GetComponent<Button>().onClick.RemoveAllListeners();
+		GameObject.Find("ButtonDisconnect").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
+	}
 }
