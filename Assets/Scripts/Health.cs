@@ -1,49 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
-public class Health : MonoBehaviour {
+public class Health : NetworkBehaviour {
 
-	public float m_maxHealth = 100.0f;
+	public const float MAX_HEALTH = 100.0f;
 	
+	[SyncVar(hook = "UpdateHealthHUD")]
 	private float m_currHealth;
 
 	public Image m_HudFill;
 
 	private float newUIUHealth;
 	void Awake() {
-		m_currHealth = m_maxHealth;
-		UpdateHealthHUD();
+		m_currHealth = MAX_HEALTH;
 	}
 
-	void TakeDamage(float damage) {
-		m_currHealth -= damage;
-		if(m_currHealth <= 0) {
-			m_currHealth = 0.0f;
-			Died();
+	public void TakeDamage(float damage) {
+		if(isServer) {
+			m_currHealth -= damage;
+			if(m_currHealth <= 0) {
+				m_currHealth = 0.0f;
+				Died();
+			}
 		}
-		UpdateHealthHUD();
 	}
 
-	void Heal(float healAmt) {
-		m_currHealth += healAmt;
-		if(m_currHealth >= 100) {
-			m_currHealth = 100.0f;
+	public void Heal(float healAmt) {
+		if(isServer) {
+			m_currHealth += healAmt;
+			if(m_currHealth >= 100) {
+				m_currHealth = 100.0f;
+			}
 		}
-		UpdateHealthHUD();
 	}
 
 	void Died() {
 		// dying stuff here
 		Debug.Log("You Died");
 	}
+
 	void Update(){
 		if (Input.GetKeyDown(KeyCode.A)){
 			TakeDamage(10);
 		}
 	}
-	void UpdateHealthHUD() {
-		newUIUHealth = m_currHealth / m_maxHealth;
+
+	void UpdateHealthHUD(float currHealth) {
+		newUIUHealth = currHealth / MAX_HEALTH;
 		m_HudFill.fillAmount = newUIUHealth;
 	}
 }

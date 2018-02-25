@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class CharacterMovement : NetworkBehaviour {
+public class CharacterMovement : MonoBehaviour {
 	public float m_speed = 5.0f;
 	public float m_speedMultiplier = 1.0f;
 	public float m_gravity = 20.0f;
@@ -14,12 +13,14 @@ public class CharacterMovement : NetworkBehaviour {
 	private bool m_isGrounded = false;
 	private CharacterController m_controller;
 	private Animator m_animController;
+	private SwordCollider m_swordCollider;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 		m_animController = GetComponent<Animator>();
+		m_swordCollider = GetComponentInChildren<SwordCollider>();
 	}
 	
 	// Update is called once per frame
@@ -45,7 +46,12 @@ public class CharacterMovement : NetworkBehaviour {
 
 		if(Input.GetMouseButtonDown(0)) {
 			m_animController.SetBool("isAttacking", true);
+			Debug.Log(m_animController.GetBool("isAttacking"));
 		}
+	}
+
+	public void ResetAttack() {
+		m_swordCollider.ResetAttack();
 	}
 }
 

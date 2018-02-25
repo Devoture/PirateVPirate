@@ -5,8 +5,10 @@ using UnityEngine.Networking;
 
 public class EnableNetworkScripts : NetworkBehaviour {
 
-	public override void OnStartLocalPlayer() {
-		GetComponent<CharacterMovement>().enabled = true;
-		this.gameObject.tag = "Player";
+	void Start() {
+		if(isLocalPlayer) {
+			GetComponent<CharacterMovement>().enabled = true;
+			this.gameObject.tag = "Player";
+		}
 	}
 }
