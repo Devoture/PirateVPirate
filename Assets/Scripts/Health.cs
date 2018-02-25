@@ -32,7 +32,7 @@ public class Health : NetworkBehaviour {
 		Destroy(this.gameObject);
 	}
 
-	void UpdateHUD(int health) {
-		m_healthHUD.fillAmount = (float)health / (float)m_maxHealth;
+	void UpdateHUD(int m_currHealth) {
+		m_healthHUD.fillAmount = (float)m_currHealth / (float)m_maxHealth;
 	}
 }
