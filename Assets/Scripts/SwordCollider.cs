@@ -21,10 +21,12 @@ public class SwordCollider : NetworkBehaviour {
 		if(other.tag == "Enemy" && !m_hasDealtDamage) {
 			if(m_healthScript.m_cantTakeDamage) {
 				m_charScript.m_numOfBlockedAttacks++;
+				Debug.Log("Number OF Blocked Attacks: " + m_charScript.m_numOfBlockedAttacks);
 				m_animController.SetBool("blockedAttack", true);
 			}
 			if(other.GetComponent<Health>() != null) {
 				m_charScript.m_numOfBlockedAttacks = 0;
+				Debug.Log("Reset Blocked Number");
 				m_hasDealtDamage = true;
 				other.GetComponent<Health>().TakeDamage((int)m_damage);
 			}
