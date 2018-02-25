@@ -16,7 +16,7 @@ public class CharacterMovement : NetworkBehaviour {
 	private Animator m_animController;
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 		m_animController = GetComponent<Animator>();
