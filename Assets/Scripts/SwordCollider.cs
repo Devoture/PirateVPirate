@@ -18,11 +18,8 @@ public class SwordCollider : MonoBehaviour {
 
 	}
 	void OnTriggerEnter(Collider other) {
-		Debug.Log("hit something");
 		if(other.tag == "Enemy" && !m_hasDealtDamage) {
-			Debug.Log("hit enemy");
 			if(other.GetComponent<Health>() != null) {
-				Debug.Log("has health");
 				m_hasDealtDamage = true;
 				other.GetComponent<Health>().TakeDamage((int)m_damage);
 				Debug.Log(other.GetComponent<Health>().GetHealth());

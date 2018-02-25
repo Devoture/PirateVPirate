@@ -67,7 +67,9 @@ public class CharacterMovement : NetworkBehaviour {
 	}
 
 	public void ResetAttack() {
-		m_animController.SetBool("isAttacking", false);
+		if(m_animController != null) {
+			m_animController.SetBool("isAttacking", false);
+		}
 		Debug.Log(m_animController.GetBool("isAttacking"));
 		m_swordCollider.enabled = false;
 		m_swordColliderScript.ResetAttack();
