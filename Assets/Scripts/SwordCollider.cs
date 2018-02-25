@@ -31,8 +31,6 @@ public class SwordCollider : MonoBehaviour {
 	}
 
 	public void ResetAttack() {
-		m_animController.SetBool("isAttacking", false);
-		Debug.Log("sc " + m_animController.GetBool("isAttacking"));
 		m_hasDealtDamage = false;
 	}
 
