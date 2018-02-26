@@ -13,6 +13,9 @@ public class Health : NetworkBehaviour {
     	currHealth -= amount;
 		Debug.Log(currHealth);
 		UpdateHealth();
+		if(currHealth < 0) {
+			Destroy(this.gameObject);
+		}
 	}
 
 	void UpdateHealth() {
