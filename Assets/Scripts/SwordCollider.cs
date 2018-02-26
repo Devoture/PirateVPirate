@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class SwordCollider : MonoBehaviour {
+using UnityEngine.Networking;
+public class SwordCollider : NetworkBehaviour {
 
 	public bool m_hasDealtDamage;
 
@@ -33,6 +33,7 @@ public class SwordCollider : MonoBehaviour {
 				}
 				if(!other.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
 					hitPlayer.TakeDamage(10);
+					Debug.Log("Take damage");
 					other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				}
 			}
@@ -44,5 +45,11 @@ public class SwordCollider : MonoBehaviour {
 	public void ResetBlock() {
 		m_animController.SetBool("isBlocking", false);
 		m_hasDealtDamage = false;
+	}
+
+	[Command]
+
+	public void CmdTakeDamage(int amount){
+
 	}
 }

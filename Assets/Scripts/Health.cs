@@ -10,17 +10,20 @@ public class Health : NetworkBehaviour {
     public int currHealth = maxHealth;
 
     public void TakeDamage(int amount) {
-    	if (isServer) {
-        	RpcTakeDamage(amount);
-    	} else {
-			GetComponent<NetworkIdentity>().AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToClient);
-        	CmdTakeDamage (amount);
-    	}
+		CmdTakeDamage (amount);
+    	// if (isServer) {
+        // 	RpcTakeDamage(amount);
+    	// } else {
+		// 	GetComponent<NetworkIdentity>().AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToClient);
+        	//CmdTakeDamage (amount);
+    	//}
 	}
 
 	[Command]
 	void CmdTakeDamage(int amount) {
+		Debug.Log("Server: cmd take damage");
 		TakeDamage(amount);
+
 	}
 	[ClientRpc]
 	void RpcTakeDamage(int amount) {
