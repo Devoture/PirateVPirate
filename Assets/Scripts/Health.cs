@@ -12,7 +12,7 @@ public class Health : NetworkBehaviour {
 
     public void TakeDamage(int amount) {
     	if (isServer) {
-        	currHealth -= amount;
+        	RpcTakeDamage(amount);
     	} else {
 			m_piratePrefab.GetComponent<NetworkIdentity>().AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToClient);
         	CmdTakeDamage (amount);
@@ -22,6 +22,10 @@ public class Health : NetworkBehaviour {
 	[Command]
 	void CmdTakeDamage(int amount) {
 		TakeDamage(amount);
+	}
+	[ClientRpc]
+	void RpcTakeDamage(int amount) {
+		currHealth -= amount;
 	}
 
 	void UpdateHealth(int health) {
