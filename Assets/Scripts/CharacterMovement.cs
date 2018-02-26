@@ -16,7 +16,7 @@ public class CharacterMovement : MonoBehaviour {
 	private bool m_isGrounded = false;
 	private CharacterController m_controller;
 	public Animator m_animController;
-	public SwordCollider m_swordColliderScript;
+	private SwordCollider m_swordColliderScript;
 	private bool m_isAttacking;
 	private Health m_healthScript;
 	private bool m_disableMovement;
@@ -27,6 +27,7 @@ public class CharacterMovement : MonoBehaviour {
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 		m_animController = GetComponent<Animator>();
+		m_swordColliderScript = GetComponentInChildren<SwordCollider>();
 		m_healthScript = GetComponent<Health>();
 	}
 	
@@ -76,7 +77,7 @@ public class CharacterMovement : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.R)) {
-			TakeDamage();
+			//TakeDamage();
 		}
 	}
 
@@ -84,9 +85,9 @@ public class CharacterMovement : MonoBehaviour {
 		m_animController.SetBool("blockedAttack", false);
 	}
 
-	void TakeDamage() {
-		m_healthScript.TakeDamage(10);
-	}
+	// void TakeDamage() {
+	// 	m_healthScript.RpcTakeDamage(10);
+	// }
 
 	public void ResetAttack() {
 		if(m_animController != null) {
