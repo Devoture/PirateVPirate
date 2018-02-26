@@ -22,7 +22,7 @@ public class Health : NetworkBehaviour {
 	[Command]
 	void CmdTakeDamage(int amount) {
 		Debug.Log("Server: cmd take damage");
-		TakeDamage(amount);
+		RpcTakeDamage(amount);
 
 	}
 	[ClientRpc]
