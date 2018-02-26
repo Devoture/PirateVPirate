@@ -37,8 +37,8 @@ public class SwordCollider : MonoBehaviour {
 				}
 			}
 			m_hasDealtDamage = true;
-			Debug.Log(hitPlayer.currHealth);
 		}
+		Debug.Log(hitPlayer.currHealth);
 	}
 
 	public void ResetBlock() {

@@ -5,7 +5,6 @@ using UnityEngine.Networking;
 public class Health : NetworkBehaviour {
 
     public const int maxHealth = 100;
-	public Transform m_piratePrefab;
 
     [SyncVar (hook = "UpdateHealth")]
     public int currHealth = maxHealth;
@@ -14,7 +13,7 @@ public class Health : NetworkBehaviour {
     	if (isServer) {
         	RpcTakeDamage(amount);
     	} else {
-			m_piratePrefab.GetComponent<NetworkIdentity>().AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToClient);
+			GetComponent<NetworkIdentity>().AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToClient);
         	CmdTakeDamage (amount);
     	}
 	}
@@ -26,6 +25,7 @@ public class Health : NetworkBehaviour {
 	[ClientRpc]
 	void RpcTakeDamage(int amount) {
 		currHealth -= amount;
+		Debug.Log("mine " + currHealth);
 	}
 
 	void UpdateHealth(int health) {
