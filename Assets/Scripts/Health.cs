@@ -7,6 +7,7 @@ public class Health : NetworkBehaviour {
     public const int maxHealth = 100;
 	public Image m_playerHUD;
 
+	[SyncVar]
     public int currHealth = maxHealth;
 
     public void TakeDamage(int amount) {
