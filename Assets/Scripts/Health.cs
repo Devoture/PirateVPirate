@@ -13,7 +13,7 @@ public class Health : NetworkBehaviour {
     	if (isServer) {
         	currHealth -= amount;
     	} else {
-			// GetComponent<NetworkIdentity>().AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToClient);
+			GetComponent<NetworkIdentity>().AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToClient);
         	CmdTakeDamage (amount);
     	}
 	}
