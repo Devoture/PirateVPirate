@@ -37,6 +37,7 @@ public class SwordCollider : MonoBehaviour {
 				}
 			}
 			m_hasDealtDamage = true;
+			Debug.Log(hitPlayer.currHealth);
 		}
 	}
 
