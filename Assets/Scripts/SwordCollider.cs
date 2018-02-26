@@ -39,7 +39,6 @@ public class SwordCollider : NetworkBehaviour {
 			}
 			m_hasDealtDamage = true;
 		}
-		Debug.Log(hitPlayer.currHealth);
 	}
 
 	public void ResetBlock() {
