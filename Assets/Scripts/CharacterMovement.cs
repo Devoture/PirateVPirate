@@ -73,12 +73,10 @@ public class CharacterMovement : NetworkBehaviour {
 			m_disableMovement = false;
 			m_animController.SetBool("isBlocking", false);
 			m_cantTakeDamage = false;
-			Debug.Log("Cant tank damage should be false: " + m_cantTakeDamage);
-			Debug.Log("Stopped Blocking...");
 		}
 
 		if(Input.GetKeyDown(KeyCode.R)) {
-			m_healthScript.TakeDamage(10);
+			m_healthScript.CmdTakeDamage(10);
 		}
 	}
 
@@ -86,40 +84,13 @@ public class CharacterMovement : NetworkBehaviour {
 		m_animController.SetBool("blockedAttack", false);
 	}
 
-	// void TakeDamage() {
-	// 	m_healthScript.RpcTakeDamage(10);
-	// }
-
 	public void ResetAttack() {
 		if(m_animController != null) {
 			m_animController.SetBool("isAttacking", false);
-			Debug.Log(m_animController.GetBool("isAttacking"));
 		}
 		m_swordCollider.enabled = false;
 		m_swordColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
 	}
-
-	 [Command]
-     public void CmdSetAuth(NetworkInstanceId objectId, NetworkIdentity player)
-     {
-         var iObject = NetworkServer.FindLocalObject(objectId);
-         var networkIdentity = iObject.GetComponent<NetworkIdentity>();
-         var otherOwner = networkIdentity.clientAuthorityOwner;
- 
-         if (otherOwner == player.clientAuthorityOwner)
-         {
-             Debug.Log("Same");
-             return;
-         }
-         else
-         {
-             if (otherOwner != null)
-             {
-                 networkIdentity.RemoveClientAuthority(otherOwner);
-             }
-             networkIdentity.AssignClientAuthority(player.connectionToClient);
-         }
-     }
 }
 

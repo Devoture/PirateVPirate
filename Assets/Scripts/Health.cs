@@ -7,15 +7,14 @@ public class Health : NetworkBehaviour {
     public const int m_maxHealth = 100;
 	public Image m_playerHUD;
 
-
-
     public int m_currHealth;
 
 	void Start() {
 		m_currHealth = m_maxHealth;
 	}
 
-    public void TakeDamage(int damage) {
+	[Command]
+    public void CmdTakeDamage(int damage) {
     	m_currHealth -= damage;
 		if(m_currHealth <= 0) {
 			Dead();
