@@ -32,6 +32,12 @@ public class CharacterMovement : NetworkBehaviour {
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 		Camera.main.transform.parent = m_camtarget.transform;
+		if(gameObject.tag == "Player"){
+			gameObject.layer = 8;
+		}
+		else if(gameObject.tag == "Enemy"){
+			gameObject.layer = 9;
+		}
 		m_animController = GetComponent<Animator>();
 		m_swordColliderScript = GetComponentInChildren<SwordCollider>();
 	}
