@@ -12,6 +12,8 @@ public class EnableNetworkScripts : NetworkBehaviour {
 			m_playerHUD.gameObject.SetActive(true);
 			GetComponent<CharacterMovement>().enabled = true;
 			this.gameObject.tag = "Player";
+		} else {
+			GetComponent<Health>().enabled = false;
 		}
 	}
 }
