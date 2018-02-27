@@ -13,13 +13,12 @@ public class Health : NetworkBehaviour {
     public void TakeDamage(int amount) {
     	m_currHealth -= amount;
 		if(m_currHealth <= 0) {
-			CmdDead();
+			Dead();
 		}
 	}
 
-	[Command]
-	void CmdDead() {
-		this.gameObject.SetActive(false);
+	void Dead() {
+		Destroy(this.gameObject);
 	}
 
 	public int GetCurrentHealth() {
@@ -27,7 +26,6 @@ public class Health : NetworkBehaviour {
 	}
 
 	void UpdateHealth(int health) {
-		m_currHealth = health;
 		m_playerHUD.fillAmount = (float)health / (float)m_maxHealth;
 	}
 }
