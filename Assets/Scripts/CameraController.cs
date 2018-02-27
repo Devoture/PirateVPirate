@@ -13,12 +13,14 @@ public class CameraController : MonoBehaviour {
 	public float m_maxDistance = 20.0f;
 	public float m_maxXDeg = 60.0f;
 	public float m_autoRotationSpeed = 10.0f;
+	public GameObject m_head;
 	
 	private float m_xDeg = 0.0f;
 	private float m_yDeg = 0.0f;
 	private float m_rotateSpeed = 5.0f;
 	private bool m_alwaysRotatetoRearofTarget = true;
 	private bool m_rotateBehind = false;
+	
 
 	void Start() {
 		Vector3 angles = transform.eulerAngles;
@@ -60,9 +62,9 @@ public class CameraController : MonoBehaviour {
 
 			//Rotates the camera to mouse position
 			Quaternion rotation = Quaternion.Euler(m_yDeg, m_xDeg, 0);
-			Vector3 position =  m_target.position;
+			Vector3 position =  m_head.transform.position;
 			transform.rotation = rotation;
-			transform.position = new Vector3(position.x, position.y + 1.6f, position.z + .2f);
+			transform.position = new Vector3(position.x, position.y, position.z);
 			
 
 			//rotates the player to camera's rotation
