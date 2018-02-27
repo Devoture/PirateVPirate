@@ -7,11 +7,12 @@ public class Health : NetworkBehaviour {
     public const int m_maxHealth = 100;
 	public Image m_playerHUD;
 
-	[SyncVar(hook = "UpdateHealth")]
+	[SyncVar]
     public int m_currHealth = m_maxHealth;
 
     public void TakeDamage(int amount) {
     	m_currHealth -= amount;
+		UpdateHealth();
 		if(m_currHealth <= 0) {
 			Dead();
 		}
@@ -25,7 +26,7 @@ public class Health : NetworkBehaviour {
 		return m_currHealth;
 	}
 
-	void UpdateHealth(int health) {
-		m_playerHUD.fillAmount = (float)health / (float)m_maxHealth;
+	void UpdateHealth() {
+		m_playerHUD.fillAmount = (float)m_currHealth / (float)m_maxHealth;
 	}
 }
