@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
-		if(m_countDown >= 0 && m_numPlayersActive >= 2) {
+		if(m_countDown >= 0 && m_numPlayersActive >= 1) {
 			StartGame();
 		}
 	}
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour {
 		} else {
 			m_gameStarted = true;
 			for(int i = 0; i < m_players.Count; i++ ) {
-				m_players[i].GetComponent<EnableNetworkScripts>().m_playerHUD.gameObject.SetActive(true);
+				m_players[i].GetComponent<EnableNetworkScripts>().SetupHUD();
 			}
 			m_gameStartingIn.gameObject.SetActive(false);
 			m_countDownText.gameObject.SetActive(false);
