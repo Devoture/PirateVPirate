@@ -62,7 +62,6 @@ public class CharacterMovement : NetworkBehaviour {
 					m_swordCollider.enabled = true;			
 					m_animController.SetBool("isAttacking", true);
 					m_isAttacking = true;
-					Debug.Log(m_animController.GetBool("isAttacking"));
 				}
 			}
 
@@ -70,7 +69,6 @@ public class CharacterMovement : NetworkBehaviour {
 				m_disableMovement = true;
 				m_animController.SetBool("isBlocking", true);
 				m_cantTakeDamage = true;
-				Debug.Log("Cant tank damage should be true: " + m_cantTakeDamage);
 			}
 
 			if(Input.GetMouseButtonUp(1)) {
