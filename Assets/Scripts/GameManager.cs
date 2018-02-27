@@ -30,11 +30,11 @@ public class GameManager : MonoBehaviour {
 	private void Awake() {
 		//DontDestroyOnLoad(transform.gameObject);
 		m_instance = this;
-		m_gameStartingIn.text = m_numReadyPlayers + "/2";
+		m_gameStartingIn.text = m_numPlayersActive + "/2";
 	}
 
 	void Update() {
-		if(m_countDown >= 0 && m_numReadyPlayers >= 2) {
+		if(m_countDown >= 0 && m_numPlayersActive >= 2) {
 			StartGame();
 		}
 	}
