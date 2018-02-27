@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class EnableNetworkScripts : NetworkBehaviour {
 
 	public Canvas m_playerHUD;
-	public GameObject m_head;
+	public Transform m_head;
 
 	void Start() {
 		if(isLocalPlayer) {
@@ -15,6 +15,7 @@ public class EnableNetworkScripts : NetworkBehaviour {
 			this.gameObject.tag = "Player";
 			Camera.main.transform.GetComponent<CameraController>().m_head = m_head;
 			Camera.main.transform.parent = m_head.transform;
+			Camera.main.transform.GetComponent<CameraController>().m_target = this.gameObject.transform;
 		}
 		GameManager.Instance.AddPlayer(gameObject);
 	}

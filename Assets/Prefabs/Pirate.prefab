@@ -2528,9 +2528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerHUD: {fileID: 223461741508806528}
-  m_playerHUD1: {fileID: 0}
-  m_playerHUD2: {fileID: 0}
-  m_head: {fileID: 1360095192931530}
+  m_head: {fileID: 4837492824026564}
 --- !u!114 &114162836100687438
 MonoBehaviour:
   m_ObjectHideFlags: 1

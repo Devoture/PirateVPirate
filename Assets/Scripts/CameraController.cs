@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour {
 	public float m_maxDistance = 20.0f;
 	public float m_maxXDeg = 60.0f;
 	public float m_autoRotationSpeed = 10.0f;
-	public GameObject m_head;
+	public Transform m_head;
 	
 	private float m_xDeg = 0.0f;
 	private float m_yDeg = 0.0f;
@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour {
 			RotateBehindTarget();
 		}
 
-		if(m_head != null) {
+		if(m_target != null) {
 			//Gets the mouse position
 			m_xDeg += Input.GetAxis("Mouse X") * m_rotateSpeed;
 			m_yDeg -= Input.GetAxis("Mouse Y") * m_rotateSpeed;
@@ -62,7 +62,7 @@ public class CameraController : MonoBehaviour {
 
 			//Rotates the camera to mouse position
 			Quaternion rotation = Quaternion.Euler(m_yDeg, m_xDeg, 0);
-			Vector3 position =  m_head.transform.position;
+			Vector3 position =  m_head.position;
 			transform.rotation = rotation;
 			transform.position = new Vector3(position.x, position.y, position.z);
 			
@@ -73,7 +73,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	private void RotateBehindTarget(){
-        float targetRotationAngle = m_head.transform.eulerAngles.y;
+        float targetRotationAngle = m_target.eulerAngles.y;
         float currentRotationAngle = transform.eulerAngles.y;
         m_xDeg = Mathf.LerpAngle(currentRotationAngle, targetRotationAngle, m_autoRotationSpeed * Time.deltaTime);
 		m_rotateBehind = true;
