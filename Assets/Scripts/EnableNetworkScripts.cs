@@ -22,6 +22,8 @@ public class EnableNetworkScripts : NetworkBehaviour {
 	public void SetupHUD() {
 		if(isServer) {
 			m_playerHUD.gameObject.SetActive(true);
+		} else {
+			m_playerHUD.gameObject.SetActive(false);
 		}
 	}
 }
