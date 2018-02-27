@@ -76,7 +76,7 @@ public class CharacterMovement : NetworkBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.R)) {
-			m_healthScript.CmdTakeDamage(10);
+			CmdTakeDamage(10);
 		}
 	}
 
