@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class Health : NetworkBehaviour {
 
@@ -33,6 +34,7 @@ public class Health : NetworkBehaviour {
 		m_playerScript.m_isDead = true;
 		this.gameObject.SetActive(false);
 		GameManager.Instance.CheckGameOver();
+		SceneManager.LoadScene("Lose");
 	}
 
 	public int GetCurrentHealth() {
