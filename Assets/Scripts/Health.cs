@@ -9,7 +9,11 @@ public class Health : NetworkBehaviour {
 
 
 	[SyncVar(hook = "UpdateHealth")]
-    public int m_currHealth = m_maxHealth;
+    public int m_currHealth;
+
+	void Start() {
+		m_currHealth = m_maxHealth;
+	}
 
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
