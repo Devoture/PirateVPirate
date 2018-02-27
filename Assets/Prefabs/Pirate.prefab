@@ -2542,15 +2542,17 @@ MonoBehaviour:
   m_speed: 5
   m_speedMultiplier: 1
   m_gravity: 20
+  m_soundManager: {fileID: 0}
+  m_hasClicked: 0
   m_jumpSpeed: 8
   m_swordCollider: {fileID: 64086618626495636}
   m_numOfBlockedAttacks: 0
   m_cantTakeDamage: 0
   m_camtarget: {fileID: 0}
+  m_isDead: 0
   m_animController: {fileID: 95726428757890608}
   m_swordColliderScript: {fileID: 114015940436885704}
   m_healthScript: {fileID: 114270215283847808}
-  m_soundManager: {fileID: 0}
 --- !u!114 &114216412155359972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2629,6 +2631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerHUD: {fileID: 114519472687393070}
   m_currHealth: 100
+  m_playerScript: {fileID: 114162836100687438}
 --- !u!114 &114379268928809572
 MonoBehaviour:
   m_ObjectHideFlags: 1

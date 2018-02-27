@@ -10,7 +10,7 @@ public class Health : NetworkBehaviour {
 	[SyncVar(hook = "UpdateHealth")]
     public int m_currHealth;
 
-	private CharacterMovement m_playerScript;
+	public CharacterMovement m_playerScript;
 
 	void Start() {
 		m_currHealth = m_maxHealth;
