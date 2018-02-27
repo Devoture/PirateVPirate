@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour {
 	public Text m_gameStartingIn;
 	public Canvas m_lobbyCanvas;
 	public bool m_gameStarted = false;
-	public bool m_readyButton;
-	public bool m_isReadyButton;
+	public Button m_readyButton;
 
 	private static GameManager m_instance;
 	private List<GameObject> m_players = new List<GameObject>();
@@ -70,6 +69,7 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(1);
 		m_canStartCoroutine = true;
 		if(m_countDown > 0) {
+			m_readyButton.gameObject.SetActive(false);
 			m_gameStartingIn.text = "Game Starting In";
 			m_countDownText.text = m_countDown.ToString();
 			m_countDown--;

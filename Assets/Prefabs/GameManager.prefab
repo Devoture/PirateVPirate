@@ -55,3 +55,4 @@ MonoBehaviour:
   m_gameStartingIn: {fileID: 0}
   m_lobbyCanvas: {fileID: 0}
   m_gameStarted: 0
+  m_readyButton: {fileID: 0}
