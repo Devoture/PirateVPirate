@@ -9,9 +9,16 @@ public class EnableNetworkScripts : NetworkBehaviour {
 
 	void Start() {
 		if(isLocalPlayer) {
-			m_playerHUD.gameObject.SetActive(true);
+			GetComponent<Health>().enabled = true;
 			GetComponent<CharacterMovement>().enabled = true;
 			this.gameObject.tag = "Player";
+		}
+		GameManager.Instance.AddPlayer(gameObject);
+	}
+
+	public void SetupHUD() {
+		if(isLocalPlayer) {
+			m_playerHUD.gameObject.SetActive(true);
 		}
 	}
 }
