@@ -2620,6 +2620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerHUD: {fileID: 114067800836305932}
+  m_playerHUD2: {fileID: 114889481374476112}
   m_currHealth: 100
   m_playerScript: {fileID: 114162836100687438}
 --- !u!114 &114333279010493966
