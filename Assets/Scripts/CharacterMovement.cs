@@ -63,9 +63,14 @@ public class CharacterMovement : NetworkBehaviour {
 					m_animController.SetBool("isAttacking", true);
 					m_isAttacking = true;
 				}
+
+				if(Input.GetMouseButtonUp(0)) {
+					m_animController.SetBool("isAttacking", false);
+				}
 			}
 
 			if(Input.GetMouseButtonDown(1) && m_numOfBlockedAttacks <= 3) {
+				ResetAttack();
 				m_disableMovement = true;
 				m_animController.SetBool("isBlocking", true);
 				m_cantTakeDamage = true;
@@ -93,9 +98,6 @@ public class CharacterMovement : NetworkBehaviour {
 	}
 
 	public void ResetAttack() {
-		if(m_animController != null) {
-			m_animController.SetBool("isAttacking", false);
-		}
 		m_swordCollider.enabled = false;
 		m_swordColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
