@@ -80,6 +80,10 @@ public class CharacterMovement : NetworkBehaviour {
 		}
 	}
 
+	public void CmdTakeDamage(int damage) {
+		m_healthScript.TakeDamage(damage);
+	}
+
 	void BlockedAttack() {
 		m_animController.SetBool("blockedAttack", false);
 	}
