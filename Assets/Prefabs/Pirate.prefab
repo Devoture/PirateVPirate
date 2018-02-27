@@ -2545,7 +2545,7 @@ MonoBehaviour:
   m_swordCollider: {fileID: 64086618626495636}
   m_numOfBlockedAttacks: 0
   m_cantTakeDamage: 0
-  m_camtarget: {fileID: 0}
+  m_camtarget: {fileID: 1687468901740386}
   m_animController: {fileID: 95726428757890608}
   m_swordColliderScript: {fileID: 114015940436885704}
   m_soundManager: {fileID: 0}

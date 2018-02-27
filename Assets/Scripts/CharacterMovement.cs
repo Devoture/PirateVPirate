@@ -26,6 +26,7 @@ public class CharacterMovement : MonoBehaviour {
 	void Start() {
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
+		Camera.main.transform.parent = m_camtarget.transform;
 		m_animController = GetComponent<Animator>();
 		m_swordColliderScript = GetComponentInChildren<SwordCollider>();
 		m_healthScript = GetComponent<Health>();
