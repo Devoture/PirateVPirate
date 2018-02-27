@@ -13,7 +13,7 @@ public class Health : NetworkBehaviour {
     public void TakeDamage(int amount) {
     	currHealth -= amount;
 		//UpdateHealth();
-		if(currHealth < 0) {
+		if(currHealth <= 0) {
 			Destroy(this.gameObject);
 		}
 	}
