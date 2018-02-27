@@ -42,6 +42,7 @@ public class Health : NetworkBehaviour {
 	}
 
 	public void UpdateHealth(int health) {
+		m_currHealth = health;
 		m_playerHUD.fillAmount = (float)health / (float)m_maxHealth;
 	}
 }
