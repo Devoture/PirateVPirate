@@ -33,51 +33,53 @@ public class CharacterMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!m_disableMovement) {
-			m_moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+		if(GameManager.Instance.m_gameStarted) {
+			if(!m_disableMovement) {
+				m_moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-			if(Input.GetButtonDown("Jump") && m_isGrounded) {
-				m_moveDirection.y = m_jumpSpeed;
-				m_isJumping = true;
+				if(Input.GetButtonDown("Jump") && m_isGrounded) {
+					m_moveDirection.y = m_jumpSpeed;
+					m_isJumping = true;
+				}
+
+				m_moveDirection *= m_speed * m_speedMultiplier;
+
+				m_animController.SetFloat("Forward", m_moveDirection.z);
+				m_animController.SetFloat("Right", m_moveDirection.x);
+
+				m_moveDirection = transform.TransformDirection(m_moveDirection);
+				
+
+				m_moveDirection.y -= m_gravity * Time.deltaTime;
+				m_isGrounded = ((m_controller.Move(m_moveDirection * Time.deltaTime)) & CollisionFlags.Below) != 0;
+
+
+				if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
+					m_swordCollider.enabled = true;			
+					m_animController.SetBool("isAttacking", true);
+					m_isAttacking = true;
+					Debug.Log(m_animController.GetBool("isAttacking"));
+				}
 			}
 
-			m_moveDirection *= m_speed * m_speedMultiplier;
-
-			m_animController.SetFloat("Forward", m_moveDirection.z);
-			m_animController.SetFloat("Right", m_moveDirection.x);
-
-			m_moveDirection = transform.TransformDirection(m_moveDirection);
-			
-
-			m_moveDirection.y -= m_gravity * Time.deltaTime;
-			m_isGrounded = ((m_controller.Move(m_moveDirection * Time.deltaTime)) & CollisionFlags.Below) != 0;
-
-
-			if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
-				m_swordCollider.enabled = true;			
-				m_animController.SetBool("isAttacking", true);
-				m_isAttacking = true;
-				Debug.Log(m_animController.GetBool("isAttacking"));
+			if(Input.GetMouseButtonDown(1) && m_numOfBlockedAttacks <= 3) {
+				m_disableMovement = true;
+				m_animController.SetBool("isBlocking", true);
+				m_cantTakeDamage = true;
+				Debug.Log("Cant tank damage should be true: " + m_cantTakeDamage);
 			}
-		}
 
-		if(Input.GetMouseButtonDown(1) && m_numOfBlockedAttacks <= 3) {
-			m_disableMovement = true;
-			m_animController.SetBool("isBlocking", true);
-			m_cantTakeDamage = true;
-			Debug.Log("Cant tank damage should be true: " + m_cantTakeDamage);
-		}
+			if(Input.GetMouseButtonUp(1)) {
+				m_disableMovement = false;
+				m_animController.SetBool("isBlocking", false);
+				m_cantTakeDamage = false;
+				Debug.Log("Cant tank damage should be false: " + m_cantTakeDamage);
+				Debug.Log("Stopped Blocking...");
+			}
 
-		if(Input.GetMouseButtonUp(1)) {
-			m_disableMovement = false;
-			m_animController.SetBool("isBlocking", false);
-			m_cantTakeDamage = false;
-			Debug.Log("Cant tank damage should be false: " + m_cantTakeDamage);
-			Debug.Log("Stopped Blocking...");
-		}
-
-		if(Input.GetKeyDown(KeyCode.R)) {
-			TakeDamage();
+			if(Input.GetKeyDown(KeyCode.R)) {
+				TakeDamage();
+			}
 		}
 	}
 

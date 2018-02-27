@@ -9,6 +9,7 @@ public class EnableNetworkScripts : NetworkBehaviour {
 		if(isLocalPlayer) {
 			GetComponent<CharacterMovement>().enabled = true;
 			this.gameObject.tag = "Player";
+			GameManager.Instance.AddPlayer(this.gameObject);
 		}
 	}
 }
