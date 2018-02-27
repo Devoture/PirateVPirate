@@ -12,11 +12,10 @@ public class Health : NetworkBehaviour {
     public int m_currHealth = m_maxHealth;
 
     public void TakeDamage(int damage) {
-		if(isServer) {
-    		m_currHealth -= damage;
-		} else {
-			CmdTakeDamage(damage);
-		}
+		if(!isServer) {
+    		return;
+		} 
+		m_currHealth -= damage;
 		if(m_currHealth <= 0) {
 			Dead();
 		}
