@@ -16,7 +16,7 @@ public class CharacterMovement : MonoBehaviour {
 	private bool m_isGrounded = false;
 	private CharacterController m_controller;
 	public Animator m_animController;
-	private SwordCollider m_swordColliderScript;
+	public SwordCollider m_swordColliderScript;
 	private bool m_isAttacking;
 	private Health m_healthScript;
 	private bool m_disableMovement;

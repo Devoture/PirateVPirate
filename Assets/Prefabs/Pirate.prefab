@@ -2547,6 +2547,7 @@ MonoBehaviour:
   m_cantTakeDamage: 0
   m_camtarget: {fileID: 0}
   m_animController: {fileID: 95726428757890608}
+  m_swordColliderScript: {fileID: 114015940436885704}
   m_soundManager: {fileID: 0}
 --- !u!114 &114216412155359972
 MonoBehaviour:
@@ -2737,7 +2738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerHUD: {fileID: 114519472687393070}
-  currHealth: 100
+  m_currHealth: 100
 --- !u!114 &114888745122349580
 MonoBehaviour:
   m_ObjectHideFlags: 1
