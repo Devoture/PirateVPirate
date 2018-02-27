@@ -8,7 +8,7 @@ public class Health : NetworkBehaviour {
 	public Image m_playerHUD;
 
 
-	[SyncVar]
+
     public int m_currHealth;
 
 	void Start() {
