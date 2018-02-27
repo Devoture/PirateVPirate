@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CharacterMovement : MonoBehaviour {
+public class CharacterMovement : NetworkBehaviour {
 	public float m_speed = 5.0f;
 	public float m_speedMultiplier = 1.0f;
 	public float m_gravity = 20.0f;
@@ -98,5 +99,27 @@ public class CharacterMovement : MonoBehaviour {
 		m_swordColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
 	}
+
+	 [Command]
+     public void CmdSetAuth(NetworkInstanceId objectId, NetworkIdentity player)
+     {
+         var iObject = NetworkServer.FindLocalObject(objectId);
+         var networkIdentity = iObject.GetComponent<NetworkIdentity>();
+         var otherOwner = networkIdentity.clientAuthorityOwner;
+ 
+         if (otherOwner == player.clientAuthorityOwner)
+         {
+             Debug.Log("Same");
+             return;
+         }
+         else
+         {
+             if (otherOwner != null)
+             {
+                 networkIdentity.RemoveClientAuthority(otherOwner);
+             }
+             networkIdentity.AssignClientAuthority(player.connectionToClient);
+         }
+     }
 }
 
