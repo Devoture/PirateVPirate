@@ -8,7 +8,7 @@ public class Health : NetworkBehaviour {
 	public Image m_playerHUD;
 
 
-	[SyncVar(hook = "UpdateHealth")]
+	[SyncVar]
     public int m_currHealth;
 
 	void Start() {
@@ -17,6 +17,7 @@ public class Health : NetworkBehaviour {
 
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
+		UpdateHealth(m_currHealth);
 		if(m_currHealth <= 0) {
 			Dead();
 		}
