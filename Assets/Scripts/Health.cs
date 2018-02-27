@@ -19,7 +19,6 @@ public class Health : NetworkBehaviour {
 
 	[Command]
 	void CmdDead() {
-		
 		this.gameObject.SetActive(false);
 	}
 
