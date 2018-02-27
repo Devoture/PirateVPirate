@@ -10,12 +10,15 @@ public class GameManager : MonoBehaviour {
 	public Text m_gameStartingIn;
 	public Canvas m_lobbyCanvas;
 	public bool m_gameStarted = false;
+	public bool m_readyButton;
+	public bool m_isReadyButton;
 
 	private static GameManager m_instance;
 	private List<GameObject> m_players = new List<GameObject>();
 	private bool m_canStartCoroutine = true;
 	private int m_numPlayersActive = 0;
 	private int m_countDown = 3;
+	private int m_numReadyPlayers = 0;
 
 	public void AddPlayer(GameObject Player) {
 		if (!m_players.Contains(Player)) {
@@ -28,10 +31,11 @@ public class GameManager : MonoBehaviour {
 	private void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
 		m_instance = this;
+		m_gameStartingIn.text = m_numReadyPlayers + "/2";
 	}
 
 	void Update() {
-		if(m_countDown >= 0 && m_numPlayersActive >= 1) {
+		if(m_countDown >= 0 && m_numReadyPlayers >= 1) {
 			StartGame();
 		}
 	}
@@ -47,7 +51,17 @@ public class GameManager : MonoBehaviour {
 		m_numPlayersActive--;
 		if(m_numPlayersActive <= 1) {
 			for(int i = 0; i < m_players.Count; i++) {
-				m_players[i].GetComponent<CharacterMovement>().GameOver();
+				//m_players[i].GetComponent<CharacterMovement>().GameOver();
+			}
+		}
+	}
+
+	public void ReadyUp() {
+		for(int i = 0; i < m_players.Count; i++) {
+			if(!m_players[i].GetComponent<CharacterMovement>().m_hasClicked) {
+				m_players[i].GetComponent<CharacterMovement>().m_hasClicked = true;
+				m_numReadyPlayers++;
+				m_gameStartingIn.text = m_numReadyPlayers + "/2";
 			}
 		}
 	}
@@ -56,7 +70,7 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(1);
 		m_canStartCoroutine = true;
 		if(m_countDown > 0) {
-			m_gameStartingIn.gameObject.SetActive(true);
+			m_gameStartingIn.text = "Game Starting In";
 			m_countDownText.text = m_countDown.ToString();
 			m_countDown--;
 		} else {

@@ -21,6 +21,7 @@ public class CharacterMovement : MonoBehaviour {
 	private Health m_healthScript;
 	private bool m_disableMovement;
 	public SoundMGR m_soundManager;
+	public bool m_hasClicked = false;
 
 	// Use this for initialization
 	void Start() {
