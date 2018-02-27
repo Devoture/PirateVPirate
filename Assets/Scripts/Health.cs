@@ -10,8 +10,11 @@ public class Health : NetworkBehaviour {
 	[SyncVar(hook = "UpdateHealth")]
     public int m_currHealth;
 
+	private CharacterMovement m_playerScript;
+
 	void Start() {
 		m_currHealth = m_maxHealth;
+		m_playerScript = GetComponent<CharacterMovement>();
 	}
 
     public void TakeDamage(int damage) {
@@ -26,7 +29,10 @@ public class Health : NetworkBehaviour {
 	}
 
 	void Dead() {
-		Destroy(this.gameObject);
+		GameManager.Instance.m_gameStarted = false;
+		this.gameObject.SetActive(false);
+		m_playerScript.m_isDead = true;
+		GameManager.Instance.CheckGameOver();
 	}
 
 	public int GetCurrentHealth() {

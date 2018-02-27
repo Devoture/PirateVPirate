@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void Awake() {
-		DontDestroyOnLoad(transform.gameObject);
+		//DontDestroyOnLoad(transform.gameObject);
 		m_instance = this;
 		m_gameStartingIn.text = m_numReadyPlayers + "/2";
 	}
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
 		m_numPlayersActive--;
 		if(m_numPlayersActive <= 1) {
 			for(int i = 0; i < m_players.Count; i++) {
-				//m_players[i].GetComponent<CharacterMovement>().GameOver();
+				m_players[i].GetComponent<CharacterMovement>().GameOver();
 			}
 		}
 	}
