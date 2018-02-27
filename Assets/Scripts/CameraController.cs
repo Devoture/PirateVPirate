@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour {
 
 	void LateUpdate() {
 		//if you havent already rotated behind the player and you have a target then rotate behind target
-		if(!m_rotateBehind && m_target != null) {
+		if(!m_rotateBehind && m_head != null) {
 			RotateBehindTarget();
 		}
 
@@ -73,7 +73,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	private void RotateBehindTarget(){
-        float targetRotationAngle = m_target.transform.eulerAngles.y;
+        float targetRotationAngle = m_head.transform.eulerAngles.y;
         float currentRotationAngle = transform.eulerAngles.y;
         m_xDeg = Mathf.LerpAngle(currentRotationAngle, targetRotationAngle, m_autoRotationSpeed * Time.deltaTime);
 		m_rotateBehind = true;
