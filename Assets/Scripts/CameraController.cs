@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour {
 	public float m_maxDistance = 20.0f;
 	public float m_maxXDeg = 60.0f;
 	public float m_autoRotationSpeed = 10.0f;
-	public GameObject m_head;
+	public Transform m_head;
 	
 	private float m_xDeg = 0.0f;
 	private float m_yDeg = 0.0f;
@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour {
 
 	void LateUpdate() {
 		//if you havent already rotated behind the player and you have a target then rotate behind target
-		if(!m_rotateBehind && m_target != null) {
+		if(!m_rotateBehind && m_head != null) {
 			RotateBehindTarget();
 		}
 
@@ -62,18 +62,18 @@ public class CameraController : MonoBehaviour {
 
 			//Rotates the camera to mouse position
 			Quaternion rotation = Quaternion.Euler(m_yDeg, m_xDeg, 0);
-			Vector3 position =  m_head.transform.position;
+			Vector3 position =  m_head.position;
 			transform.rotation = rotation;
 			transform.position = new Vector3(position.x, position.y, position.z);
 			
 
 			//rotates the player to camera's rotation
-			m_target.transform.root.Rotate(0, horizontal, 0);
+			m_head.transform.root.Rotate(0, horizontal, 0);
 		}
 	}
 
 	private void RotateBehindTarget(){
-        float targetRotationAngle = m_target.transform.eulerAngles.y;
+        float targetRotationAngle = m_target.eulerAngles.y;
         float currentRotationAngle = transform.eulerAngles.y;
         m_xDeg = Mathf.LerpAngle(currentRotationAngle, targetRotationAngle, m_autoRotationSpeed * Time.deltaTime);
 		m_rotateBehind = true;
