@@ -11,6 +11,7 @@ public class CharacterMovement : NetworkBehaviour {
 	public SoundMGR m_soundManager;
 	public bool m_hasClicked = false;
 	public float m_jumpSpeed = 8.0f;
+	public float m_verticalVelocity;
 	public MeshCollider m_swordCollider;
 	public int m_numOfBlockedAttacks = 0;
 	public bool m_cantTakeDamage = false;
@@ -41,10 +42,19 @@ public class CharacterMovement : NetworkBehaviour {
 			if(!m_disableMovement) {
 				m_moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-				if(Input.GetButtonDown("Jump") && m_isGrounded) {
-					m_moveDirection.y = m_jumpSpeed;
-					m_isJumping = true;
+				if(m_isGrounded) {
+					m_verticalVelocity = -m_gravity * Time.deltaTime;
+					if(Input.GetButtonDown("Jump")) {
+						m_isGrounded = false;
+						m_verticalVelocity = m_jumpSpeed;
+						m_isJumping = true;
+					}
+				} else {
+					m_verticalVelocity -= m_gravity * Time.deltaTime;
 				}
+
+				Vector3 jumpVector = new Vector3(0, m_verticalVelocity, 0);
+        		m_controller.Move (jumpVector * Time.deltaTime);
 
 				m_moveDirection *= m_speed * m_speedMultiplier;
 
@@ -52,11 +62,8 @@ public class CharacterMovement : NetworkBehaviour {
 				m_animController.SetFloat("Right", m_moveDirection.x);
 
 				m_moveDirection = transform.TransformDirection(m_moveDirection);
-				
 
-				m_moveDirection.y -= m_gravity * Time.deltaTime;
-				m_isGrounded = ((m_controller.Move(m_moveDirection * Time.deltaTime)) & CollisionFlags.Below) != 0;
-
+				m_controller.Move(m_moveDirection * Time.deltaTime);
 
 				if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
 					m_swordCollider.enabled = true;			
@@ -85,6 +92,12 @@ public class CharacterMovement : NetworkBehaviour {
 			if(Input.GetKeyDown(KeyCode.R)) {
 				m_healthScript.TakeDamage(10);
 			}
+		}
+	}
+
+	void OnControllerColliderHit(ControllerColliderHit other) {
+		if(other.gameObject.tag == "Ground") {
+			m_isGrounded = true;
 		}
 	}
 
