@@ -10,7 +10,8 @@ public class Health : NetworkBehaviour {
 	[SyncVar(hook = "UpdateHealth")]
     public int m_currHealth = m_maxHealth;
 
-    public void TakeDamage(int amount) {
+	[Command]
+    public void CmdTakeDamage(int amount) {
     	m_currHealth -= amount;
 		UpdateHealth(m_currHealth);
 		if(m_currHealth <= 0) {
