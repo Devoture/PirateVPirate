@@ -15,16 +15,13 @@ public class EnableNetworkScripts : NetworkBehaviour {
 			this.gameObject.tag = "Player";
 			Camera.main.transform.GetComponent<CameraController>().m_head = m_head;
 			Camera.main.transform.parent = m_head.transform;
-			Camera.main.transform.GetComponent<CameraController>().m_target = this.gameObject.transform;
 		}
 		GameManager.Instance.AddPlayer(gameObject);
 	}
 
 	public void SetupHUD() {
-		if(isServer) {
+		if(isLocalPlayer) {
 			m_playerHUD.gameObject.SetActive(true);
-		} else {
-			m_playerHUD.gameObject.SetActive(false);
 		}
 	}
 }
