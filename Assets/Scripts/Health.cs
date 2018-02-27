@@ -17,10 +17,13 @@ public class Health : NetworkBehaviour {
 
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
-		UpdateHealth(m_currHealth);
 		if(m_currHealth <= 0) {
 			Dead();
 		}
+	}
+
+	void Update() {
+		m_playerHUD.fillAmount = (float)m_currHealth / (float)m_maxHealth;
 	}
 
 	void Dead() {
