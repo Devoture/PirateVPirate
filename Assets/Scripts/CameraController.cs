@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour {
 			RotateBehindTarget();
 		}
 
-		if(m_target != null) {
+		if(m_head != null) {
 			//Gets the mouse position
 			m_xDeg += Input.GetAxis("Mouse X") * m_rotateSpeed;
 			m_yDeg -= Input.GetAxis("Mouse Y") * m_rotateSpeed;
@@ -68,7 +68,7 @@ public class CameraController : MonoBehaviour {
 			
 
 			//rotates the player to camera's rotation
-			m_target.transform.root.Rotate(0, horizontal, 0);
+			m_head.transform.root.Rotate(0, horizontal, 0);
 		}
 	}
 
