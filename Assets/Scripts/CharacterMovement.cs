@@ -19,7 +19,7 @@ public class CharacterMovement : NetworkBehaviour {
 	public Animator m_animController;
 	public SwordCollider m_swordColliderScript;
 	private bool m_isAttacking;
-	private Health m_healthScript;
+	public Health m_healthScript;
 	private bool m_disableMovement;
 	public SoundMGR m_soundManager;
 
@@ -29,7 +29,6 @@ public class CharacterMovement : NetworkBehaviour {
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 		m_animController = GetComponent<Animator>();
 		m_swordColliderScript = GetComponentInChildren<SwordCollider>();
-		m_healthScript = GetComponent<Health>();
 	}
 	
 	// Update is called once per frame
