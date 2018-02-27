@@ -15,7 +15,7 @@ public class Health : NetworkBehaviour {
 		if(isServer) {
     		RpcTakeDamage(damage);
 			Debug.Log("is Server");
-		} else {
+		} else if (isLocalPlayer) {
 			CmdTakeDamage(damage);
 			Debug.Log("!is Server");
 		}
