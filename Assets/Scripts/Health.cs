@@ -13,25 +13,11 @@ public class Health : NetworkBehaviour {
 
     public void TakeDamage(int damage) {
 		if(isServer) {
-    		RpcTakeDamage(damage);
-			Debug.Log("is Server");
-		} else if (isLocalPlayer) {
-			CmdTakeDamage(damage);
-			Debug.Log("!is Server");
+    		m_currHealth -= damage;
 		}
 		if(m_currHealth <= 0) {
 			Dead();
 		}
-	}
-
-	[Command]
-    void CmdTakeDamage(int damage) {
-        m_currHealth -= damage;
-    }
- 
-	[ClientRpc]
-	void RpcTakeDamage(int damage) {
-		m_currHealth -= damage;
 	}
 
 	void Dead() {
