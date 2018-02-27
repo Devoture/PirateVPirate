@@ -30,8 +30,8 @@ public class Health : NetworkBehaviour {
 
 	void Dead() {
 		GameManager.Instance.m_gameStarted = false;
-		this.gameObject.SetActive(false);
 		m_playerScript.m_isDead = true;
+		this.gameObject.SetActive(false);
 		GameManager.Instance.CheckGameOver();
 	}
 
