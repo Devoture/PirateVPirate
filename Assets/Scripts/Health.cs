@@ -21,7 +21,11 @@ public class Health : NetworkBehaviour {
 		this.gameObject.SetActive(false);
 	}
 
-	void UpdateHealth() {
-		m_playerHUD.fillAmount = (float)m_currHealth / (float)m_maxHealth;
+	public int GetCurrentHealth() {
+		return m_currHealth;
+	}
+
+	void UpdateHealth(int health) {
+		m_playerHUD.fillAmount = (float)health / (float)m_maxHealth;
 	}
 }
