@@ -81,6 +81,7 @@ public class CharacterMovement : NetworkBehaviour {
 
 	public void CmdTakeDamage(int damage) {
 		m_healthScript.TakeDamage(damage);
+		m_healthScript.UpdateHealth();
 	}
 
 	void BlockedAttack() {

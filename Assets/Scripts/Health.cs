@@ -16,7 +16,6 @@ public class Health : NetworkBehaviour {
 
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
-		UpdateHealth();
 		if(m_currHealth <= 0) {
 			Dead();
 		}
@@ -37,5 +36,4 @@ public class Health : NetworkBehaviour {
 	public void UpdateHealth() {
 		m_playerHUD.fillAmount = (float)m_currHealth / (float)m_maxHealth;
 	}
-
 }

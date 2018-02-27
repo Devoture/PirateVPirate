@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
-public class SwordCollider : NetworkBehaviour {
+public class SwordCollider : MonoBehaviour {
 
 	public bool m_hasDealtDamage;
 
