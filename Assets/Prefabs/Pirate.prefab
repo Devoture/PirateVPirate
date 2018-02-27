@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224529250052864356}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 224191609867417014}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2528,6 +2528,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerHUD: {fileID: 223461741508806528}
+  m_playerHUD1: {fileID: 0}
+  m_playerHUD2: {fileID: 0}
   m_head: {fileID: 1360095192931530}
 --- !u!114 &114162836100687438
 MonoBehaviour:

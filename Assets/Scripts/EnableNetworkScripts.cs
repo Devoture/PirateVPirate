@@ -20,7 +20,7 @@ public class EnableNetworkScripts : NetworkBehaviour {
 	}
 
 	public void SetupHUD() {
-		if(isLocalPlayer) {
+		if(isServer) {
 			m_playerHUD.gameObject.SetActive(true);
 		}
 	}
