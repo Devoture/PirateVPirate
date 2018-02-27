@@ -14,8 +14,10 @@ public class Health : NetworkBehaviour {
     public void TakeDamage(int damage) {
 		if(isServer) {
     		RpcTakeDamage(damage);
+			Debug.Log("is Server");
 		} else {
 			CmdTakeDamage(damage);
+			Debug.Log("!is Server");
 		}
 		if(m_currHealth <= 0) {
 			Dead();
