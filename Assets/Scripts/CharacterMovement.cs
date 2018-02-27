@@ -77,7 +77,7 @@ public class CharacterMovement : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.R)) {
-			//TakeDamage();
+			m_healthScript.TakeDamage(10);
 		}
 	}
 
