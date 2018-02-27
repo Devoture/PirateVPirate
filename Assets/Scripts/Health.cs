@@ -12,7 +12,6 @@ public class Health : NetworkBehaviour {
 
     public void TakeDamage(int amount) {
     	currHealth -= amount;
-		Debug.Log(currHealth);
 		UpdateHealth();
 		if(currHealth < 0) {
 			Destroy(this.gameObject);
