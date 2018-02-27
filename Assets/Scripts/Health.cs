@@ -4,21 +4,24 @@ using UnityEngine.Networking;
 
 public class Health : NetworkBehaviour {
 
-    public const int maxHealth = 100;
+    public const int m_maxHealth = 100;
 	public Image m_playerHUD;
 
-	[SyncVar]
-    public int currHealth = maxHealth;
+	[SyncVar(hook = "UpdateHealth")]
+    public int m_currHealth = m_maxHealth;
 
     public void TakeDamage(int amount) {
-    	currHealth -= amount;
-		//UpdateHealth();
-		if(currHealth <= 0) {
-			Destroy(this.gameObject);
+    	m_currHealth -= amount;
+		if(m_currHealth <= 0) {
+			Dead();
 		}
 	}
 
+	void Dead() {
+		this.gameObject.SetActive(false);
+	}
+
 	void UpdateHealth() {
-		m_playerHUD.fillAmount = (float)currHealth / (float)maxHealth;
+		m_playerHUD.fillAmount = (float)m_currHealth / (float)m_maxHealth;
 	}
 }
