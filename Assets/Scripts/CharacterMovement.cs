@@ -102,10 +102,12 @@ public class CharacterMovement : NetworkBehaviour {
 	}
 
 	public void GameOver() {
-		if(m_isDead) {
-			SceneManager.LoadScene("Lose");
-		} else {
-			SceneManager.LoadScene("Win");
+		if(isLocalPlayer) {
+			if(m_isDead) {
+				SceneManager.LoadScene("Lose");
+			} else {
+				SceneManager.LoadScene("Win");
+			}
 		}
 	}
 }

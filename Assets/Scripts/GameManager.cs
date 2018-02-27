@@ -18,13 +18,17 @@ public class GameManager : MonoBehaviour {
 	private int m_numPlayersActive = 0;
 	private int m_countDown = 3;
 	private int m_numReadyPlayers = 0;
+	private GameObject m_host = null;
 
 	public void AddPlayer(GameObject Player) {
+		if (m_host == null) {
+			m_host = Player;
+		}
 		if (!m_players.Contains(Player)) {
 			m_players.Add(Player);
-			m_numPlayersActive++;
-			m_gameStartingIn.text = m_numPlayersActive + "/2";
 		}
+		m_numPlayersActive++;
+		m_gameStartingIn.text = m_numPlayersActive + "/2";
 		m_countDownText.text = "Waiting for players...";
 	}
 
@@ -35,7 +39,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
-		if(m_countDown >= 0 && m_numPlayersActive >= 1) {
+		if(m_countDown >= 0 && m_numPlayersActive >= 2) {
 			StartGame();
 		}
 	}
