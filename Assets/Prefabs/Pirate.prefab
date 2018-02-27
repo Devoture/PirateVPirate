@@ -2514,8 +2514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7e41961a688044d94730f2994b573b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerHUD1: {fileID: 0}
-  m_playerHUD2: {fileID: 0}
+  m_playerHUD1: {fileID: 223843579582147244}
+  m_playerHUD2: {fileID: 223461741508806528}
   m_head: {fileID: 4837492824026564}
 --- !u!114 &114162836100687438
 MonoBehaviour:
