@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
-		if(m_countDown >= 0 && m_numReadyPlayers >= 1) {
+		if(m_countDown >= 0 && m_numReadyPlayers >= 2) {
 			StartGame();
 		}
 	}
