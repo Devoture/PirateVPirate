@@ -31,6 +31,7 @@ public class SwordCollider : MonoBehaviour {
 				}
 				if(!other.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
 					hitPlayer.TakeDamage(10);
+					hitPlayer.UpdateHUD();
 					Debug.Log("Take damage");
 					Debug.Log(hitPlayer.GetCurrentHealth());
 					other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
