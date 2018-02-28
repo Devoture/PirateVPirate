@@ -19,6 +19,7 @@ public class SwordCollider : NetworkBehaviour {
 	void OnTriggerEnter(Collider other) {
 		var hit = other.gameObject;
 		var hitPlayer = hit.GetComponent<Health>();
+		if(isLocalPlayer) {
 		if(other.tag == "Enemy" && !m_hasDealtDamage) {
 			if(other.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
 				other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
@@ -39,6 +40,7 @@ public class SwordCollider : NetworkBehaviour {
 				}
 			}
 			m_hasDealtDamage = true;
+		}
 		}
 	}
 
