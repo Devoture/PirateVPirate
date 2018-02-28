@@ -42,6 +42,7 @@ public class SwordCollider : NetworkBehaviour {
 				}
 			}
 			m_hasDealtDamage = true;
+			hitPlayer.GetComponent<HUDScript>().Pirate1UpdateHUD(m_healthScript.m_pirate1Health);
 		}
 	}
 
