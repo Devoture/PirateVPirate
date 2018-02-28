@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 	public Button m_readyButton;
 
 	private static GameManager m_instance;
-	private List<GameObject> m_players = new List<GameObject>();
+	public List<GameObject> m_players = new List<GameObject>();
 	private bool m_canStartCoroutine = true;
 	private int m_numPlayersActive = 0;
 	private int m_countDown = 3;

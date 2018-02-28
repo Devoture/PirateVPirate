@@ -12,17 +12,27 @@ public class Health : NetworkBehaviour {
 
 	public CharacterMovement m_playerScript;
 	public HUDScript m_hudScript;
+	public int m_pirate1Health;
+
+	private GameObject m_pirate1;
 
 	void Start() {
 		m_currHealth = m_maxHealth;
 		UpdateHUD();
 		m_playerScript = GetComponent<CharacterMovement>();
 		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
+		if(!isServer) {
+			m_pirate1 = GameObject.FindGameObjectWithTag("Enemy");
+		}
 	} 
 
 	void Update() {
 		if(!isServer) {
 			UpdateHUD();
+			m_pirate1Health = m_pirate1.GetComponent<Health>().GetCurrentHealth();
+		}
+		if(isServer) {
+			m_hudScript.Pirate1UpdateHUD(m_pirate1Health);
 		}
 	}
 

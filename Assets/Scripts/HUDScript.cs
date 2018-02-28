@@ -26,4 +26,9 @@ public class HUDScript : MonoBehaviour {
 			Debug.Log(player.GetComponent<Health>().GetCurrentHealth());
 		}
 	}
+
+	public void Pirate1UpdateHUD(int health) {
+		m_leftHud.fillAmount = (float)health / (float)m_maxHealth;
+		//Debug.Log(player.GetComponent<Health>().GetCurrentHealth());
+	}
 }
