@@ -7,7 +7,7 @@ public class Health : NetworkBehaviour {
 
     public const int m_maxHealth = 100;
 
-	[SyncVar]
+	[SyncVar(hook = "UpdateHUD")]
     public int m_currHealth;
 
 	public CharacterMovement m_playerScript;
@@ -21,7 +21,7 @@ public class Health : NetworkBehaviour {
 
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
-		m_hudScript.UpdateHUD(this.gameObject);
+		//m_hudScript.UpdateHUD(this.gameObject);
 		if(m_currHealth <= 0) {
 			Dead();
 		}
@@ -39,12 +39,7 @@ public class Health : NetworkBehaviour {
 		return m_currHealth;
 	}
 
-	// public void UpdateHealth(int health) {
-	// 	m_currHealth = health;
-	// 	if(isServer) {
-	// 		m_playerHUD.fillAmount = (float)health / (float)m_maxHealth;
-	// 	} else {
-	// 		m_playerHUD2.fillAmount = (float)health / (float)m_maxHealth;
-	// 	}
-	// }
+	public void UpdateHUD(int health) {
+		m_hudScript.UpdateHUD(this.gameObject, health);
+	}
 }
