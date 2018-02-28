@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 	public Text m_gameStartingIn;
 	public Canvas m_lobbyCanvas;
 	public bool m_gameStarted = false;
+	public Canvas m_hud;
 	public Button m_readyButton;
 
 	private static GameManager m_instance;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour {
 			m_players.Add(Player);
 		}
 		m_numPlayersActive++;
+		Player.name = "Pirate" + m_numPlayersActive;
 		m_gameStartingIn.text = m_numPlayersActive + "/2";
 		m_countDownText.text = "Waiting for players...";
 	}
@@ -60,29 +62,27 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void ReadyUp() {
-		for(int i = 0; i < m_players.Count; i++) {
-			if(!m_players[i].GetComponent<CharacterMovement>().m_hasClicked) {
-				m_players[i].GetComponent<CharacterMovement>().m_hasClicked = true;
-				m_numReadyPlayers++;
-				m_gameStartingIn.text = m_numReadyPlayers + "/2";
-			}
-		}
-	}
+	// public void ReadyUp() {
+	// 	for(int i = 0; i < m_players.Count; i++) {
+	// 		if(!m_players[i].GetComponent<CharacterMovement>().m_hasClicked) {
+	// 			m_players[i].GetComponent<CharacterMovement>().m_hasClicked = true;
+	// 			m_numReadyPlayers++;
+	// 			m_gameStartingIn.text = m_numReadyPlayers + "/2";
+	// 		}
+	// 	}
+	// }
 
 	IEnumerator CountDown() {
         yield return new WaitForSeconds(1);
 		m_canStartCoroutine = true;
 		if(m_countDown > 0) {
-			m_readyButton.gameObject.SetActive(false);
+//			m_readyButton.gameObject.SetActive(false);
 			m_gameStartingIn.text = "Game Starting In";
 			m_countDownText.text = m_countDown.ToString();
 			m_countDown--;
 		} else {
 			m_gameStarted = true;
-			for(int i = 0; i < m_players.Count; i++ ) {
-				m_players[i].GetComponent<EnableNetworkScripts>().SetupHUD();
-			}
+			m_hud.gameObject.SetActive(true);
 			m_gameStartingIn.gameObject.SetActive(false);
 			m_countDownText.gameObject.SetActive(false);
 			m_lobbyCanvas.gameObject.SetActive(false);

@@ -5,8 +5,6 @@ using UnityEngine.Networking;
 
 public class EnableNetworkScripts : NetworkBehaviour {
 
-	public Canvas m_playerHUD1;
-	public Canvas m_playerHUD2;
 	public Transform m_head;
 
 	void Start() {
@@ -20,11 +18,11 @@ public class EnableNetworkScripts : NetworkBehaviour {
 		GameManager.Instance.AddPlayer(gameObject);
 	}
 
-	public void SetupHUD() {
-		if(isServer) {
-			m_playerHUD1.gameObject.SetActive(true);
-		} else {
-			m_playerHUD2.gameObject.SetActive(true);
-		}
-	}
+	// public void SetupHUD() {
+	// 	if(isServer) {
+	// 		m_playerHUD1.gameObject.SetActive(true);
+	// 	} else {
+	// 		m_playerHUD2.gameObject.SetActive(true);
+	// 	}
+	// }
 }

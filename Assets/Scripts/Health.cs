@@ -6,28 +6,25 @@ using UnityEngine.SceneManagement;
 public class Health : NetworkBehaviour {
 
     public const int m_maxHealth = 100;
-	public Image m_playerHUD;
-	public Image m_playerHUD2;
 
-	[SyncVar(hook = "UpdateHealth")]
+	[SyncVar]
     public int m_currHealth;
 
 	public CharacterMovement m_playerScript;
+	public HUDScript m_hudScript;
 
 	void Start() {
 		m_currHealth = m_maxHealth;
 		m_playerScript = GetComponent<CharacterMovement>();
+		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
 	}
 
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
+		m_hudScript.UpdateHUD(this.gameObject);
 		if(m_currHealth <= 0) {
 			Dead();
 		}
-	}
-
-	void Update() {
-		m_playerHUD.fillAmount = (float)m_currHealth / (float)m_maxHealth;
 	}
 
 	void Dead() {
@@ -42,12 +39,12 @@ public class Health : NetworkBehaviour {
 		return m_currHealth;
 	}
 
-	public void UpdateHealth(int health) {
-		m_currHealth = health;
-		if(isServer) {
-			m_playerHUD.fillAmount = (float)health / (float)m_maxHealth;
-		} else {
-			m_playerHUD2.fillAmount = (float)health / (float)m_maxHealth;
-		}
-	}
+	// public void UpdateHealth(int health) {
+	// 	m_currHealth = health;
+	// 	if(isServer) {
+	// 		m_playerHUD.fillAmount = (float)health / (float)m_maxHealth;
+	// 	} else {
+	// 		m_playerHUD2.fillAmount = (float)health / (float)m_maxHealth;
+	// 	}
+	// }
 }

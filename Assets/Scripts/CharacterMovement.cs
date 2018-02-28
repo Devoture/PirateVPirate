@@ -32,7 +32,6 @@ public class CharacterMovement : NetworkBehaviour {
 	void Start() {
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
-		Camera.main.transform.parent = m_camtarget.transform;
 		if(gameObject.tag == "Player"){
 			gameObject.layer = 8;
 		}
