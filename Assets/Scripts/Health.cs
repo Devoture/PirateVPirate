@@ -7,7 +7,7 @@ public class Health : NetworkBehaviour {
 
     public const int m_maxHealth = 100;
 
-	[SyncVar]
+	[SyncVar(hook = "ChangeHealth")]
     public int m_currHealth;
 
 	public CharacterMovement m_playerScript;
@@ -15,7 +15,7 @@ public class Health : NetworkBehaviour {
 
 	void Start() {
 		m_currHealth = m_maxHealth;
-		UpdateHUD();
+		//UpdateHUD();
 		m_playerScript = GetComponent<CharacterMovement>();
 		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
 	} 
@@ -23,22 +23,23 @@ public class Health : NetworkBehaviour {
 	[ClientRpc]
     public void RpcTakeDamage(int damage) {
     	m_currHealth -= damage;
-		UpdateHUD();
+		//UpdateHUD();
 		if(m_currHealth <= 0) {
 			Dead();
 		}
 	}
 
 	public void TakeDamage(int damage) {
-		if(isServer) {
-			RpcTakeDamage(damage);
-			Debug.Log("RPC Take Damage");
-		} else {
-			if(isLocalPlayer) {
-				CmdTakeDamage(damage);
-				Debug.Log("CMD Take Damage");
-			}
+		if(!isServer) {
+			// RpcTakeDamage(damage);
+			// Debug.Log("RPC Take Damage");
+			return;
 		}
+		// } else {
+		// 	CmdTakeDamage(damage);
+		// 	Debug.Log("CMD Take Damage");
+		// }
+		m_currHealth -= damage;
 	}
 
 	[Command]
@@ -59,7 +60,8 @@ public class Health : NetworkBehaviour {
 		return m_currHealth;
 	}
 
-	public void UpdateHUD() {
+	public void ChangeHealth(int health) {
+		m_currHealth = health;
 		m_hudScript.UpdateHUD(this.gameObject);
 	}
 }
