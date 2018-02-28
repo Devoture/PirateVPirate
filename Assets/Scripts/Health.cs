@@ -21,10 +21,17 @@ public class Health : NetworkBehaviour {
 
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
-		//m_hudScript.UpdateHUD(this.gameObject);
+		if(!isServer) {
+			m_playerScript.CmdTakeDamage(damage);
+		}
 		if(m_currHealth <= 0) {
 			Dead();
 		}
+	}
+
+	[Command]
+	void CmdTakeDamage(int damage) {
+		TakeDamage(damage);
 	}
 
 	void Dead() {
