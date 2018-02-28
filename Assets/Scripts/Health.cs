@@ -34,6 +34,11 @@ public class Health : NetworkBehaviour {
 		}
 	}
 
+	[Command]
+	public void CmdTakeDamage(int damage) {
+		TakeDamage(damage)
+	}
+
 	void Dead() {
 		GameManager.Instance.m_gameStarted = false;
 		m_playerScript.m_isDead = true;
