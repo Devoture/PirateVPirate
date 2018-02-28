@@ -20,8 +20,9 @@ public class Health : NetworkBehaviour {
 	}
 
     public void TakeDamage(int damage) {
-		if(!isServer)
-			return;
+		if(!isServer) {
+			CmdTakeDamage(damage);
+		}
 			
     	m_currHealth -= damage;
 		if(m_currHealth <= 0) {
