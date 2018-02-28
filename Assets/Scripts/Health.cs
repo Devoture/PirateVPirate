@@ -14,7 +14,9 @@ public class Health : NetworkBehaviour {
 	public HUDScript m_hudScript;
 
 	void Start() {
-		m_currHealth = m_maxHealth;
+		// if(isLocalPlayer) {
+		// 	m_currHealth = m_maxHealth;
+		// }
 		UpdateHUD();
 		m_playerScript = GetComponent<CharacterMovement>();
 		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
