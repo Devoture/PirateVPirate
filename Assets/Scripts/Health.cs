@@ -33,14 +33,15 @@ public class Health : NetworkBehaviour {
 		if(isServer) {
 			RpcTakeDamage(damage);
 		} else {
-			m_playerScript.CmdTakeDamage(damage);
+			if(isLocalPlayer)
+				CmdTakeDamage(damage);
 		}
 	}
 
-	// [Command]
-	// public void CmdTakeDamage(int damage) {
-	// 	TakeDamage(damage);
-	// }
+	[Command]
+	public void CmdTakeDamage(int damage) {
+		TakeDamage(damage);
+	}
 
 	void Dead() {
 		GameManager.Instance.m_gameStarted = false;
