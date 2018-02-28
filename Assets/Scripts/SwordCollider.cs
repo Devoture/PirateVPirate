@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class SwordCollider : MonoBehaviour {
+public class SwordCollider : NetworkBehaviour {
 
 	public bool m_hasDealtDamage;
 
@@ -30,6 +31,9 @@ public class SwordCollider : MonoBehaviour {
 					other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				}
 				if(!other.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
+					if(hitPlayer.isServer) {
+						other.GetComponent<CharacterMovement>().CmdTakeDamage(10);
+					}
 					hitPlayer.TakeDamage(10);
 					Debug.Log("Take damage");
 					Debug.Log(hitPlayer.GetCurrentHealth());
