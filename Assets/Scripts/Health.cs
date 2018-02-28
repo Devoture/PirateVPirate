@@ -13,11 +13,14 @@ public class Health : NetworkBehaviour {
 	public CharacterMovement m_playerScript;
 	public HUDScript m_hudScript;
 
+	void Awake() {
+		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
+	}
+
 	void Start() {
 		m_currHealth = m_maxHealth;
 		//UpdateHUD();
 		m_playerScript = GetComponent<CharacterMovement>();
-		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
 	} 
 
 	[ClientRpc]
