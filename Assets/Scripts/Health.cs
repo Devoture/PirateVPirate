@@ -20,6 +20,12 @@ public class Health : NetworkBehaviour {
 		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
 	} 
 
+	void Update() {
+		if(!isServer) {
+			UpdateHUD();
+		}
+	}
+
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
 		UpdateHUD();

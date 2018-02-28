@@ -14,16 +14,16 @@ public class HUDScript : MonoBehaviour {
 	private int m_maxHealth = 100;
 
 	public void UpdateHUD(GameObject player) {
-		//if(player.name == "Pirate1") {
+		if(player.name == "Pirate1") {
 			int pirate1Health = player.GetComponent<Health>().GetCurrentHealth();
 			m_leftHud.fillAmount = (float)pirate1Health / (float)m_maxHealth;
 			Debug.Log(player.GetComponent<Health>().GetCurrentHealth());
-		//}
+		}
 
-		//if(player.name == "Pirate2") {
+		if(player.name == "Pirate2") {
 			int pirate2Health = player.GetComponent<Health>().GetCurrentHealth();
 			m_rightHud.fillAmount = (float)pirate2Health  / (float)m_maxHealth;
 			Debug.Log(player.GetComponent<Health>().GetCurrentHealth());
-		//}
+		}
 	}
 }
