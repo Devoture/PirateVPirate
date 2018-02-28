@@ -13,7 +13,7 @@ public class HUDScript : MonoBehaviour {
 
 	private int m_maxHealth = 100;
 
-	public void UpdateHUD(GameObject player, int damage) {
+	public void UpdateHUD(GameObject player) {
 		//if(player.name == "Pirate1") {
 			int pirate1Health = player.GetComponent<Health>().GetCurrentHealth();
 			m_leftHud.fillAmount = (float)pirate1Health / (float)m_maxHealth;
