@@ -12,38 +12,27 @@ public class Health : NetworkBehaviour {
 
 	public CharacterMovement m_playerScript;
 	public HUDScript m_hudScript;
-	[SyncVar]
-	public int m_pirate1Health = 100;
-
-	private GameObject m_pirate1;
 
 	void Start() {
 		m_currHealth = m_maxHealth;
 		UpdateHUD();
-		m_playerScript = GetComponent<CharacterMovement>();
 		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
-		if(!isServer) {
-			m_pirate1 = GameObject.FindGameObjectWithTag("Enemy");
-		}
 	} 
 
-	void Update() {
-		if(!isServer) {
-			UpdateHUD();
-			m_pirate1Health = m_pirate1.GetComponent<Health>().GetCurrentHealth();
-			Debug.Log("Servers health: " + m_pirate1Health);
-		}
-		if(isServer) {
-			m_hudScript.Pirate1UpdateHUD(m_pirate1Health);
-			Debug.Log("HudUpdate health: " + m_pirate1Health);
-		}
-	}
-
-    public void TakeDamage(int damage) {
+	[ClientRpc]
+    public void RpcTakeDamage(int damage) {
     	m_currHealth -= damage;
 		UpdateHUD();
 		if(m_currHealth <= 0) {
 			Dead();
+		}
+	}
+
+	public void TakeDamage(int damage) {
+		if(isServer) {
+			RpcTakeDamage(damage);
+		} else {
+			CmdTakeDamage(damage);
 		}
 	}
 
