@@ -21,15 +21,10 @@ public class Health : NetworkBehaviour {
 
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
-		CmdUpdateHUD();
+		m_hudScript.UpdateHUD(this.gameObject);
 		if(m_currHealth <= 0) {
 			Dead();
 		}
-	}
-
-	[Command]
-	void CmdUpdateHUD() {
-		m_hudScript.UpdateHUD(this.gameObject);
 	}
 
 	void Dead() {
@@ -37,9 +32,7 @@ public class Health : NetworkBehaviour {
 		m_playerScript.m_isDead = true;
 		this.gameObject.SetActive(false);
 		GameManager.Instance.CheckGameOver();
-		if(isLocalPlayer) {
-			SceneManager.LoadScene("Lose");
-		}
+		SceneManager.LoadScene("Lose");
 	}
 
 	public int GetCurrentHealth() {
