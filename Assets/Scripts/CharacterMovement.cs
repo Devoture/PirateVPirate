@@ -107,6 +107,7 @@ public class CharacterMovement : NetworkBehaviour {
 		}
 	}
 
+	[Command]
 	public void CmdTakeDamage(int damage) {
 		m_healthScript.TakeDamage(damage);
 	}
