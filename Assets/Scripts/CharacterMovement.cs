@@ -102,7 +102,9 @@ public class CharacterMovement : NetworkBehaviour {
 	}
 
 	public void TakeDamage(int damage) {
+		Debug.Log("in take damage");
 		if(isLocalPlayer) {
+			Debug.Log("in is local player");
 			m_healthScript.CmdTakeDamage(damage);
 		}
 	}
