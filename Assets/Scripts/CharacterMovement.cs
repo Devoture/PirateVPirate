@@ -99,6 +99,7 @@ public class CharacterMovement : NetworkBehaviour {
 			// 	m_healthScript.TakeDamage(10);
 			// }
 		}
+		Debug.Log("Is local: " + isLocalPlayer);
 	}
 
 	public void TakeDamage(int damage) {
