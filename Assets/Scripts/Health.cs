@@ -16,7 +16,7 @@ public class Health : NetworkBehaviour {
 	void Start() {
 		m_currHealth = m_maxHealth;
 		m_playerScript = GetComponent<CharacterMovement>();
-		//m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
+		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
 	}
 
     public void TakeDamage(int damage) {
