@@ -15,14 +15,14 @@ public class Health : NetworkBehaviour {
 
 	void Start() {
 		m_currHealth = m_maxHealth;
-		UpdateHUD(m_currHealth);
+		//UpdateHUD(m_currHealth);
 		m_playerScript = GetComponent<CharacterMovement>();
 		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
 	}
 
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
-		UpdateHUD(m_currHealth);
+		//UpdateHUD(m_currHealth);
 		if(m_currHealth <= 0) {
 			Dead();
 		}
