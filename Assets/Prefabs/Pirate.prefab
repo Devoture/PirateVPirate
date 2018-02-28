@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 114888745122349580}
   - component: {fileID: 82368592285551724}
   - component: {fileID: 114270215283847808}
+  - component: {fileID: 114577532585170700}
   m_Layer: 0
   m_Name: Pirate
   m_TagString: Enemy
@@ -2354,6 +2355,25 @@ MonoBehaviour:
   m_currHealth: 0
   m_playerScript: {fileID: 114162836100687438}
   m_hudScript: {fileID: 0}
+--- !u!114 &114577532585170700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1104326508843702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4880678666106250}
+  m_ChildIndex: 0
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!114 &114613237467458592
 MonoBehaviour:
   m_ObjectHideFlags: 1
