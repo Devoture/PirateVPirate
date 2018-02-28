@@ -20,10 +20,10 @@ public class Health : NetworkBehaviour {
 	}
 
     public void TakeDamage(int damage) {
+		if(!isServer)
+			return;
+			
     	m_currHealth -= damage;
-		if(!isServer) {
-			m_playerScript.CmdTakeDamage(damage);
-		}
 		if(m_currHealth <= 0) {
 			Dead();
 		}
