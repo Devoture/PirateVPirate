@@ -30,10 +30,11 @@ public class Health : NetworkBehaviour {
 		if(!isServer) {
 			UpdateHUD();
 			m_pirate1Health = m_pirate1.GetComponent<Health>().GetCurrentHealth();
-			Debug.Log("Servers heath: " + m_pirate1Health);
+			Debug.Log("Servers health: " + m_pirate1Health);
 		}
 		if(isServer) {
 			m_hudScript.Pirate1UpdateHUD(m_pirate1Health);
+			Debug.Log("HudUpdate health: " + m_pirate1Health);
 		}
 	}
 
