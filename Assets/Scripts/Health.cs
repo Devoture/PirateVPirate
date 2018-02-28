@@ -32,15 +32,19 @@ public class Health : NetworkBehaviour {
 	public void TakeDamage(int damage) {
 		if(isServer) {
 			RpcTakeDamage(damage);
+			Debug.Log("RPC Take Damage");
 		} else {
-			if(isLocalPlayer)
+			if(isLocalPlayer) {
 				CmdTakeDamage(damage);
+				Debug.Log("CMD Take Damage");
+			}
 		}
 	}
 
 	[Command]
 	public void CmdTakeDamage(int damage) {
 		TakeDamage(damage);
+		Debug.Log("Inside CMD");
 	}
 
 	void Dead() {
