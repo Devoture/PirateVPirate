@@ -95,9 +95,9 @@ public class CharacterMovement : NetworkBehaviour {
 				m_cantTakeDamage = false;
 			}
 
-			if(Input.GetKeyDown(KeyCode.R)) {
-				m_healthScript.TakeDamage(10);
-			}
+			// if(Input.GetKeyDown(KeyCode.R)) {
+			// 	m_healthScript.TakeDamage(10);
+			// }
 		}
 	}
 
