@@ -21,7 +21,7 @@ public class Health : NetworkBehaviour {
 
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
-		m_hudScript.UpdateHUD(this.gameObject);
+		
 		if(m_currHealth <= 0) {
 			Dead();
 		}
@@ -32,19 +32,16 @@ public class Health : NetworkBehaviour {
 		m_playerScript.m_isDead = true;
 		this.gameObject.SetActive(false);
 		GameManager.Instance.CheckGameOver();
-		SceneManager.LoadScene("Lose");
+		if(isLocalPlayer) {
+			SceneManager.LoadScene("Lose");
+		}
 	}
 
 	public int GetCurrentHealth() {
 		return m_currHealth;
 	}
 
-	// public void UpdateHealth(int health) {
-	// 	m_currHealth = health;
-	// 	if(isServer) {
-	// 		m_playerHUD.fillAmount = (float)health / (float)m_maxHealth;
-	// 	} else {
-	// 		m_playerHUD2.fillAmount = (float)health / (float)m_maxHealth;
-	// 	}
-	// }
+	public void UpdateHealth(int health) {
+		m_hudScript.UpdateHUD(this.gameObject, health);
+	}
 }
