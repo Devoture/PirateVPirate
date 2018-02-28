@@ -16,6 +16,7 @@ public class Health : NetworkBehaviour {
 	void Start() {
 		m_currHealth = m_maxHealth;
 		UpdateHUD();
+		m_playerScript = GetComponent<CharacterMovement>();
 		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
 	} 
 
@@ -32,14 +33,14 @@ public class Health : NetworkBehaviour {
 		if(isServer) {
 			RpcTakeDamage(damage);
 		} else {
-			CmdTakeDamage(damage);
+			m_playerScript.CmdTakeDamage(damage);
 		}
 	}
 
-	[Command]
-	public void CmdTakeDamage(int damage) {
-		TakeDamage(damage);
-	}
+	// [Command]
+	// public void CmdTakeDamage(int damage) {
+	// 	TakeDamage(damage);
+	// }
 
 	void Dead() {
 		GameManager.Instance.m_gameStarted = false;
