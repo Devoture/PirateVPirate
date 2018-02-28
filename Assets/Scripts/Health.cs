@@ -12,6 +12,7 @@ public class Health : NetworkBehaviour {
 
 	public CharacterMovement m_playerScript;
 	public HUDScript m_hudScript;
+	[SyncVar]
 	public int m_pirate1Health = 100;
 
 	private GameObject m_pirate1;
