@@ -21,10 +21,15 @@ public class Health : NetworkBehaviour {
 
     public void TakeDamage(int damage) {
     	m_currHealth -= damage;
-		
+		CmdUpdateHUD();
 		if(m_currHealth <= 0) {
 			Dead();
 		}
+	}
+
+	[Command]
+	void CmdUpdateHUD() {
+		m_hudScript.UpdateHUD(this.gameObject);
 	}
 
 	void Dead() {
@@ -41,7 +46,12 @@ public class Health : NetworkBehaviour {
 		return m_currHealth;
 	}
 
-	public void UpdateHealth(int health) {
-		m_hudScript.UpdateHUD(this.gameObject, health);
-	}
+	// public void UpdateHealth(int health) {
+	// 	m_currHealth = health;
+	// 	if(isServer) {
+	// 		m_playerHUD.fillAmount = (float)health / (float)m_maxHealth;
+	// 	} else {
+	// 		m_playerHUD2.fillAmount = (float)health / (float)m_maxHealth;
+	// 	}
+	// }
 }
