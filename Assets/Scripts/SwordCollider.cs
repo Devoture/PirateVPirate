@@ -32,7 +32,7 @@ public class SwordCollider : NetworkBehaviour {
 				}
 				if(!other.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
 					if(!hitPlayer.isServer) {
-						other.GetComponent<CharacterMovement>().CmdTakeDamage(10);
+						hitPlayer.SetCurrentHealth(hitPlayer.GetCurrentHealth() - 10);
 					} else {
 						hitPlayer.TakeDamage(10);
 					}

@@ -34,6 +34,10 @@ public class Health : NetworkBehaviour {
 		}
 	}
 
+	public void SetCurrentHealth(int newHealth) {
+		m_currHealth = newHealth;
+	}
+
 	void Dead() {
 		GameManager.Instance.m_gameStarted = false;
 		m_playerScript.m_isDead = true;
