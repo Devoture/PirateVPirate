@@ -31,11 +31,10 @@ public class SwordCollider : NetworkBehaviour {
 					other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				}
 				if(!other.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
-					if(gameObject.transform.parent.root == isLocalPlayer) {
-						hitPlayer.CmdTakeDamage(10);
-						Debug.Log("Take damage");
-						Debug.Log(hitPlayer.GetCurrentHealth());
-					}
+					//hitPlayer.CmdTakeDamage(10);
+					other.GetComponent<CharacterMovement>().TakeDamage(10);
+					Debug.Log("Take damage");
+					Debug.Log(hitPlayer.GetCurrentHealth());
 					other.GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				}
 			}

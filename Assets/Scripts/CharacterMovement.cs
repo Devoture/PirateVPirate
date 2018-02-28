@@ -101,6 +101,17 @@ public class CharacterMovement : NetworkBehaviour {
 		}
 	}
 
+	public void TakeDamage(int damage) {
+		if(isLocalPlayer) {
+			m_healthScript.CmdTakeDamage(damage);
+		}
+	}
+
+	// [Command]
+	// void CmdTakeDamage(int damage) {
+	// 	m_healthScript.Ta
+	// }
+
 	void OnControllerColliderHit(ControllerColliderHit other) {
 		if(other.gameObject.tag == "Ground") {
 			m_isGrounded = true;
