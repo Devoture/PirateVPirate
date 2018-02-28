@@ -7,16 +7,14 @@ public class Health : NetworkBehaviour {
 
     public const int m_maxHealth = 100;
 
-	[SyncVar]
+//	[SyncVar]
     public int m_currHealth;
 
 	public CharacterMovement m_playerScript;
 	public HUDScript m_hudScript;
 
 	void Start() {
-		// if(isLocalPlayer) {
-		// 	m_currHealth = m_maxHealth;
-		// }
+		m_currHealth = m_maxHealth;
 		UpdateHUD();
 		m_playerScript = GetComponent<CharacterMovement>();
 		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
