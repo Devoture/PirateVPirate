@@ -7,7 +7,7 @@ public class Health : NetworkBehaviour {
 
     public const int m_maxHealth = 100;
 
-	[SyncVar]
+//	[SyncVar]
     public int m_currHealth;
 
 	public CharacterMovement m_playerScript;
