@@ -46,6 +46,10 @@ public class Health : NetworkBehaviour {
 
 	[Command]
 	public void CmdTakeDamage(int damage) {
+		TakeDamage(damage);
+	}
+
+	public void TakeDamage(int damage) {
 		m_currHealth -= damage;
 	}
 

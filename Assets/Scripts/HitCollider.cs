@@ -22,20 +22,20 @@ public class HitCollider : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if((other.name == "Sword" && !m_hasDealtDamage) && this.tag == "Enemy") {
-			if(this.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
-				this.GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
-				this.GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
+			if(GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
+				GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
+				GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
 			} 
-			if(this.GetComponent<CharacterMovement>().m_numOfBlockedAttacks > 3) {
-				this.GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
-				this.GetComponent<CharacterMovement>().m_animController.SetBool("isBlocking", false);
-				this.GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
+			if(GetComponent<CharacterMovement>().m_numOfBlockedAttacks > 3) {
+				GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
+				GetComponent<CharacterMovement>().m_animController.SetBool("isBlocking", false);
+				GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 			}
-			if(!this.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
-				this.GetComponent<CharacterMovement>().TakeDamage(10);
+			if(!GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
+				m_healthScript.CmdTakeDamage(10);
 				Debug.Log("Take damage");
 				Debug.Log(m_healthScript.GetCurrentHealth());
-				this.GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
+				GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				}
 			m_hasDealtDamage = true;
 		}
