@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7287421, g: 0.7882041, b: 0.84953624, a: 1}
+  m_IndirectSpecularColor: {r: 0.7285252, g: 0.7881377, b: 0.8495019, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -968,12 +968,12 @@ Prefab:
         type: 2}
       propertyPath: m_playerHUD1
       value: 
-      objectReference: {fileID: 2108409300}
+      objectReference: {fileID: 0}
     - target: {fileID: 114150404763903094, guid: 26f35325eccc21148a9f6f021585398a,
         type: 2}
       propertyPath: m_playerHUD2
       value: 
-      objectReference: {fileID: 2141848120}
+      objectReference: {fileID: 0}
     - target: {fileID: 114015940436885704, guid: 26f35325eccc21148a9f6f021585398a,
         type: 2}
       propertyPath: m_soundmgr
@@ -1696,13 +1696,3 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e05b3e8a9e80e034c86657cc7993378e, type: 2}
   m_IsPrefabParent: 0
---- !u!223 &2108409300 stripped
-Canvas:
-  m_PrefabParentObject: {fileID: 223843579582147244, guid: 26f35325eccc21148a9f6f021585398a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1098976297}
---- !u!223 &2141848120 stripped
-Canvas:
-  m_PrefabParentObject: {fileID: 223461741508806528, guid: 26f35325eccc21148a9f6f021585398a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1098976297}
