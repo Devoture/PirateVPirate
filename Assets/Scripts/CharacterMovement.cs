@@ -23,7 +23,7 @@ public class CharacterMovement : NetworkBehaviour {
 	private bool m_isGrounded = false;
 	private CharacterController m_controller;
 	public Animator m_animController;
-	public SwordCollider m_swordColliderScript;
+	public HitCollider m_hitColliderScript;
 	private bool m_isAttacking;
 	public Health m_healthScript;
 	private bool m_disableMovement;
@@ -39,7 +39,7 @@ public class CharacterMovement : NetworkBehaviour {
 			gameObject.layer = 9;
 		}
 		m_animController = GetComponent<Animator>();
-		m_swordColliderScript = GetComponentInChildren<SwordCollider>();
+		m_hitColliderScript = GetComponent<HitCollider>();
 	}
 	
 	// Update is called once per frame
@@ -126,7 +126,7 @@ public class CharacterMovement : NetworkBehaviour {
 
 	public void ResetAttack() {
 		m_swordCollider.enabled = false;
-		m_swordColliderScript.m_hasDealtDamage = false;
+		m_hitColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
 	}
 

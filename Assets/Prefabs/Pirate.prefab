@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 82368592285551724}
   - component: {fileID: 114270215283847808}
   - component: {fileID: 114577532585170700}
+  - component: {fileID: 114672266221039290}
   m_Layer: 0
   m_Name: Pirate
   m_TagString: Enemy
@@ -2270,7 +2271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d11192e97a36c42881200f84d66821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hasDealtDamage: 0
 --- !u!114 &114150404763903094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2307,7 +2307,7 @@ MonoBehaviour:
   m_camtarget: {fileID: 0}
   m_isDead: 0
   m_animController: {fileID: 95726428757890608}
-  m_swordColliderScript: {fileID: 114015940436885704}
+  m_hitColliderScript: {fileID: 0}
   m_healthScript: {fileID: 114270215283847808}
 --- !u!114 &114260939808412776
 MonoBehaviour:
@@ -2395,6 +2395,18 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114672266221039290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1104326508843702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc695a806087cd4694993a9168126fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_hasDealtDamage: 0
 --- !u!114 &114888745122349580
 MonoBehaviour:
   m_ObjectHideFlags: 1
