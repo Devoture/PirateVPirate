@@ -33,7 +33,6 @@ public class HitCollider : MonoBehaviour {
 			}
 			if(!GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
 				m_healthScript.CmdTakeDamage(10);
-				Debug.Log("Take damage");
 				Debug.Log(m_healthScript.GetCurrentHealth());
 				GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				}
@@ -43,10 +42,6 @@ public class HitCollider : MonoBehaviour {
 
 		public void ResetBlock() {
 		m_animController.SetBool("isBlocking", false);
-		m_hasDealtDamage = false;
-	}
-		public void ResetAttack() {
-		m_animController.SetBool("isAttacking", false);
 		m_hasDealtDamage = false;
 	}
 }

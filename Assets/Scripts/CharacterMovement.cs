@@ -125,6 +125,7 @@ public class CharacterMovement : NetworkBehaviour {
 	}
 
 	public void ResetAttack() {
+		Debug.Log("hi");
 		m_swordCollider.enabled = false;
 		m_hitColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
