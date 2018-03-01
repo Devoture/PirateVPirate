@@ -17,7 +17,8 @@ public class CharacterMovement : NetworkBehaviour {
 	public bool m_cantTakeDamage = false;
 	public GameObject m_camtarget;
 	public bool m_isDead = false;
-
+	public AudioClip m_swipe1;
+	public AudioClip m_swipe2;
 	private Vector3 m_moveDirection = Vector3.zero;
 	private bool m_isJumping;
 	private bool m_isGrounded = false;
