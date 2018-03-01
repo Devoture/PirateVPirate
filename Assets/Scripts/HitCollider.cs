@@ -21,8 +21,8 @@ public class HitCollider : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if(this.tag == "Enemy") {
-			if(other.name == "Sword" && !m_hasDealtDamage) {
+		if(this.name == "Pirate1") {
+			if(other.name == "Sword" && !other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage) {
 				if(GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
 					GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
 					GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
@@ -38,8 +38,7 @@ public class HitCollider : MonoBehaviour {
 					GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				}
 			}
-		}
-		
+		}	
 		m_hasDealtDamage = true;
 	}
 

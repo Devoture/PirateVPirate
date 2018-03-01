@@ -46,7 +46,9 @@ public class Health : NetworkBehaviour {
 
 	[Command]
 	public void CmdTakeDamage(int damage) {
-		TakeDamage(damage);
+		if(isLocalPlayer) {
+			TakeDamage(damage);
+		}
 	}
 
 	public void TakeDamage(int damage) {

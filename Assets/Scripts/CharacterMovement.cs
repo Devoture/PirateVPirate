@@ -95,25 +95,9 @@ public class CharacterMovement : NetworkBehaviour {
 				m_animController.SetBool("isBlocking", false);
 				m_cantTakeDamage = false;
 			}
-
-			// if(Input.GetKeyDown(KeyCode.R)) {
-			// 	m_healthScript.TakeDamage(10);
-			// }
 		}
 		Debug.Log(m_hitColliderScript.m_hasDealtDamage);
 	}
-
-	public void TakeDamage(int damage) {
-		if(isLocalPlayer) {
-			Debug.Log("in take damage");
-			m_healthScript.CmdTakeDamage(damage);
-		}
-	}
-
-	// [Command]
-	// void CmdTakeDamage(int damage) {
-	// 	m_healthScript.Ta
-	// }
 
 	void OnControllerColliderHit(ControllerColliderHit other) {
 		if(other.gameObject.tag == "Ground") {
