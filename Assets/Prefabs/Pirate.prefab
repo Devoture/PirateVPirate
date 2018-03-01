@@ -2307,7 +2307,7 @@ MonoBehaviour:
   m_camtarget: {fileID: 0}
   m_isDead: 0
   m_animController: {fileID: 95726428757890608}
-  m_hitColliderScript: {fileID: 0}
+  m_hitColliderScript: {fileID: 114672266221039290}
   m_healthScript: {fileID: 114270215283847808}
 --- !u!114 &114260939808412776
 MonoBehaviour:
