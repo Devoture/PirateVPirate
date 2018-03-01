@@ -23,7 +23,7 @@ public class CharacterMovement : NetworkBehaviour {
 	private bool m_isGrounded = false;
 	private CharacterController m_controller;
 	public Animator m_animController;
-	public SwordCollider m_swordColliderScript;
+	public HitCollider m_hitColliderScript;
 	private bool m_isAttacking;
 	public Health m_healthScript;
 	private bool m_disableMovement;
@@ -32,7 +32,6 @@ public class CharacterMovement : NetworkBehaviour {
 	void Start() {
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
-		Camera.main.transform.parent = m_camtarget.transform;
 		if(gameObject.tag == "Player"){
 			gameObject.layer = 8;
 		}
@@ -40,7 +39,7 @@ public class CharacterMovement : NetworkBehaviour {
 			gameObject.layer = 9;
 		}
 		m_animController = GetComponent<Animator>();
-		m_swordColliderScript = GetComponentInChildren<SwordCollider>();
+		m_hitColliderScript = GetComponent<HitCollider>();
 	}
 	
 	// Update is called once per frame
@@ -96,20 +95,29 @@ public class CharacterMovement : NetworkBehaviour {
 				m_cantTakeDamage = false;
 			}
 
-			if(Input.GetKeyDown(KeyCode.R)) {
-				m_healthScript.TakeDamage(10);
-			}
+			// if(Input.GetKeyDown(KeyCode.R)) {
+			// 	m_healthScript.TakeDamage(10);
+			// }
+		}
+		Debug.Log("Is local: " + isLocalPlayer);
+	}
+
+	public void TakeDamage(int damage) {
+		if(isLocalPlayer) {
+			Debug.Log("in take damage");
+			m_healthScript.CmdTakeDamage(damage);
 		}
 	}
+
+	// [Command]
+	// void CmdTakeDamage(int damage) {
+	// 	m_healthScript.Ta
+	// }
 
 	void OnControllerColliderHit(ControllerColliderHit other) {
 		if(other.gameObject.tag == "Ground") {
 			m_isGrounded = true;
 		}
-	}
-
-	public void CmdTakeDamage(int damage) {
-		m_healthScript.TakeDamage(damage);
 	}
 
 	void BlockedAttack() {
@@ -118,15 +126,13 @@ public class CharacterMovement : NetworkBehaviour {
 
 	public void ResetAttack() {
 		m_swordCollider.enabled = false;
-		m_swordColliderScript.m_hasDealtDamage = false;
+		m_hitColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
 	}
 
 	public void GameOver() {
 		if(isLocalPlayer) {
-			if(m_isDead) {
-				SceneManager.LoadScene("Lose");
-			} else {
+			if(!m_isDead) {
 				SceneManager.LoadScene("Win");
 			}
 		}

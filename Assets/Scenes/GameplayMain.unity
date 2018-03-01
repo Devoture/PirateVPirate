@@ -959,11 +959,10 @@ Prefab:
       propertyPath: m_lobbyCanvas
       value: 
       objectReference: {fileID: 569524025}
-    - target: {fileID: 114686549231561614, guid: 3bf71148fcd34f94eb15bfd2b08fa028,
-        type: 2}
-      propertyPath: m_readyButton
-      value: 
-      objectReference: {fileID: 758858734}
+    - target: {fileID: 1144350204372266, guid: 3bf71148fcd34f94eb15bfd2b08fa028, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bf71148fcd34f94eb15bfd2b08fa028, type: 2}
   m_IsPrefabParent: 0

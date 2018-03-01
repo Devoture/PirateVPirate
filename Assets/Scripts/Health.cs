@@ -6,28 +6,48 @@ using UnityEngine.SceneManagement;
 public class Health : NetworkBehaviour {
 
     public const int m_maxHealth = 100;
-	public Image m_playerHUD;
-	public Image m_playerHUD2;
 
-	[SyncVar(hook = "UpdateHealth")]
+	[SyncVar(hook = "ChangeHealth")]
     public int m_currHealth;
 
 	public CharacterMovement m_playerScript;
+	public HUDScript m_hudScript;
+
+	void Awake() {
+		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
+	}
 
 	void Start() {
 		m_currHealth = m_maxHealth;
+		//UpdateHUD();
 		m_playerScript = GetComponent<CharacterMovement>();
-	}
+	} 
 
-    public void TakeDamage(int damage) {
-    	m_currHealth -= damage;
-		if(m_currHealth <= 0) {
-			Dead();
-		}
-	}
+	// [ClientRpc]
+    // public void RpcTakeDamage(int damage) {
+    // 	m_currHealth -= damage;
+	// 	//UpdateHUD();
+	// 	if(m_currHealth <= 0) {
+	// 		Dead();
+	// 	}
+	// }
 
-	void Update() {
-		m_playerHUD.fillAmount = (float)m_currHealth / (float)m_maxHealth;
+	// public void TakeDamage(int damage) {
+	// 	if(!isServer) {
+	// 		RpcTakeDamage(damage);
+	// 		Debug.Log("RPC Take Damage");
+	// 		return;
+	// 	} else {
+	// 		CmdTakeDamage(damage);
+	// 		Debug.Log("CMD Take Damage");
+	// 	}
+	// 	m_currHealth -= damage;
+	// }
+
+	[Command]
+	public void CmdTakeDamage(int damage) {
+		m_currHealth -= damage;
+		Debug.Log("Inside CMD");
 	}
 
 	void Dead() {
@@ -42,12 +62,8 @@ public class Health : NetworkBehaviour {
 		return m_currHealth;
 	}
 
-	public void UpdateHealth(int health) {
+	public void ChangeHealth(int health) {
 		m_currHealth = health;
-		if(isServer) {
-			m_playerHUD.fillAmount = (float)health / (float)m_maxHealth;
-		} else {
-			m_playerHUD2.fillAmount = (float)health / (float)m_maxHealth;
-		}
+		m_hudScript.UpdateHUD(this.gameObject);
 	}
 }
