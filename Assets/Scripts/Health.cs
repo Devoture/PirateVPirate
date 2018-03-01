@@ -47,7 +47,6 @@ public class Health : NetworkBehaviour {
 	[Command]
 	public void CmdTakeDamage(int damage) {
 		m_currHealth -= damage;
-		Debug.Log("Inside CMD");
 	}
 
 	void Dead() {

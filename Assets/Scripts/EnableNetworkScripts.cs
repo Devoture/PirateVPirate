@@ -20,12 +20,4 @@ public class EnableNetworkScripts : NetworkBehaviour {
 		GetComponent<Health>().m_currHealth = 100;
 		GetComponent<Health>().m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
 	}
-
-	// public void SetupHUD() {
-	// 	if(isServer) {
-	// 		m_playerHUD1.gameObject.SetActive(true);
-	// 	} else {
-	// 		m_playerHUD2.gameObject.SetActive(true);
-	// 	}
-	// }
 }
