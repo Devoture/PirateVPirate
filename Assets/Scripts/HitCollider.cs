@@ -45,4 +45,8 @@ public class HitCollider : MonoBehaviour {
 		m_animController.SetBool("isBlocking", false);
 		m_hasDealtDamage = false;
 	}
+		public void ResetAttack() {
+		m_animController.SetBool("isAttacking", false);
+		m_hasDealtDamage = false;
+	}
 }
