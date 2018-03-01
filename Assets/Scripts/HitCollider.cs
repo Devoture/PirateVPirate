@@ -11,7 +11,8 @@ public class HitCollider : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		m_healthScript = GetComponent<Health>();
+		m_animController = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -38,5 +39,10 @@ public class HitCollider : MonoBehaviour {
 				}
 			m_hasDealtDamage = true;
 		}
+	}
+
+		public void ResetBlock() {
+		m_animController.SetBool("isBlocking", false);
+		m_hasDealtDamage = false;
 	}
 }
