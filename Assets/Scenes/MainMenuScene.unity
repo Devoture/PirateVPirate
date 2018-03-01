@@ -1635,11 +1635,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "YO HO YOU ROTTEN SCALLEYWAGS!\nThis be a Pirates Duel! the most action
-    packed battle between pirates \non the seven seas! you and your opponent will
+  m_Text: "YO HO YOU ROTTEN SCALLEYWAGS!\nThis be a Pirates Duel! The most action
+    packed battle between pirates \non the seven seas! You and your opponent will
     be clashing \non a majestic pirate schooner,each attempting to kill the other.
     \nLeft click will swing your sword, while right click blocks\na max of 3 attacks
-    before breaking.see if you can\n outwit and out-fight your Scurvy opponent! \nYARRRRRRRRRRRRRRR\n"
+    before breaking. See if you can\n outwit and out-fight your scurvy opponent! \nYARRRRRRRRRRRRRRR!!!!!\n\n"
 --- !u!222 &1440622854
 CanvasRenderer:
   m_ObjectHideFlags: 0
