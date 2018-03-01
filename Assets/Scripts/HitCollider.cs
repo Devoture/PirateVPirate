@@ -21,7 +21,7 @@ public class HitCollider : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if(other.name == "Sword" && !m_hasDealtDamage) {
+		if((other.name == "Sword" && !m_hasDealtDamage) && this.tag == "Enemy") {
 			if(this.GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
 				this.GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
 				this.GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
