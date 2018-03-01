@@ -39,10 +39,6 @@ public class SoundMGR : MonoBehaviour {
 	// 	}
 	// }
 	
-	public void SwordSwipe()
-	{
-		
-	}
 	
 	public void SwordBlock(){
 		m_PlayerSource.PlayOneShot(m_blockHit);
