@@ -75,9 +75,10 @@ public class CharacterMovement : NetworkBehaviour {
 
 				if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
 					m_swipeSound();
-					if(isLocalPlayer) {
-						CmdSetSwordCollider(true);
-					}
+					// if(isLocalPlayer) {
+					// 	CmdSetSwordCollider(true);
+					// }
+					m_swordCollider.enabled = true;
 					m_animController.SetBool("isAttacking", true);
 					m_isAttacking = true;
 				}
