@@ -162,6 +162,8 @@ public class CharacterMovement : NetworkBehaviour {
 		if(isLocalPlayer) {
 			if(!m_isDead) {
 				SceneManager.LoadScene("Win");
+			} else {
+				SceneManager.LoadScene("Lose");
 			}
 		}
 	}

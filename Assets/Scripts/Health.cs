@@ -31,27 +31,24 @@ public class Health : NetworkBehaviour {
 		m_currHealth = m_maxHealth;
 	}
 
-	// [Command]
-	// public void CmdTakeDamage(int damage) {
-	// 	if(isLocalPlayer) {
-	// 		Debug.Log("Poop");
-	// 		TakeDamage(damage);
-	// 	} else {
-	// 		Debug.Log("ASASA");
-	// 	}
-	// }
-
 	public void TakeDamage(int damage) {
 		if(!isServer) {
 			CmdTakeDamage(damage);
 		}
-
 		m_currHealth -= damage;
+		if(m_currHealth <= 0) {
+			gameObject.SetActive(false);
+			GameManager.Instance.CheckGameOver();
+		}
 	}
 
 	[Command]
 	public void CmdTakeDamage(int damage) {
 		m_currHealth -= damage;
+		if(m_currHealth <= 0) {
+			gameObject.SetActive(false);
+			GameManager.Instance.CheckGameOver();
+		}
 	}
 
 	void Dead() {
