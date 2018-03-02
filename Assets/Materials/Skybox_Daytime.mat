@@ -69,7 +69,11 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+<<<<<<< HEAD
     - _Rotation: 1.943883
+=======
+    - _Rotation: 21.36772
+>>>>>>> 5076e168f990aada82c768bdfb0f6659a9a3b032
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
