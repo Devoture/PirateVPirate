@@ -47,6 +47,24 @@ public class HitCollider : MonoBehaviour {
 					GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				}
 			}
+		} else if (this.name == "Pirate2") {
+			if(other.name == "Sword" && !other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage) {
+				if(GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
+					m_swordAudSrc.PlayOneShot(m_clash1);
+					GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
+					GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
+				} 
+				if(GetComponent<CharacterMovement>().m_numOfBlockedAttacks > 3) {
+					GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
+					GetComponent<CharacterMovement>().m_animController.SetBool("isBlocking", false);
+					GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
+				}
+				if(!GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
+					m_healthScript.CmdTakeDamage(10);
+					Debug.Log(m_healthScript.GetCurrentHealth());
+					GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
+				}
+			}
 		}	
 		m_hasDealtDamage = true;
 	}

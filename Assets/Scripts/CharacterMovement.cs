@@ -80,7 +80,6 @@ public class CharacterMovement : NetworkBehaviour {
 
 				if(Input.GetMouseButtonUp(0)) {
 					m_animController.SetBool("isAttacking", false);
-					m_hitColliderScript.m_hasDealtDamage = false;
 				}
 			}
 
