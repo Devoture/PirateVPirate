@@ -29,9 +29,9 @@ public class GameManager : MonoBehaviour {
 		}
 		if (!m_players.Contains(Player)) {
 			m_players.Add(Player);
+			m_numPlayersActive++;
+			Player.name = "Pirate" + m_numPlayersActive;
 		}
-		m_numPlayersActive++;
-		Player.name = "Pirate" + m_numPlayersActive;
 		m_gameStartingIn.text = m_numPlayersActive + "/2";
 		m_countDownText.text = "Waiting for players...";
 	}
