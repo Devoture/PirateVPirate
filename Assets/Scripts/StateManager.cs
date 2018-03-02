@@ -4,17 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class StateManager : MonoBehaviour {
+
+public static StateManager Instance { get { return m_instance; } }
+
+private static StateManager m_instance;
 public GameObject m_maincam;
 private GameObject m_activeState;
 public GameObject[] m_gameStates;
+public GameObject m_gameOptions;
+public GameObject m_HelpCanvas;
 
+	private void Awake() {
+		m_instance = this;
+	}
 	// Use this for initialization
 	void Start () {
-		int numStates = m_gameStates.Length;
+		DisableOptionScreen();
+		m_HelpCanvas.SetActive(false);
+		// int numStates = m_gameStates.Length;
 
-		for(int i = 0; i < numStates; i++){
-			m_gameStates[i].SetActive(false);
-		}
+		// for(int i = 0; i < numStates; i++){
+		// 	m_gameStates[i].SetActive(false);
+		// }
 
 		m_activeState = m_gameStates[1];
 		m_activeState.SetActive(true);
@@ -38,5 +49,23 @@ public GameObject[] m_gameStates;
 		m_activeState.SetActive(false);
 		m_activeState = m_gameStates[1];
 		m_activeState.SetActive(true);
+	}
+	public void EnableOptionScreen(){
+		m_gameOptions.SetActive(true);
+	}
+	public void DisableOptionScreen(){
+		m_gameOptions.SetActive(false);
+	}
+	public void EnableHelp(){
+		DisableOptionScreen();
+		m_HelpCanvas.SetActive(true);
+	}
+	public void DisableHelp(){
+		EnableOptionScreen();
+		m_HelpCanvas.SetActive(false);
+	}
+	public void DisableAll(){
+		DisableOptionScreen();
+		m_HelpCanvas.SetActive(false);
 	}
 }
