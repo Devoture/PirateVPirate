@@ -52,7 +52,7 @@ public class HitCollider : NetworkBehaviour {
 		}	
 	}
 
-		public void ResetBlock() {
+	public void ResetBlock() {
 		m_animController.SetBool("isBlocking", false);
 		m_hasDealtDamage = false;
 	}
