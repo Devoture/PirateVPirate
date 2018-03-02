@@ -1560,6 +1560,14 @@ Prefab:
       propertyPath: m_lobbyCanvas
       value: 
       objectReference: {fileID: 569524025}
+    - target: {fileID: 1572476146249824, guid: 3bf71148fcd34f94eb15bfd2b08fa028, type: 2}
+      propertyPath: m_Name
+      value: Pirate1Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501176258549292, guid: 3bf71148fcd34f94eb15bfd2b08fa028, type: 2}
+      propertyPath: m_Name
+      value: Pirate2Name
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bf71148fcd34f94eb15bfd2b08fa028, type: 2}
   m_IsPrefabParent: 0
