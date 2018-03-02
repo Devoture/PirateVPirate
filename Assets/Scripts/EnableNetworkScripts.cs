@@ -10,6 +10,7 @@ public class EnableNetworkScripts : NetworkBehaviour {
 
 	void Start() {
 		if(isLocalPlayer) {
+			GetComponent<HitCollider>().enabled = true;
 			GetComponent<Health>().enabled = true;
 			GetComponent<CharacterMovement>().enabled = true;
 			this.gameObject.tag = "Player";
