@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour {
 			RotateBehindTarget();
 		}
 
-		if(m_target != null) {
+		if(m_target != null && m_head != null) {
 			//Gets the mouse position
 			m_xDeg += Input.GetAxis("Mouse X") * m_rotateSpeed;
 			m_yDeg -= Input.GetAxis("Mouse Y") * m_rotateSpeed;

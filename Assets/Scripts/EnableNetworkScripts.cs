@@ -19,7 +19,6 @@ public class EnableNetworkScripts : NetworkBehaviour {
 		}
 		
 		GameManager.Instance.AddPlayer(gameObject);
-		GetComponent<Health>().m_currHealth = 100;
-		GetComponent<Health>().m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
+		GetComponent<Health>().m_hudScript = GameManager.Instance.m_hudScript;
 	}
 }
