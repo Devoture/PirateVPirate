@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 114672266221039290}
   m_Layer: 0
   m_Name: Pirate
-  m_TagString: EnemySword
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1013,7 +1013,7 @@ GameObject:
   - component: {fileID: 82144047937662998}
   m_Layer: 0
   m_Name: Sword
-  m_TagString: Untagged
+  m_TagString: EnemySword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
