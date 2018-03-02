@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
 	public Button m_readyButton;
 	public List<GameObject> m_players = new List<GameObject>();
 	public GameObject m_host = null;
+	public Text m_pirateNameText1;
+	public Text m_pirateNameText2;
 
 	private static GameManager m_instance;
 	private bool m_canStartCoroutine = true;
@@ -86,6 +88,11 @@ public class GameManager : MonoBehaviour {
 			m_gameStartingIn.gameObject.SetActive(false);
 			m_countDownText.gameObject.SetActive(false);
 			m_lobbyCanvas.gameObject.SetActive(false);
+			if(m_pirateName1 != null) {
+				m_pirateNameText1.text = m_pirateName1;
+			} else if(m_pirateName2 != null) {
+				m_pirateNameText2.text = m_pirateName2;
+			}
 		}
     }
 }
