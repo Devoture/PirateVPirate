@@ -34,16 +34,15 @@ public class Health : NetworkBehaviour {
 	// }
 
 	public void TakeDamage(int damage) {
-		if(!isServer) {
-			m_currHealth -= damage;
-		} else {
-			CmdTakeDamage(damage);
-		}
+		if(!isServer)
+			return;
+
+		m_currHealth -= damage;
 	}
 
 	[Command]
 	public void CmdTakeDamage(int damage) {
-		TakeDamage(damage);
+		m_currHealth -= damage;
 	}
 
 	void Dead() {
