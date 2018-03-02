@@ -49,10 +49,10 @@ public class HitCollider : MonoBehaviour {
 						Debug.Log(m_healthScript.GetCurrentHealth());
 						hitMovement.m_numOfBlockedAttacks = 0;
 					}
+					m_hasDealtDamage = true;
 				}
 			}
 		}	
-		m_hasDealtDamage = true;
 	}
 
 		public void ResetBlock() {
