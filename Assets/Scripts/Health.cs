@@ -18,10 +18,18 @@ public class Health : NetworkBehaviour {
 	}
 
 	void Start() {
+		if(!isServer) {
+			CmdSetHealthAtStart();
+		}
 		m_currHealth = m_maxHealth;
 		//UpdateHUD();
 		m_playerScript = GetComponent<CharacterMovement>();
-	} 
+	}
+
+	[Command]
+	public void CmdSetHealthAtStart() {
+		m_currHealth = m_maxHealth;
+	}
 
 	// [Command]
 	// public void CmdTakeDamage(int damage) {
