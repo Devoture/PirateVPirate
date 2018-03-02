@@ -18,7 +18,6 @@ public class EnableNetworkScripts : NetworkBehaviour {
 			Camera.main.transform.GetComponent<CameraController>().m_head = m_head;
 			Camera.main.transform.parent = m_head.transform;
 		}
-		
 		GameManager.Instance.AddPlayer(gameObject);
 		GetComponent<Health>().m_hudScript = GameManager.Instance.m_hudScript;
 	}
