@@ -37,8 +37,7 @@ public class Health : NetworkBehaviour {
 		}
 		m_currHealth -= damage;
 		if(m_currHealth <= 0) {
-			gameObject.SetActive(false);
-			GameManager.Instance.CheckGameOver();
+			Dead();
 		}
 	}
 
@@ -46,17 +45,15 @@ public class Health : NetworkBehaviour {
 	public void CmdTakeDamage(int damage) {
 		m_currHealth -= damage;
 		if(m_currHealth <= 0) {
-			gameObject.SetActive(false);
-			GameManager.Instance.CheckGameOver();
+			Dead();
 		}
 	}
 
 	void Dead() {
-		GameManager.Instance.m_gameStarted = false;
+		//GameManager.Instance.m_gameStarted = false;
 		m_playerScript.m_isDead = true;
-		this.gameObject.SetActive(false);
+		gameObject.SetActive(false);
 		GameManager.Instance.CheckGameOver();
-		SceneManager.LoadScene("Lose");
 	}
 
 	public int GetCurrentHealth() {
