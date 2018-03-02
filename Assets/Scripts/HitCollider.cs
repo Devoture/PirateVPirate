@@ -13,7 +13,7 @@ public class HitCollider : NetworkBehaviour {
 	public AudioClip m_swipe1;
 	public AudioClip m_swipe2;
 	public AudioSource m_swordAudSrc;
-	
+
 	private float m_damage = 10.0f;
 	private Animator m_animController;
 	private Health m_healthScript;
@@ -44,7 +44,6 @@ public class HitCollider : NetworkBehaviour {
 					if(!m_animController.GetBool("isBlocking")) {
 						HurtSound();
 						m_healthScript.TakeDamage(10);
-						Debug.Log(m_healthScript.GetCurrentHealth());
 						m_characterScript.m_numOfBlockedAttacks = 0;
 					}
 					other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage = true;
