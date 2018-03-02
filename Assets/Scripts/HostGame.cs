@@ -9,6 +9,7 @@ public class HostGame : MonoBehaviour {
 	private uint roomSize = 6;
 	private string roomName;
 	private NetworkManager networkManager;
+	
 	void Start() {
 		networkManager = NetworkManager.singleton;
 		if(networkManager.matchMaker == null) {
@@ -18,6 +19,7 @@ public class HostGame : MonoBehaviour {
 
 	public void SetRoomName(string _name) {
 		roomName = _name;
+		Debug.Log(_name);
 	}
 	
 	public void CreateRoom() {
