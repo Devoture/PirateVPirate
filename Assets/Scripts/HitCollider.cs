@@ -18,18 +18,13 @@ public class HitCollider : NetworkBehaviour {
 	private Health m_healthScript;
 	private int m_randNum;
 
-	// Use this for initialization
 	void Start () {
 		m_healthScript = GetComponent<Health>();
 		m_animController = GetComponent<Animator>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	void OnTriggerEnter(Collider other) {
+		Debug.Log(other.gameObject.tag);
 		if(other.gameObject.tag == "EnemySword") { //&& !other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage
 			Debug.Log("EnemySword Hit me");
 			if(isLocalPlayer) {
