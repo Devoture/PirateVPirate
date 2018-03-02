@@ -43,7 +43,7 @@ public class Health : NetworkBehaviour {
 
 	[Command]
 	public void CmdTakeDamage(int damage) {
-		m_currHealth -= damage;
+		TakeDamage(damage);
 	}
 
 	void Dead() {
