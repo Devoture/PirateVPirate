@@ -30,7 +30,7 @@ public class HitCollider : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if(this.name == "Pirate1") {
-			if(other.name == "Sword" && (!other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage && other.transform.root.name == "Pirate2")) {
+			if(other.name == "Sword" && (!other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage && other.transform.root.name == "Enemy")) {
 				if(GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
 					m_swordAudSrc.PlayOneShot(m_clash1);
 					GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
@@ -48,7 +48,7 @@ public class HitCollider : MonoBehaviour {
 				}
 			}
 		} else if (this.name == "Pirate2") {
-			if(other.name == "Sword" && (!other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage && other.transform.root.name == "Pirate1")) {
+			if(other.name == "Sword" && (!other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage && other.transform.root.tag == "Enemy")) {
 				if(GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
 					m_swordAudSrc.PlayOneShot(m_clash1);
 					GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
