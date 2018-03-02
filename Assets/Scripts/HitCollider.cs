@@ -16,9 +16,11 @@ public class HitCollider : NetworkBehaviour {
 	private float m_damage = 10.0f;
 	private Animator m_animController;
 	private Health m_healthScript;
+	private CharacterMovement m_characterScript;
 	private int m_randNum;
 
 	void Start () {
+		m_characterScript = GetComponent<CharacterMovement>();
 		m_healthScript = GetComponent<Health>();
 		m_animController = GetComponent<Animator>();
 	}
@@ -31,26 +33,26 @@ public class HitCollider : NetworkBehaviour {
 				Debug.Log("Is local");
 				CharacterMovement hitMovement = other.transform.root.GetComponent<CharacterMovement>();
 				if(hitMovement != null ) {
-					if(hitMovement.m_animController.GetBool("isBlocking")) {
+					if(m_animController.GetBool("isBlocking")) {
 						Debug.Log("Blocked attack");
 						m_swordAudSrc.PlayOneShot(m_clash1);
-						hitMovement.m_numOfBlockedAttacks++;
-						hitMovement.m_animController.SetBool("blockedAttack", true);
+						m_characterScript.m_numOfBlockedAttacks++;
+						m_animController.SetBool("blockedAttack", true);
 					} 
-					if(hitMovement.m_numOfBlockedAttacks > 3) {
+					if(m_characterScript.m_numOfBlockedAttacks > 3) {
 						Debug.Log("Blocked attack was more than 3 so reset");
-						hitMovement.m_animController.SetBool("blockedAttack", true);
-						hitMovement.m_animController.SetBool("isBlocking", false);
-						hitMovement.m_numOfBlockedAttacks = 0;
+						m_animController.SetBool("blockedAttack", true);
+						m_animController.SetBool("isBlocking", false);
+						m_characterScript.m_numOfBlockedAttacks = 0;
 					}
-					if(!hitMovement.m_animController.GetBool("isBlocking")) {
+					if(!m_animController.GetBool("isBlocking")) {
 						Debug.Log("hit player");
 						HurtSound();
 						m_healthScript.TakeDamage(10);
 						Debug.Log(m_healthScript.GetCurrentHealth());
-						hitMovement.m_numOfBlockedAttacks = 0;
+						m_characterScript.m_numOfBlockedAttacks = 0;
 					}
-					m_hasDealtDamage = true;
+					other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage = true;
 				}
 			}
 		}	
