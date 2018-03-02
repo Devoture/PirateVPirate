@@ -34,14 +34,21 @@ public class Health : NetworkBehaviour {
 	// }
 
 	public void TakeDamage(int damage) {
-		if(!isServer)
-			return;
-
-		m_currHealth -= damage;
+		if(isLocalPlayer) {
+			CmdTakeDamage(damage);
+			if(isServer) {
+				RpcTakeDamage(damage);
+			}
+		}
 	}
 
 	[Command]
 	public void CmdTakeDamage(int damage) {
+		m_currHealth -= damage;
+	}
+
+	[ClientRpc]
+	public void RpcTakeDamage(int damage) {
 		m_currHealth -= damage;
 	}
 
