@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
 
-    public static bool m_isOn = false;
-
     private NetworkManager m_networkManager;
 
     void Start() {

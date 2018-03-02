@@ -13,6 +13,7 @@ public class HitCollider : NetworkBehaviour {
 	public AudioClip m_swipe1;
 	public AudioClip m_swipe2;
 	public AudioSource m_swordAudSrc;
+	
 	private float m_damage = 10.0f;
 	private Animator m_animController;
 	private Health m_healthScript;
@@ -26,27 +27,21 @@ public class HitCollider : NetworkBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		Debug.Log(other.gameObject.tag);
 		if(other.gameObject.tag == "EnemySword" && !other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage) {
-			Debug.Log("EnemySword Hit me");
 			if(isLocalPlayer) {
-				Debug.Log("Is local");
 				CharacterMovement hitMovement = other.transform.root.GetComponent<CharacterMovement>();
-				if(hitMovement != null ) {
+				if(hitMovement != null) {
 					if(m_animController.GetBool("isBlocking")) {
-						Debug.Log("Blocked attack");
 						m_swordAudSrc.PlayOneShot(m_clash1);
 						m_characterScript.m_numOfBlockedAttacks++;
 						m_animController.SetBool("blockedAttack", true);
 					} 
 					if(m_characterScript.m_numOfBlockedAttacks > 3) {
-						Debug.Log("Blocked attack was more than 3 so reset");
 						m_animController.SetBool("blockedAttack", true);
 						m_animController.SetBool("isBlocking", false);
 						m_characterScript.m_numOfBlockedAttacks = 0;
 					}
 					if(!m_animController.GetBool("isBlocking")) {
-						Debug.Log("hit player");
 						HurtSound();
 						m_healthScript.TakeDamage(10);
 						Debug.Log(m_healthScript.GetCurrentHealth());
@@ -63,15 +58,15 @@ public class HitCollider : NetworkBehaviour {
 		m_hasDealtDamage = false;
 	}
 
-	public void HurtSound(){
+	public void HurtSound() {
 		m_randNum = Random.Range(1, 4);
-		if(m_randNum == 1){
+		if(m_randNum == 1) {
 			m_swordAudSrc.PlayOneShot(m_hit1);
 		}
-		if(m_randNum == 2){
+		if(m_randNum == 2) {
 			m_swordAudSrc.PlayOneShot(m_hit2);
 		}
-		if(m_randNum == 3){
+		if(m_randNum == 3) {
 			m_swordAudSrc.PlayOneShot(m_hit3);
 		}
 	}

@@ -15,6 +15,5 @@ public class WinLoseManager : MonoBehaviour {
 
 	public void PlayAgain() {
 		SceneManager.LoadScene("MainMenuScene");
-		// TODO: maybe make reset function to reset all gamemanager variables
 	}
 }

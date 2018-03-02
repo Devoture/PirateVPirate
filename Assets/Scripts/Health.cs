@@ -13,16 +13,11 @@ public class Health : NetworkBehaviour {
 	public CharacterMovement m_playerScript;
 	public HUDScript m_hudScript;
 
-	void Awake() {
-		//m_hudScript = GameManager.Instance.m_hudScript;
-	}
-
 	void Start() {
 		if(!isServer) {
 			CmdSetHealthAtStart();
 		}
 		m_currHealth = m_maxHealth;
-		//UpdateHUD();
 		m_playerScript = GetComponent<CharacterMovement>();
 	}
 
@@ -50,7 +45,6 @@ public class Health : NetworkBehaviour {
 	}
 
 	void Dead() {
-		//GameManager.Instance.m_gameStarted = false;
 		m_playerScript.m_isDead = true;
 		gameObject.SetActive(false);
 		GameManager.Instance.CheckGameOver();

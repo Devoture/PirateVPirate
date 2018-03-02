@@ -13,9 +13,9 @@ public class GameManager : MonoBehaviour {
 	public Canvas m_hud;
 	public HUDScript m_hudScript;
 	public Button m_readyButton;
+	public List<GameObject> m_players = new List<GameObject>();
 
 	private static GameManager m_instance;
-	public List<GameObject> m_players = new List<GameObject>();
 	private bool m_canStartCoroutine = true;
 	private int m_numPlayersActive = 0;
 	private int m_countDown = 3;
@@ -37,17 +37,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void Awake() {
-		//DontDestroyOnLoad(transform.gameObject);
 		m_instance = this;
 		m_gameStartingIn.text = m_numPlayersActive + "/2";
 	}
 
-	// void Start() {
-	// 	m_wantedMode = CursorLockMode.Locked;
-	// }
-
 	void Update() {
-		if(m_countDown >= 0 && m_numPlayersActive >= 1) {
+		if(m_countDown >= 0 && m_numPlayersActive >= 2) {
 			StartGame();
 		}
 	}
@@ -68,21 +63,10 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	// public void ReadyUp() {
-	// 	for(int i = 0; i < m_players.Count; i++) {
-	// 		if(!m_players[i].GetComponent<CharacterMovement>().m_hasClicked) {
-	// 			m_players[i].GetComponent<CharacterMovement>().m_hasClicked = true;
-	// 			m_numReadyPlayers++;
-	// 			m_gameStartingIn.text = m_numReadyPlayers + "/2";
-	// 		}
-	// 	}
-	// }
-
 	IEnumerator CountDown() {
         yield return new WaitForSeconds(1);
 		m_canStartCoroutine = true;
 		if(m_countDown > 0) {
-//			m_readyButton.gameObject.SetActive(false);
 			m_gameStartingIn.text = "Game Starting In";
 			m_countDownText.text = m_countDown.ToString();
 			m_countDown--;
