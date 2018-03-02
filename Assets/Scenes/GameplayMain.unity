@@ -808,6 +808,7 @@ Transform:
   - {fileID: 574393420}
   - {fileID: 1483198612}
   - {fileID: 1860444673}
+  - {fileID: 508984673}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1680,10 +1681,6 @@ Prefab:
       propertyPath: m_lobbyCanvas
       value: 
       objectReference: {fileID: 569524025}
-    - target: {fileID: 1144350204372266, guid: 3bf71148fcd34f94eb15bfd2b08fa028, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bf71148fcd34f94eb15bfd2b08fa028, type: 2}
   m_IsPrefabParent: 0
@@ -1693,6 +1690,34 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 488796892}
   m_Script: {fileID: 11500000, guid: 9c7149d7a7c173247b1bd0e67ce138bc, type: 3}
+--- !u!1 &508984672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 508984673}
+  m_Layer: 0
+  m_Name: Win
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &508984673
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 508984672}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 304826209}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &569524022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,7 +2964,7 @@ GameObject:
   - component: {fileID: 1106681277}
   m_Layer: 0
   m_Name: angledCollider
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4439,13 +4464,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 64f5b0242b7e7514f83d3d914e60f711, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.827
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 203
+  Priority: 222
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

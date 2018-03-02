@@ -23,17 +23,18 @@ public class Health : NetworkBehaviour {
 		m_playerScript = GetComponent<CharacterMovement>();
 	} 
 
+	// [Command]
+	// public void CmdTakeDamage(int damage) {
+	// 	if(isLocalPlayer) {
+	// 		Debug.Log("Poop");
+	// 		TakeDamage(damage);
+	// 	} else {
+	// 		Debug.Log("ASASA");
+	// 	}
+	// }
+
 	[Command]
 	public void CmdTakeDamage(int damage) {
-		if(isLocalPlayer) {
-			Debug.Log("Poop");
-			TakeDamage(damage);
-		} else {
-			Debug.Log("ASASA");
-		}
-	}
-
-	public void TakeDamage(int damage) {
 		m_currHealth -= damage;
 	}
 
@@ -51,6 +52,6 @@ public class Health : NetworkBehaviour {
 
 	public void ChangeHealth(int health) {
 		m_currHealth = health;
-		m_hudScript.UpdateHUD(this.gameObject);
+		m_hudScript.UpdateHUD(this.gameObject, health);
 	}
 }
