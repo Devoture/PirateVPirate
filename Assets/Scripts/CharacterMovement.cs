@@ -8,7 +8,7 @@ public class CharacterMovement : NetworkBehaviour {
 	public float m_speed = 5.0f;
 	public float m_speedMultiplier = 1.0f;
 	public float m_gravity = 20.0f;
-	public SoundMGR m_soundManager;
+	public AudioSource m_swordSource;
 	public bool m_hasClicked = false;
 	public float m_jumpSpeed = 8.0f;
 	public float m_verticalVelocity;
@@ -28,7 +28,7 @@ public class CharacterMovement : NetworkBehaviour {
 	private bool m_isAttacking;
 	public Health m_healthScript;
 	private bool m_disableMovement;
-
+	private int randNum;
 	// Use this for initialization
 	void Start() {
 		m_controller = GetComponent<CharacterController>();
@@ -73,6 +73,7 @@ public class CharacterMovement : NetworkBehaviour {
 				m_controller.Move(m_moveDirection * Time.deltaTime);
 
 				if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
+					m_swipeSound();
 					m_swordCollider.enabled = true;			
 					m_animController.SetBool("isAttacking", true);
 					m_isAttacking = true;
@@ -97,7 +98,16 @@ public class CharacterMovement : NetworkBehaviour {
 			}
 		}
 	}
+	public void m_swipeSound(){
+		randNum = Random.Range(1,3);
 
+		if(randNum == 1){
+			m_swordSource.PlayOneShot(m_swipe1);
+		}
+		if(randNum == 2){
+			m_swordSource.PlayOneShot(m_swipe2);
+		}
+	}
 	void OnControllerColliderHit(ControllerColliderHit other) {
 		if(other.gameObject.tag == "Ground") {
 			m_isGrounded = true;
