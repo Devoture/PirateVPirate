@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour {
 	private int m_countDown = 3;
 	private int m_numReadyPlayers = 0;
 	private CursorLockMode m_wantedMode;
+	private string m_pirateName1 = null;
+	private string m_pirateName2 = null;
 
 	public void AddPlayer(GameObject Player) {
 		if (m_host == null) {
@@ -34,6 +36,14 @@ public class GameManager : MonoBehaviour {
 		}
 		m_gameStartingIn.text = m_numPlayersActive + "/2";
 		m_countDownText.text = "Waiting for players...";
+	}
+
+	public void SetPirateName(string name) {
+		if(m_pirateName1 == null) {
+			m_pirateName1 = name;
+		} else {
+			m_pirateName2 = name;
+		}
 	}
 
 	private void Awake() {
