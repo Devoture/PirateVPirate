@@ -13,7 +13,7 @@ public class EnableNetworkScripts : NetworkBehaviour {
 			GetComponent<Health>().enabled = true;
 			GetComponent<CharacterMovement>().enabled = true;
 			this.gameObject.tag = "Player";
-//			this.transform.Find("Sword").tag = "Sword";
+			this.m_sword.tag = "Sword";
 			Camera.main.transform.GetComponent<CameraController>().m_head = m_head;
 			Camera.main.transform.parent = m_head.transform;
 		}
