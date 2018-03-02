@@ -96,7 +96,6 @@ public class CharacterMovement : NetworkBehaviour {
 				m_cantTakeDamage = false;
 			}
 		}
-		Debug.Log(m_hitColliderScript.m_hasDealtDamage);
 	}
 
 	void OnControllerColliderHit(ControllerColliderHit other) {

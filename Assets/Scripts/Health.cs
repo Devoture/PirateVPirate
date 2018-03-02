@@ -23,31 +23,13 @@ public class Health : NetworkBehaviour {
 		m_playerScript = GetComponent<CharacterMovement>();
 	} 
 
-	// [ClientRpc]
-    // public void RpcTakeDamage(int damage) {
-    // 	m_currHealth -= damage;
-	// 	//UpdateHUD();
-	// 	if(m_currHealth <= 0) {
-	// 		Dead();
-	// 	}
-	// }
-
-	// public void TakeDamage(int damage) {
-	// 	if(!isServer) {
-	// 		RpcTakeDamage(damage);
-	// 		Debug.Log("RPC Take Damage");
-	// 		return;
-	// 	} else {
-	// 		CmdTakeDamage(damage);
-	// 		Debug.Log("CMD Take Damage");
-	// 	}
-	// 	m_currHealth -= damage;
-	// }
-
 	[Command]
 	public void CmdTakeDamage(int damage) {
 		if(isLocalPlayer) {
+			Debug.Log("Poop");
 			TakeDamage(damage);
+		} else {
+			Debug.Log("ASASA");
 		}
 	}
 
