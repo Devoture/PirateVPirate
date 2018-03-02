@@ -30,11 +30,11 @@ public class HitCollider : NetworkBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if(isLocalPlayer) {
-			Debug.Log("Is local");
-			if(other.tag == "EnemySword" && !other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage) {
+		if(other.gameObject.tag == "EnemySword") { //&& !other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage
+			Debug.Log("EnemySword Hit me");
+			if(isLocalPlayer) {
+				Debug.Log("Is local");
 				CharacterMovement hitMovement = other.transform.root.GetComponent<CharacterMovement>();
-				Debug.Log("EnemySword Hit me");
 				if(hitMovement != null ) {
 					if(hitMovement.m_animController.GetBool("isBlocking")) {
 						Debug.Log("Blocked attack");
