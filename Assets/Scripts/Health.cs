@@ -18,6 +18,7 @@ public class Health : NetworkBehaviour {
 	}
 
 	void Start() {
+		
 		m_currHealth = m_maxHealth;
 		//UpdateHUD();
 		m_playerScript = GetComponent<CharacterMovement>();
@@ -51,6 +52,6 @@ public class Health : NetworkBehaviour {
 
 	public void ChangeHealth(int health) {
 		m_currHealth = health;
-		m_hudScript.UpdateHUD(this.gameObject);
+		m_hudScript.UpdateHUD(this.gameObject, health);
 	}
 }
