@@ -150,6 +150,9 @@ public class CharacterMovement : NetworkBehaviour {
 		Debug.Log("hi");
 		if(isLocalPlayer) {
 			CmdSetSwordCollider(false);
+			if(isServer) {
+				RpcSetSwordCollider(false);
+			}
 		}
 		m_hitColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
