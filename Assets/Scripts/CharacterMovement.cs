@@ -75,9 +75,12 @@ public class CharacterMovement : NetworkBehaviour {
 
 				if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
 					m_swipeSound();
-					// if(isLocalPlayer) {
-					// 	CmdSetSwordCollider(true);
-					// }
+					if(isLocalPlayer) {
+						CmdSetSwordCollider(true);
+						if(isServer) {
+							RpcSetSwordCollider(true);
+						}
+					}
 					m_swordCollider.enabled = true;
 					m_animController.SetBool("isAttacking", true);
 					m_isAttacking = true;
@@ -87,16 +90,16 @@ public class CharacterMovement : NetworkBehaviour {
 					m_animController.SetBool("isAttacking", false);
 				}
 			}
-			if(Input.GetKeyDown(KeyCode.Escape) && !m_inMenu){
+			if(Input.GetKeyDown(KeyCode.Escape) && !m_inMenu) {
 				m_disableMovement = true;
 				StateManager.Instance.EnableOptionScreen();
 				m_inMenu = true;
-			}
-			else if(Input.GetKeyDown(KeyCode.Escape) && m_inMenu){
+			} else if(Input.GetKeyDown(KeyCode.Escape) && m_inMenu) {
 				m_disableMovement = false;
 				StateManager.Instance.DisableAll();
 				m_inMenu = false;
 			}
+
 			if(Input.GetMouseButtonDown(1) && m_numOfBlockedAttacks <= 3) {
 				ResetAttack();
 				m_disableMovement = true;
@@ -114,6 +117,11 @@ public class CharacterMovement : NetworkBehaviour {
 
 	[Command]
 	public void CmdSetSwordCollider(bool activeStatus) {
+		m_swordCollider.enabled = activeStatus;	
+	}
+
+	[ClientRpc]
+	public void RpcSetSwordCollider(bool activeStatus) {
 		m_swordCollider.enabled = activeStatus;	
 	}
 
