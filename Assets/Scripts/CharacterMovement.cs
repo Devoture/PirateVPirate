@@ -75,7 +75,7 @@ public class CharacterMovement : NetworkBehaviour {
 
 				if(Input.GetMouseButtonDown(0) && m_isAttacking == false) {
 					m_swipeSound();
-					m_swordCollider.enabled = true;			
+					CmdSetSwordCollider(true);	
 					m_animController.SetBool("isAttacking", true);
 					m_isAttacking = true;
 				}
@@ -108,6 +108,12 @@ public class CharacterMovement : NetworkBehaviour {
 			}
 		}
 	}
+
+	[Command]
+	public void CmdSetSwordCollider(bool activeStatus) {
+		m_swordCollider.enabled = activeStatus;	
+	}
+
 	public void m_swipeSound(){
 		randNum = Random.Range(1,3);
 
@@ -118,6 +124,7 @@ public class CharacterMovement : NetworkBehaviour {
 			m_swordSource.PlayOneShot(m_swipe2);
 		}
 	}
+
 	void OnControllerColliderHit(ControllerColliderHit other) {
 		if(other.gameObject.tag == "Ground") {
 			m_isGrounded = true;
@@ -130,7 +137,7 @@ public class CharacterMovement : NetworkBehaviour {
 
 	public void ResetAttack() {
 		Debug.Log("hi");
-		m_swordCollider.enabled = false;
+		CmdSetSwordCollider(false);
 		m_hitColliderScript.m_hasDealtDamage = false;
 		m_isAttacking = false;
 	}
