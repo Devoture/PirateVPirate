@@ -58,7 +58,7 @@ public class HitCollider : MonoBehaviour {
 	}
 
 	public void HurtSound(){
-		m_randNum = Random.Range(1,4);
+		m_randNum = Random.Range(1, 4);
 		if(m_randNum == 1){
 			m_swordAudSrc.PlayOneShot(m_hit1);
 		}
