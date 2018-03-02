@@ -31,21 +31,24 @@ public class HitCollider : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if(this.tag == "Player") {
 			if(other.tag == "EnemySword" && !other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage) {
-				if(GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
-					m_swordAudSrc.PlayOneShot(m_clash1);
-					GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
-					GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
-				} 
-				if(GetComponent<CharacterMovement>().m_numOfBlockedAttacks > 3) {
-					GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
-					GetComponent<CharacterMovement>().m_animController.SetBool("isBlocking", false);
-					GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
-				}
-				if(!GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
-					HurtSound();
-					m_healthScript.CmdTakeDamage(10);
-					Debug.Log(m_healthScript.GetCurrentHealth());
-					GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
+				CharacterMovement hitMovement = other.transform.root.GetComponent<CharacterMovement>();
+				if(hitMovement != null ) {
+					if(hitMovement.m_animController.GetBool("isBlocking")) {
+						m_swordAudSrc.PlayOneShot(m_clash1);
+						hitMovement.m_numOfBlockedAttacks++;
+						hitMovement.m_animController.SetBool("blockedAttack", true);
+					} 
+					if(hitMovement.m_numOfBlockedAttacks > 3) {
+						hitMovement.m_animController.SetBool("blockedAttack", true);
+						hitMovement.m_animController.SetBool("isBlocking", false);
+						hitMovement.m_numOfBlockedAttacks = 0;
+					}
+					if(!hitMovement.m_animController.GetBool("isBlocking")) {
+						HurtSound();
+						m_healthScript.CmdTakeDamage(10);
+						Debug.Log(m_healthScript.GetCurrentHealth());
+						hitMovement.m_numOfBlockedAttacks = 0;
+					}
 				}
 			}
 		}	
