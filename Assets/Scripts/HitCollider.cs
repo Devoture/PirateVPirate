@@ -30,26 +30,29 @@ public class HitCollider : NetworkBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if(this.tag == "Player") {
+		if(isLocalPlayer) {
+			Debug.Log("Is local");
 			if(other.tag == "EnemySword" && !other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage) {
 				CharacterMovement hitMovement = other.transform.root.GetComponent<CharacterMovement>();
+				Debug.Log("EnemySword Hit me");
 				if(hitMovement != null ) {
 					if(hitMovement.m_animController.GetBool("isBlocking")) {
+						Debug.Log("Blocked attack");
 						m_swordAudSrc.PlayOneShot(m_clash1);
 						hitMovement.m_numOfBlockedAttacks++;
 						hitMovement.m_animController.SetBool("blockedAttack", true);
 					} 
 					if(hitMovement.m_numOfBlockedAttacks > 3) {
+						Debug.Log("Blocked attack was more than 3 so reset");
 						hitMovement.m_animController.SetBool("blockedAttack", true);
 						hitMovement.m_animController.SetBool("isBlocking", false);
 						hitMovement.m_numOfBlockedAttacks = 0;
 					}
 					if(!hitMovement.m_animController.GetBool("isBlocking")) {
+						Debug.Log("hit player");
 						HurtSound();
-						if(isLocalPlayer) {
-							m_healthScript.CmdTakeDamage(10);
-							Debug.Log(m_healthScript.GetCurrentHealth());
-						}
+						m_healthScript.CmdTakeDamage(10);
+						Debug.Log(m_healthScript.GetCurrentHealth());
 						hitMovement.m_numOfBlockedAttacks = 0;
 					}
 					m_hasDealtDamage = true;

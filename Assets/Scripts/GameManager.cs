@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
 	private int m_countDown = 3;
 	private int m_numReadyPlayers = 0;
 	private GameObject m_host = null;
+	private CursorLockMode m_wantedMode;
 
 	public void AddPlayer(GameObject Player) {
 		if (m_host == null) {
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour {
 		m_instance = this;
 		m_gameStartingIn.text = m_numPlayersActive + "/2";
 	}
+
+	// void Start() {
+	// 	m_wantedMode = CursorLockMode.Locked;
+	// }
 
 	void Update() {
 		if(m_countDown >= 0 && m_numPlayersActive >= 1) {
