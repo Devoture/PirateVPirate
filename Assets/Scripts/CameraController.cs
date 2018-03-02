@@ -39,19 +39,6 @@ public class CameraController : MonoBehaviour {
 			m_xDeg += Input.GetAxis("Mouse X") * m_rotateSpeed;
 			m_yDeg -= Input.GetAxis("Mouse Y") * m_rotateSpeed;
 			float horizontal = Input.GetAxis("Mouse X") * m_rotateSpeed;
-
-			// //Lets scrollwheel zoom in and out
-			// m_distance += -(Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime) * m_zoomSpeed * Mathf.Abs(m_distance);
-
-			// //sets the minimum scroll distance between camera and player
-			// if (m_distance < m_minDistance) {
-			// 	m_distance = m_minDistance;
-			// }
-
-			// //sets the maximum scroll distance between camera and player
-			// if (m_distance > m_maxDistance) {
-			// 	m_distance = m_maxDistance;
-			// }
 			
 			//sets the amount the camera can move above and below the player
 			if(m_yDeg >= m_maxXDeg) {

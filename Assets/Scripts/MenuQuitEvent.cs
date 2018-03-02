@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuQuitEvent : MonoBehaviour {
+
 	private bool m_Quitting;
 	public SoundMGR m_soundMgr;
-	public void Update(){
-		if(!m_soundMgr.m_backgroundeffects.isPlaying && m_Quitting){
+
+	public void Update() {
+		if(!m_soundMgr.m_backgroundeffects.isPlaying && m_Quitting) {
 			#if UNITY_EDITOR
 				UnityEditor.EditorApplication.isPlaying = false;
 			#else
@@ -14,9 +16,9 @@ public class MenuQuitEvent : MonoBehaviour {
 			#endif
 		}
 	}
-	public void OnMouseDown(){
+
+	public void OnMouseDown() {
 		m_soundMgr.MenuPress();
 		m_Quitting = true;
-		
 	}
 }

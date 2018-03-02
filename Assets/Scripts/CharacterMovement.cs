@@ -19,18 +19,19 @@ public class CharacterMovement : NetworkBehaviour {
 	public bool m_isDead = false;
 	public AudioClip m_swipe1;
 	public AudioClip m_swipe2;
+	public Animator m_animController;
+	public HitCollider m_hitColliderScript;
+	public bool m_inMenu;
+	public Health m_healthScript;
+
 	private Vector3 m_moveDirection = Vector3.zero;
 	private bool m_isJumping;
 	private bool m_isGrounded = false;
 	private CharacterController m_controller;
-	public Animator m_animController;
-	public HitCollider m_hitColliderScript;
 	private bool m_isAttacking;
-	public Health m_healthScript;
 	private bool m_disableMovement;
-	public bool m_inMenu;
 	private int randNum;
-	// Use this for initialization
+	
 	void Start() {
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
@@ -44,7 +45,6 @@ public class CharacterMovement : NetworkBehaviour {
 		m_hitColliderScript = GetComponent<HitCollider>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if(GameManager.Instance.m_gameStarted) {
 			if(!m_disableMovement) {
@@ -147,7 +147,6 @@ public class CharacterMovement : NetworkBehaviour {
 	}
 
 	public void ResetAttack() {
-		Debug.Log("hi");
 		if(isLocalPlayer) {
 			CmdSetSwordCollider(false);
 			if(isServer) {

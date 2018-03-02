@@ -5,7 +5,8 @@ using UnityEngine;
 public class MenuHelpEvent : MonoBehaviour {
 
 	public MenuStates m_menuStateMgr;
-	public void OnMouseDown(){
+
+	public void OnMouseDown() {
 		m_menuStateMgr.Help();
 	}
 }
