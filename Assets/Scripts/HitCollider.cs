@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class HitCollider : MonoBehaviour {
+public class HitCollider : NetworkBehaviour {
 
 	public bool m_hasDealtDamage;
 	public AudioClip m_hit1;
@@ -45,8 +46,10 @@ public class HitCollider : MonoBehaviour {
 					}
 					if(!hitMovement.m_animController.GetBool("isBlocking")) {
 						HurtSound();
-						m_healthScript.CmdTakeDamage(10);
-						Debug.Log(m_healthScript.GetCurrentHealth());
+						if(isLocalPlayer) {
+							m_healthScript.CmdTakeDamage(10);
+							Debug.Log(m_healthScript.GetCurrentHealth());
+						}
 						hitMovement.m_numOfBlockedAttacks = 0;
 					}
 					m_hasDealtDamage = true;
