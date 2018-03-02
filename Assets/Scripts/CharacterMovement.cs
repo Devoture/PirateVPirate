@@ -28,6 +28,7 @@ public class CharacterMovement : NetworkBehaviour {
 	private bool m_isAttacking;
 	public Health m_healthScript;
 	private bool m_disableMovement;
+	public bool m_inMenu;
 	private int randNum;
 	// Use this for initialization
 	void Start() {
@@ -83,7 +84,16 @@ public class CharacterMovement : NetworkBehaviour {
 					m_animController.SetBool("isAttacking", false);
 				}
 			}
-
+			if(Input.GetKeyDown(KeyCode.Escape) && !m_inMenu){
+				m_disableMovement = true;
+				StateManager.Instance.EnableOptionScreen();
+				m_inMenu = true;
+			}
+			else if(Input.GetKeyDown(KeyCode.Escape) && m_inMenu){
+				m_disableMovement = false;
+				StateManager.Instance.DisableAll();
+				m_inMenu = false;
+			}
 			if(Input.GetMouseButtonDown(1) && m_numOfBlockedAttacks <= 3) {
 				ResetAttack();
 				m_disableMovement = true;
