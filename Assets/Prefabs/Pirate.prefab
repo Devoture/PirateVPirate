@@ -2271,7 +2271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_head: {fileID: 4837492824026564}
-  m_sword: {fileID: 1897565111722186}
+  m_sword: {fileID: 1832901865289784, guid: 76829decc882ea8469a499125067b04d, type: 2}
 --- !u!114 &114162836100687438
 MonoBehaviour:
   m_ObjectHideFlags: 1
