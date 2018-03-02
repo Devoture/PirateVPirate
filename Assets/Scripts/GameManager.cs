@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public Canvas m_lobbyCanvas;
 	public bool m_gameStarted = false;
 	public Canvas m_hud;
+	public HUDScript m_hudScript;
 	public Button m_readyButton;
 
 	private static GameManager m_instance;

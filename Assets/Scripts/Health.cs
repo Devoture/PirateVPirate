@@ -14,7 +14,7 @@ public class Health : NetworkBehaviour {
 	public HUDScript m_hudScript;
 
 	void Awake() {
-		m_hudScript = GameManager.Instance.m_hud.GetComponent<HUDScript>();
+		m_hudScript = GameManager.Instance.m_hudScript;
 	}
 
 	void Start() {

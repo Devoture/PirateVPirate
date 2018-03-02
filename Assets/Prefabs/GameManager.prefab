@@ -466,6 +466,7 @@ MonoBehaviour:
   m_lobbyCanvas: {fileID: 0}
   m_gameStarted: 0
   m_hud: {fileID: 223743411349974378}
+  m_hudScript: {fileID: 114602200557797660}
   m_readyButton: {fileID: 0}
   m_players: []
 --- !u!114 &114702851399730668
