@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Head
   - HUD
+  - Sword
+  - EnemySword
   layers:
   - Default
   - TransparentFX
