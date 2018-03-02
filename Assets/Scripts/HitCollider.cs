@@ -29,27 +29,8 @@ public class HitCollider : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if(this.name == "Pirate1") {
-			Debug.Log(other.transform.root.name);
-			if(other.name == "Sword" && (!other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage && other.transform.root.name == "Pirate2")) {
-				if(GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
-					m_swordAudSrc.PlayOneShot(m_clash1);
-					GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;
-					GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
-				} 
-				if(GetComponent<CharacterMovement>().m_numOfBlockedAttacks > 3) {
-					GetComponent<CharacterMovement>().m_animController.SetBool("blockedAttack", true);
-					GetComponent<CharacterMovement>().m_animController.SetBool("isBlocking", false);
-					GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
-				}
-				if(!GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
-					m_healthScript.CmdTakeDamage(10);
-					Debug.Log(m_healthScript.GetCurrentHealth());
-					GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
-				}
-			}
-		} else if (this.name == "Pirate2") {
-			if(other.name == "Sword" && (!other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage && other.transform.root.name == "Pirate1")) {
+		if(this.tag == "Player") {
+			if(other.tag == "EnemySword" && !other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage) {
 				if(GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
 					m_swordAudSrc.PlayOneShot(m_clash1);
 					GetComponent<CharacterMovement>().m_numOfBlockedAttacks++;

@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 114672266221039290}
   m_Layer: 0
   m_Name: Pirate
-  m_TagString: Enemy
+  m_TagString: EnemySword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2271,6 +2271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_head: {fileID: 4837492824026564}
+  m_sword: {fileID: 1897565111722186}
 --- !u!114 &114162836100687438
 MonoBehaviour:
   m_ObjectHideFlags: 1
