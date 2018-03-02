@@ -42,6 +42,7 @@ public class HitCollider : MonoBehaviour {
 					GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
 				}
 				if(!GetComponent<CharacterMovement>().m_animController.GetBool("isBlocking")) {
+					HurtSound();
 					m_healthScript.CmdTakeDamage(10);
 					Debug.Log(m_healthScript.GetCurrentHealth());
 					GetComponent<CharacterMovement>().m_numOfBlockedAttacks = 0;
@@ -56,15 +57,6 @@ public class HitCollider : MonoBehaviour {
 		m_hasDealtDamage = false;
 	}
 
-	public void SwipeSound(){
-		m_randNum = Random.Range(1,3);
-		if(m_randNum == 1){
-			m_swordAudSrc.PlayOneShot(m_swipe1);
-		}
-		if(m_randNum == 2){
-			m_swordAudSrc.PlayOneShot(m_swipe2);
-		}
-	}
 	public void HurtSound(){
 		m_randNum = Random.Range(1,4);
 		if(m_randNum == 1){
