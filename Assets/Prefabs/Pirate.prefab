@@ -2286,7 +2286,7 @@ MonoBehaviour:
   m_speed: 5
   m_speedMultiplier: 1
   m_gravity: 20
-  m_swordSource: {fileID: 0}
+  m_swordSource: {fileID: 82144047937662998}
   m_hasClicked: 0
   m_jumpSpeed: 8
   m_verticalVelocity: 0
@@ -2295,8 +2295,8 @@ MonoBehaviour:
   m_cantTakeDamage: 0
   m_camtarget: {fileID: 0}
   m_isDead: 0
-  m_swipe1: {fileID: 0}
-  m_swipe2: {fileID: 0}
+  m_swipe1: {fileID: 8300000, guid: dfc2bd6b90ba98d46b1608f66b18ccda, type: 3}
+  m_swipe2: {fileID: 8300000, guid: f237aa4641097434894e8e3b8848f31a, type: 3}
   m_animController: {fileID: 95726428757890608}
   m_hitColliderScript: {fileID: 114672266221039290}
   m_healthScript: {fileID: 114270215283847808}
@@ -2399,13 +2399,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hasDealtDamage: 0
-  m_hit1: {fileID: 0}
-  m_hit2: {fileID: 0}
-  m_hit3: {fileID: 0}
-  m_clash1: {fileID: 0}
+  m_hit1: {fileID: 8300000, guid: 738faf051c356c74ebd51e88f645b510, type: 3}
+  m_hit2: {fileID: 8300000, guid: 884fcff4b26cd4044b067753645e360f, type: 3}
+  m_hit3: {fileID: 8300000, guid: 6f6b5be4dd64d8e4da86c389510034ab, type: 3}
+  m_clash1: {fileID: 8300000, guid: 82d24085873535b41b7b3712c415828f, type: 3}
   m_swipe1: {fileID: 0}
   m_swipe2: {fileID: 0}
-  m_swordAudSrc: {fileID: 0}
+  m_swordAudSrc: {fileID: 82144047937662998}
 --- !u!114 &114888745122349580
 MonoBehaviour:
   m_ObjectHideFlags: 1
