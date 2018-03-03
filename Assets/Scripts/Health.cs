@@ -23,10 +23,10 @@ public class Health : NetworkBehaviour {
 
 	void Update() {
 		if(GameManager.Instance.m_lost && m_currHealth > 0) {
-			//if(isLocalPlayer) {
+			if(isLocalPlayer) {
 				Debug.Log("Win");
 				SceneManager.LoadScene("Win");
-			//}
+			}
 		}
 	}
 
