@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour {
     private NetworkManager m_networkManager;
 
     void Start() {
-        m_networkManager = NetworkManager.singleton;
+        
     }
 
     public void LeaveRoom() {

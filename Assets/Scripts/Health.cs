@@ -39,9 +39,6 @@ public class Health : NetworkBehaviour {
 	[Command]
 	public void CmdTakeDamage(int damage) {
 		m_currHealth -= damage;
-		if(m_currHealth <= 0) {
-			Dead();
-		}
 	}
 
 	void Dead() {
