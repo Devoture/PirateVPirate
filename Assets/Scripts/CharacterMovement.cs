@@ -159,19 +159,16 @@ public class CharacterMovement : NetworkBehaviour {
 
 	public void GameOver() {
 		if(isLocalPlayer) {
-			if(!this.gameObject == GameManager.Instance.m_host) {
-				if(!m_isDead) {
-					SceneManager.LoadScene("Win");
-				} else {
-					SceneManager.LoadScene("Lose");
-				}
+			if(!m_isDead) {
+				SceneManager.LoadScene("Win");
 			} else {
-				if(!m_isDead) {
-					SceneManager.LoadScene("Win");
-				} else {
-					SceneManager.LoadScene("Lose");
-				}
+				SceneManager.LoadScene("Lose");
 			}
+		}
+		if(!m_isDead) {
+			SceneManager.LoadScene("Win");
+		} else {
+			SceneManager.LoadScene("Lose");
 		}
 	}
 }

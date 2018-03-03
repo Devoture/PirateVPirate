@@ -18,6 +18,6 @@ public class PauseMenu : MonoBehaviour {
         MatchInfo matchInfo = m_networkManager.matchInfo;
         m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
         m_networkManager.StopHost();
-        SceneManager.LoadScene("main");
+        Application.Quit();
     }
 }
