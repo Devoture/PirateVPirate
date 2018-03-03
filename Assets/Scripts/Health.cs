@@ -21,6 +21,12 @@ public class Health : NetworkBehaviour {
 		m_playerScript = GetComponent<CharacterMovement>();
 	}
 
+	void Update() {
+		if(m_currHealth <= 0) {
+			Dead();
+		}
+	}
+
 	[Command]
 	public void CmdSetHealthAtStart() {
 		m_currHealth = m_maxHealth;
@@ -31,19 +37,11 @@ public class Health : NetworkBehaviour {
 			CmdTakeDamage(damage);
 		}
 		m_currHealth -= damage;
-		if(m_currHealth <= 0) {
-			Dead();
-		}
 	}
 
 	[Command]
 	public void CmdTakeDamage(int damage) {
 		m_currHealth -= damage;
-		if(isLocalPlayer) {
-			if(m_currHealth <= 0) {
-				Dead();
-			}
-		}
 	}
 
 	void Dead() {
