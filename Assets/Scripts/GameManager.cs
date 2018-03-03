@@ -40,6 +40,7 @@ public class GameManager : NetworkBehaviour {
 	}
 
 	private void Awake() {
+		DontDestroyOnLoad(gameObject);
 		m_instance = this;
 		m_gameStartingIn.text = m_numPlayersActive + "/2";
 	}
