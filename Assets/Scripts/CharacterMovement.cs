@@ -166,8 +166,9 @@ public class CharacterMovement : NetworkBehaviour {
 		gameObject.SetActive(false);
 		GameManager.Instance.CheckGameOver();
 	}
-
-	public void GameOver() {
+	
+	[Command]
+	public void CmdGameOver() {
 		Debug.Log(m_isDead);
 		Debug.Log("Called GameOVer");
 		if(isLocalPlayer) {
