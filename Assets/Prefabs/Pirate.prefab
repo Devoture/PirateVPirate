@@ -2426,6 +2426,7 @@ MonoBehaviour:
   m_swipe1: {fileID: 0}
   m_swipe2: {fileID: 0}
   m_swordAudSrc: {fileID: 82144047937662998}
+  m_audSync: {fileID: 114332080987483398}
 --- !u!114 &114888745122349580
 MonoBehaviour:
   m_ObjectHideFlags: 1
