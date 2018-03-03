@@ -62,7 +62,7 @@ public class GameManager : NetworkBehaviour {
 		for(int i = 0; i < m_players.Count; i++) {
 			Debug.Log("number of players: " + i);
 			if(!isServer) {
-				m_players[i].GetComponent<CharacterMovement>().GameOver();
+				m_players[i].GetComponent<CharacterMovement>().RpcGameOver();
 			} else {
 				m_players[i].GetComponent<CharacterMovement>().RpcGameOver();
 			}
