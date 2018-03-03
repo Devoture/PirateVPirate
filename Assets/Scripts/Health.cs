@@ -23,7 +23,7 @@ public class Health : NetworkBehaviour {
 
 	void Update() {
 		if(m_currHealth <= 0) {
-			Dead();
+			m_playerScript.Dead();
 		}
 	}
 
@@ -42,12 +42,6 @@ public class Health : NetworkBehaviour {
 	[Command]
 	public void CmdTakeDamage(int damage) {
 		m_currHealth -= damage;
-	}
-
-	void Dead() {
-		m_playerScript.m_isDead = true;
-		gameObject.SetActive(false);
-		GameManager.Instance.CheckGameOver();
 	}
 
 	public int GetCurrentHealth() {
