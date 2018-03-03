@@ -169,57 +169,38 @@ public class CharacterMovement : NetworkBehaviour {
 	
 	[Command]
 	public void CmdGameOver() {
-		Debug.Log(m_isDead);
-		Debug.Log("Called GameOVer");
-		//if(isLocalPlayer) {
-			Debug.Log("ISLocal");
-			// MatchInfo matchInfo = m_networkManager.matchInfo;
-			// m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
-			// m_networkManager.StopHost();
-			if(!m_isDead) {
-				Debug.Log("Win");
-				SceneManager.LoadScene("Win");
-			} else {
-				Debug.Log("Lose");
-				SceneManager.LoadScene("Lose");
-			}
-		//}
+		if(!m_isDead) {
+			SceneManager.LoadScene("Win");
+		} else {
+			SceneManager.LoadScene("Lose");
+		}
+		MatchInfo matchInfo = m_networkManager.matchInfo;
+		m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
+		m_networkManager.StopHost();
 	}
 
 	public void GameOver() {
-		Debug.Log(m_isDead);
-		Debug.Log("Called GameOVer");
-		if(isLocalPlayer) {
-			Debug.Log("ISLocal");
-			// MatchInfo matchInfo = m_networkManager.matchInfo;
-			// m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
-			// m_networkManager.StopHost();
-			if(!m_isDead) {
-				Debug.Log("Win");
-				SceneManager.LoadScene("Win");
-			} else {
-				Debug.Log("Lose");
-				SceneManager.LoadScene("Lose");
-			}
+		if(!m_isDead) {
+			SceneManager.LoadScene("Win");
+		} else {
+			SceneManager.LoadScene("Lose");
 		}
+		MatchInfo matchInfo = m_networkManager.matchInfo;
+		m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
+		m_networkManager.StopHost();
 	}
 
 	[ClientRpc]
 	public void RpcGameOver() {
-		Debug.Log(m_isDead);
-		Debug.Log("Called GameOVer");
 		if(isLocalPlayer) {
-			Debug.Log("ISLocal");
+			if(!m_isDead) {
+				SceneManager.LoadScene("Win");
+			} else {
+				SceneManager.LoadScene("Lose");
+			}
 			MatchInfo matchInfo = m_networkManager.matchInfo;
 			m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
 			m_networkManager.StopHost();
-			if(!m_isDead) {
-				Debug.Log("Win");
-				SceneManager.LoadScene("Win");
-			} else {
-				Debug.Log("Lose");
-				SceneManager.LoadScene("Lose");
-			}
 		}
 	}
 }
