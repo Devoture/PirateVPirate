@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour {
 	private int m_countDown = 3;
 	private int m_numReadyPlayers = 0;
 	private CursorLockMode m_wantedMode;
-	// private string m_pirateName1;
-	// private string m_pirateName2;
 
 	public void AddPlayer(GameObject Player) {
 		if (m_host == null) {
@@ -50,24 +48,6 @@ public class GameManager : MonoBehaviour {
 			StartGame();
 		}
 	}
-
-	// public void SetPirateName(string name) {
-	// 	if(m_pirateName1 == null) {
-	// 		if(name == "") {
-	// 			m_pirateName1 = "Player 1";
-	// 		} else {
-	// 			m_pirateName1 = name;
-	// 		}
-	// 		Debug.Log("Pirate1: " + m_pirateName1);
-	// 	} else {
-	// 		if(name == "") {
-	// 			m_pirateName2 = "Player 2";
-	// 		} else {
-	// 			m_pirateName2 = name;
-	// 		}
-	// 		Debug.Log("Pirate1: " + m_pirateName2);
-	// 	}
-	// }
 
 	void StartGame() {
 		if(m_canStartCoroutine) {
@@ -98,11 +78,6 @@ public class GameManager : MonoBehaviour {
 			m_gameStartingIn.gameObject.SetActive(false);
 			m_countDownText.gameObject.SetActive(false);
 			m_lobbyCanvas.gameObject.SetActive(false);
-			// if(m_pirateName1 != null) {
-			// 	m_pirateNameText1.text = m_pirateName1;
-			// } else if(m_pirateName2 != null) {
-			// 	m_pirateNameText2.text = m_pirateName2;
-			// }
 		}
     }
 }
