@@ -171,7 +171,7 @@ public class CharacterMovement : NetworkBehaviour {
 	public void CmdGameOver() {
 		Debug.Log(m_isDead);
 		Debug.Log("Called GameOVer");
-		//if(isLocalPlayer) {
+		if(isLocalPlayer) {
 			Debug.Log("ISLocal");
 			// MatchInfo matchInfo = m_networkManager.matchInfo;
 			// m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
@@ -183,7 +183,7 @@ public class CharacterMovement : NetworkBehaviour {
 				Debug.Log("Lose");
 				SceneManager.LoadScene("Lose");
 			}
-		//}
+		}
 	}
 
 	[ClientRpc]
