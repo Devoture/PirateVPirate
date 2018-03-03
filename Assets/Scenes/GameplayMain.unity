@@ -1560,22 +1560,6 @@ Prefab:
       propertyPath: m_lobbyCanvas
       value: 
       objectReference: {fileID: 569524025}
-    - target: {fileID: 114043619898263094, guid: 3bf71148fcd34f94eb15bfd2b08fa028,
-        type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 3bdfe31f2159f7244b37e238351d217d,
-        type: 3}
-    - target: {fileID: 114167418683415986, guid: 3bf71148fcd34f94eb15bfd2b08fa028,
-        type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 3bdfe31f2159f7244b37e238351d217d,
-        type: 3}
-    - target: {fileID: 1144350204372266, guid: 3bf71148fcd34f94eb15bfd2b08fa028, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bf71148fcd34f94eb15bfd2b08fa028, type: 2}
   m_IsPrefabParent: 0

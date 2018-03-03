@@ -78,7 +78,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1180854282912520
 GameObject:
   m_ObjectHideFlags: 1
@@ -190,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4798286491196972}
   - component: {fileID: 114686549231561614}
+  - component: {fileID: 114090604828676728}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -350,7 +351,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 3bdfe31f2159f7244b37e238351d217d, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -363,6 +364,38 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Player 1
+--- !u!114 &114090604828676728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857320440507088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 59
+    i1: 247
+    i2: 17
+    i3: 72
+    i4: 252
+    i5: 211
+    i6: 79
+    i7: 148
+    i8: 235
+    i9: 21
+    i10: 191
+    i11: 210
+    i12: 176
+    i13: 143
+    i14: 160
+    i15: 40
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114167418683415986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,7 +416,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 3bdfe31f2159f7244b37e238351d217d, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
