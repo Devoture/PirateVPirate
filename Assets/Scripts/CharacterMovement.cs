@@ -167,9 +167,11 @@ public class CharacterMovement : NetworkBehaviour {
 			m_networkManager.StopHost();
 			if(!m_isDead) {
 				// win scene
+				Debug.Log("Win");
 				SceneManager.LoadScene("Win");
 			} else {
 				// lose scene
+				Debug.Log("Lose");
 				SceneManager.LoadScene("Lose");
 			}
 		}
