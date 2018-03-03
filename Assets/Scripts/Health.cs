@@ -21,6 +21,15 @@ public class Health : NetworkBehaviour {
 		m_playerScript = GetComponent<CharacterMovement>();
 	}
 
+	void Update() {
+		if(GameManager.Instance.m_lost && m_currHealth > 0) {
+			//if(isLocalPlayer) {
+				Debug.Log("Win");
+				SceneManager.LoadScene("Win");
+			//}
+		}
+	}
+
 	[Command]
 	public void CmdSetHealthAtStart() {
 		m_currHealth = m_maxHealth;
@@ -33,11 +42,6 @@ public class Health : NetworkBehaviour {
 		m_currHealth -= damage;
 		if(m_currHealth <= 0) {
 			Dead();
-		} else {
-			if(GameManager.Instance.m_lost) {
-				Debug.Log("WIn");
-				SceneManager.LoadScene("Win");
-			}
 		}
 	}
 
@@ -47,11 +51,6 @@ public class Health : NetworkBehaviour {
 		if(isLocalPlayer) {
 			if(m_currHealth <= 0) {
 				Dead();
-			} else {
-				if(GameManager.Instance.m_lost) {
-					Debug.Log("WIn");
-					SceneManager.LoadScene("Win");
-				}
 			}
 		}
 	}
