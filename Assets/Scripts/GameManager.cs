@@ -64,7 +64,7 @@ public class GameManager : NetworkBehaviour {
 			if(!isServer) {
 				m_players[i].GetComponent<CharacterMovement>().CmdGameOver();
 			} else {
-				m_players[i].GetComponent<CharacterMovement>().GameOver();
+				m_players[i].GetComponent<CharacterMovement>().RpcGameOver();
 			}
 		}
 	}

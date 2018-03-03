@@ -186,7 +186,8 @@ public class CharacterMovement : NetworkBehaviour {
 		//}
 	}
 
-	public void GameOver() {
+	[ClientRpc]
+	public void RpcGameOver() {
 		Debug.Log(m_isDead);
 		Debug.Log("Called GameOVer");
 		//if(isLocalPlayer) {
