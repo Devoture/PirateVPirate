@@ -13,7 +13,7 @@ public class HitCollider : NetworkBehaviour {
 	public AudioClip m_swipe1;
 	public AudioClip m_swipe2;
 	public AudioSource m_swordAudSrc;
-
+	public AudioSync m_audSync;
 	private float m_damage = 10.0f;
 	private Animator m_animController;
 	private Health m_healthScript;
@@ -32,7 +32,7 @@ public class HitCollider : NetworkBehaviour {
 				CharacterMovement hitMovement = other.transform.root.GetComponent<CharacterMovement>();
 				if(hitMovement != null) {
 					if(m_animController.GetBool("isBlocking")) {
-						m_swordAudSrc.PlayOneShot(m_clash1);
+						m_audSync.PlaySound(3);
 						m_characterScript.m_numOfBlockedAttacks++;
 						m_animController.SetBool("blockedAttack", true);
 					} 
@@ -60,13 +60,13 @@ public class HitCollider : NetworkBehaviour {
 	public void HurtSound() {
 		m_randNum = Random.Range(1, 4);
 		if(m_randNum == 1) {
-			m_swordAudSrc.PlayOneShot(m_hit1);
+			m_audSync.PlaySound(0);
 		}
 		if(m_randNum == 2) {
-			m_swordAudSrc.PlayOneShot(m_hit2);
+			m_audSync.PlaySound(1);
 		}
 		if(m_randNum == 3) {
-			m_swordAudSrc.PlayOneShot(m_hit3);
+			m_audSync.PlaySound(2);
 		}
 	}
 }
