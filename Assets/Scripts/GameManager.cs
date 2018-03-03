@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 
-public class GameManager : NetworkBehaviour {
+public class GameManager : MonoBehaviour {
 
 	public static GameManager Instance { get { return m_instance; } }
 	public Text m_countDownText;
@@ -62,13 +60,7 @@ public class GameManager : NetworkBehaviour {
 		m_numPlayersActive--;
 		if(m_numPlayersActive <= 1) {
 			for(int i = 0; i < m_players.Count; i++) {
-				if(isLocalPlayer) {
-					if(!m_players[i].GetComponent<CharacterMovement>().m_isDead) {
-						SceneManager.LoadScene("Win");
-					} else {
-						SceneManager.LoadScene("Lose");
-					}
-				}
+				m_players[i].GetComponent<CharacterMovement>().GameOver();
 			}
 		}
 	}
