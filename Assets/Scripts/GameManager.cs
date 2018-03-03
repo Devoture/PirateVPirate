@@ -61,7 +61,7 @@ public class GameManager : NetworkBehaviour {
 	public void CheckGameOver() {
 		for(int i = 0; i < m_players.Count; i++) {
 			Debug.Log("number of players: " + i);
-			m_players[i].GetComponent<CharacterMovement>().CmdGameOver();
+			m_players[i].GetComponent<CharacterMovement>().GameOver();
 		}
 	}
 
