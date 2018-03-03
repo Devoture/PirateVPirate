@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour {
 	public GameObject m_host = null;
 	public Text m_pirateNameText1;
 	public Text m_pirateNameText2;
-	public bool m_lost;
 
 	private static GameManager m_instance;
 	private bool m_canStartCoroutine = true;

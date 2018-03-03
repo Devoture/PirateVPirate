@@ -161,15 +161,16 @@ public class CharacterMovement : NetworkBehaviour {
 	}
 
 	public void GameOver() {
-		if(isLocalPlayer){
-			// MatchInfo matchInfo = m_networkManager.matchInfo;
-			// m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
-			// m_networkManager.StopHost();
+		if(isLocalPlayer) {
+			MatchInfo matchInfo = m_networkManager.matchInfo;
+			m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
+			m_networkManager.StopHost();
 			if(m_isDead) {
-				GameManager.Instance.m_lost = true;
-				// lose scene
 				Debug.Log("Lose");
 				SceneManager.LoadScene("Lose");
+			} else {
+				Debug.Log("Win");
+				SceneManager.LoadScene("Win");
 			}
 		}
 	}

@@ -21,15 +21,6 @@ public class Health : NetworkBehaviour {
 		m_playerScript = GetComponent<CharacterMovement>();
 	}
 
-	void Update() {
-		if(GameManager.Instance.m_lost && m_currHealth > 0) {
-			if(isLocalPlayer) {
-				Debug.Log("Win");
-				SceneManager.LoadScene("Win");
-			}
-		}
-	}
-
 	[Command]
 	public void CmdSetHealthAtStart() {
 		m_currHealth = m_maxHealth;
@@ -57,7 +48,7 @@ public class Health : NetworkBehaviour {
 
 	void Dead() {
 		m_playerScript.m_isDead = true;
-		//gameObject.SetActive(false);
+		gameObject.SetActive(false);
 		GameManager.Instance.CheckGameOver();
 	}
 
