@@ -9,6 +9,8 @@ public class HostGame : MonoBehaviour {
 	private uint roomSize = 6;
 	private string roomName;
 	private NetworkManager networkManager;
+	private string m_pirateName1;
+	private string m_pirateName2;
 	
 	void Start() {
 		networkManager = NetworkManager.singleton;
@@ -20,6 +22,24 @@ public class HostGame : MonoBehaviour {
 	public void SetRoomName(string _name) {
 		roomName = _name;
 		Debug.Log(_name);
+	}
+
+	public void SetPirateName(string name) {
+		if(m_pirateName1 == null) {
+			if(name == "") {
+				m_pirateName1 = "Player 1";
+			} else {
+				m_pirateName1 = name;
+			}
+			Debug.Log("Pirate1: " + m_pirateName1);
+		} else {
+			if(name == "") {
+				m_pirateName2 = "Player 2";
+			} else {
+				m_pirateName2 = name;
+			}
+			Debug.Log("Pirate1: " + m_pirateName2);
+		}
 	}
 	
 	public void CreateRoom() {
