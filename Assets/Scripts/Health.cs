@@ -35,6 +35,7 @@ public class Health : NetworkBehaviour {
 			Dead();
 		} else {
 			if(GameManager.Instance.m_lost) {
+				Debug.Log("WIn");
 				SceneManager.LoadScene("Win");
 			}
 		}
@@ -48,6 +49,7 @@ public class Health : NetworkBehaviour {
 				Dead();
 			} else {
 				if(GameManager.Instance.m_lost) {
+					Debug.Log("WIn");
 					SceneManager.LoadScene("Win");
 				}
 			}
