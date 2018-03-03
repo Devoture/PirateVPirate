@@ -174,9 +174,6 @@ public class CharacterMovement : NetworkBehaviour {
 		} else {
 			SceneManager.LoadScene("Lose");
 		}
-		MatchInfo matchInfo = m_networkManager.matchInfo;
-		m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
-		m_networkManager.StopHost();
 	}
 
 	public void GameOver() {
@@ -185,9 +182,6 @@ public class CharacterMovement : NetworkBehaviour {
 		} else {
 			SceneManager.LoadScene("Lose");
 		}
-		MatchInfo matchInfo = m_networkManager.matchInfo;
-		m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
-		m_networkManager.StopHost();
 	}
 
 	[ClientRpc]
@@ -198,9 +192,6 @@ public class CharacterMovement : NetworkBehaviour {
 			} else {
 				SceneManager.LoadScene("Lose");
 			}
-			MatchInfo matchInfo = m_networkManager.matchInfo;
-			m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
-			m_networkManager.StopHost();
 		}
 	}
 }
