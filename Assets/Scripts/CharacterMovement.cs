@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Networking.Match;
 using UnityEngine.SceneManagement;
 
 public class CharacterMovement : NetworkBehaviour {
@@ -31,8 +32,10 @@ public class CharacterMovement : NetworkBehaviour {
 	private bool m_isAttacking;
 	private bool m_disableMovement;
 	private int randNum;
+	private NetworkManager m_networkManager;
 	
 	void Start() {
+		m_networkManager = NetworkManager.singleton;
 		m_controller = GetComponent<CharacterController>();
 		Camera.main.GetComponent<CameraController>().m_target = transform;
 		if(gameObject.tag == "Player"){
@@ -158,12 +161,15 @@ public class CharacterMovement : NetworkBehaviour {
 	}
 
 	public void GameOver() {
-		if(isLocalPlayer) {
+		if(isLocalPlayer){
+			MatchInfo matchInfo = m_networkManager.matchInfo;
+			m_networkManager.matchMaker.DropConnection(matchInfo.networkId, matchInfo.nodeId, 0, m_networkManager.OnDropConnection);
+			m_networkManager.StopHost();
 			if(!m_isDead) {
-				Debug.Log("Win");
+				// win scene
 				SceneManager.LoadScene("Win");
 			} else {
-				Debug.Log("Lose");
+				// lose scene
 				SceneManager.LoadScene("Lose");
 			}
 		}
