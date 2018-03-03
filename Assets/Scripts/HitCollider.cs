@@ -43,7 +43,7 @@ public class HitCollider : NetworkBehaviour {
 					}
 					if(!m_animController.GetBool("isBlocking")) {
 						HurtSound();
-						m_healthScript.TakeDamage(10);
+						m_healthScript.TakeDamage(100);
 						m_characterScript.m_numOfBlockedAttacks = 0;
 					}
 					other.transform.root.GetComponent<HitCollider>().m_hasDealtDamage = true;
