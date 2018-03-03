@@ -49,6 +49,7 @@ public class CharacterMovement : NetworkBehaviour {
 	}
 	
 	void Update () {
+		Debug.Log(m_isDead);
 		if(GameManager.Instance.m_gameStarted) {
 			if(!m_disableMovement) {
 				m_moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
