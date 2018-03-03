@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject m_host = null;
 	public Text m_pirateNameText1;
 	public Text m_pirateNameText2;
+	public bool m_lost;
 
 	private static GameManager m_instance;
 	private bool m_canStartCoroutine = true;
@@ -57,11 +58,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void CheckGameOver() {
-		m_numPlayersActive--;
-		if(m_numPlayersActive <= 1) {
-			for(int i = 0; i < m_players.Count; i++) {
-				m_players[i].GetComponent<CharacterMovement>().GameOver();
-			}
+		for(int i = 0; i < m_players.Count; i++) {
+			m_players[i].GetComponent<CharacterMovement>().GameOver();
 		}
 	}
 

@@ -33,6 +33,10 @@ public class Health : NetworkBehaviour {
 		m_currHealth -= damage;
 		if(m_currHealth <= 0) {
 			Dead();
+		} else {
+			if(GameManager.Instance.m_lost) {
+				SceneManager.LoadScene("Win");
+			}
 		}
 	}
 
